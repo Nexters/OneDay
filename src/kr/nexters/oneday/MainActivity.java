@@ -38,13 +38,7 @@ public class MainActivity extends Activity {
 		btn = (Button) findViewById(R.id.btn);
 
 		drawerLayout.setDrawerListener(myDrawerListener);
-		drawerView.setOnTouchListener(new OnTouchListener() {
-
-			public boolean onTouch(View v, MotionEvent event) {
-				// TODO Auto-generated method stub
-				return true;
-			}
-		});
+		
 
 	}
 
