@@ -10,11 +10,13 @@ public class PrefManager {
 	public static final String PREF_DEFVALUE = "defvalue";
 
 	static Context context;
-
+// single ton 방식으로
+	
 	public PrefManager(Context context) {
 		this.context = context;
 	}
 
+	//putInt putString 요런것들 중복 부분 빼면될듯요!!
 	public void putInt(String key, int value) {
 		SharedPreferences pref = context.getSharedPreferences(PREF_KEY, 0);
 		SharedPreferences.Editor editor = pref.edit();
@@ -42,6 +44,7 @@ public class PrefManager {
 	public int getInt(String key, int defValue) {
 		SharedPreferences pref = context.getSharedPreferences(PREF_KEY, 0);
 
+		// 여긴 왜 try catch()??
 		try {
 			return pref.getInt(key, defValue);
 		} catch (Exception e) {

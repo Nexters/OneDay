@@ -37,32 +37,32 @@ public class MainActivity extends Activity {
 		btn = (Button) findViewById(R.id.btn);
 
 		drawerLayout.setDrawerListener(myDrawerListener);
-		
+
 
 	}
 
 	public void mOnClick(View v) {
 		switch(v.getId()) {
-		case R.id.btn:			
-			if(btn.isSelected()== false){
-				drawerLayout.openDrawer(drawerView);
-				btn.setSelected(true);
-			} else {
-				drawerLayout.closeDrawer(drawerView);
-				btn.setSelected(false);
-			}
+		case R.id.btn:						
+			togleDrawer();
+		}
+	}
 
-
+	public void togleDrawer() {
+		if (drawerLayout.isDrawerOpen(drawerView) == false){
+			drawerLayout.openDrawer(drawerView);
+		} else {
+			drawerLayout.closeDrawer(drawerView);
 		}
 	}
 
 	DrawerListener myDrawerListener = new DrawerListener() {
 		private float lastTranslate = 0.0f;
-		
+
 		@Override public void onDrawerClosed(View drawerView) {  }
 		@Override public void onDrawerOpened(View drawerView) {  }
 		@Override public void onDrawerStateChanged(int newState) {  }
-		
+
 		@Override
 		public void onDrawerSlide(View v, float slideOffset) {
 			float moveFactor = -(drawerView.getWidth() * slideOffset)/2;
