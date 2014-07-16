@@ -8,7 +8,7 @@ import android.widget.RelativeLayout;
 
 public class RightDrawer extends RelativeLayout {
 
-	private View drawerView;
+//	private View drawerView;
 
 	public RightDrawer(Context context) {
 		super(context);
@@ -33,7 +33,7 @@ public class RightDrawer extends RelativeLayout {
 	}
 
 	private void initView() {
-		drawerView = (View) findViewById(R.id.right_drawer);
+//		drawerView = (View) findViewById(R.id.right_drawer);
 	}
 
 }

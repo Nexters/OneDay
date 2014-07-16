@@ -22,7 +22,6 @@ public class MainActivity extends Activity {
 	Button btn;  
 
 	private FrameLayout frame;
-	private float lastTranslate = 0.0f;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -64,30 +63,19 @@ public class MainActivity extends Activity {
 	}
 
 	DrawerListener myDrawerListener = new DrawerListener() {
+		private float lastTranslate = 0.0f;
+		
+		@Override public void onDrawerClosed(View drawerView) {  }
+		@Override public void onDrawerOpened(View drawerView) {  }
+		@Override public void onDrawerStateChanged(int newState) {  }
+		
+		@Override
+		public void onDrawerSlide(View v, float slideOffset) {
+			float moveFactor = -(drawerView.getWidth() * slideOffset)/2;
 
-		public void onDrawerClosed(View drawerView) {
-
-		}
-
-		public void onDrawerOpened(View drawerView) {
-
-		}
-
-		public void onDrawerStateChanged(int newState) {
-
-		}
-
-		@SuppressLint("NewApi")
-		public void onDrawerSlide(View v, float slideOffset)
-		{
-			float moveFactor = (-drawerView.getWidth() * slideOffset);
-
-			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) 
-			{
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 				frame.setTranslationX(moveFactor);
-			}
-			else
-			{
+			} else {
 				TranslateAnimation anim = new TranslateAnimation(lastTranslate, moveFactor, 0.0f, 0.0f);
 				anim.setDuration(0);
 				anim.setFillAfter(true);
