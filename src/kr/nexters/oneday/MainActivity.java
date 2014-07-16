@@ -19,7 +19,6 @@ public class MainActivity extends Activity {
 
 	private DrawerLayout drawerLayout;
 	private View drawerView;
-//	RightDrawer rightDrawer;
 	Button btn;  
 
 	private FrameLayout frame;
@@ -32,12 +31,9 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,R.layout.custom_title);
 
-
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		drawerView = (View) findViewById(R.id.left_drawer);
+		drawerView = (View) findViewById(R.id.right_drawer);
 		frame = (FrameLayout) findViewById(R.id.content_frame);
-
-//		rightDrawer = new RightDrawer(this);  //이렇게 하면 왜 안됨?
 
 		btn = (Button) findViewById(R.id.btn);
 

@@ -24,7 +24,7 @@
     -->
 
     <kr.nexters.oneday.RightDrawer
-        android:id="@+id/left_drawer"
+        android:id="@+id/right_drawer"
         android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="right"
