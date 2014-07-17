@@ -37,8 +37,6 @@ public class MainActivity extends Activity {
 		btn = (Button) findViewById(R.id.btn);
 
 		drawerLayout.setDrawerListener(myDrawerListener);
-
-
 	}
 
 	public void mOnClick(View v) {
