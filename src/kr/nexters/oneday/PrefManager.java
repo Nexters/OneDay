@@ -12,7 +12,7 @@ public class PrefManager {
 	static Context context;
 
 	// single ton 방식으로
-	private static PrefManager prefManager;  //1.static변수 1개
+	private static PrefManager prefManager;  //1.private static변수 1개
 
 	//2.생성자 아무데서나 안불려지게 private로 
 	private PrefManager() {
