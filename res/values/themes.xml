@@ -5,13 +5,4 @@
         <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>          
         
     </style>
-    
-    
-    <!-- custom view theme. -->
-       <style name="customtheme" parent="android:Theme">
-     <item name="android:windowTitleSize">45dip</item>  
-       <item name="android:windowTitleBackgroundStyle">@style/windowtitlebackground</item>
-    </style>     
-    
-       
 </resources>

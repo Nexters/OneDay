@@ -20,11 +20,4 @@
     <style name="WindowTitleBackground" >    
         <item name="android:background">@android:color/transparent</item>        
     </style>
-    
-    <!-- custom view title. -->
-    <style name="windowtitlebackground"
-        parent="@android:style/TextAppearance.WindowTitle">
-      </style>
-      
-    
 </resources>
