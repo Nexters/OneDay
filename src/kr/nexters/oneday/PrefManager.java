@@ -1,75 +1,58 @@
 package kr.nexters.oneday;
 
-import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 public class PrefManager {
 
-	public static final String PREF_KEY = "key";
-	public static final String PREF_VALUE = "value";
-	public static final String PREF_DEFVALUE = "defvalue";
+	public static final String PREF_NAME = "name";
 
-	static Context context;
-// single ton 방식으로
-	
-	public PrefManager(Context context) {
-		this.context = context;
+	private static volatile PrefManager instance;
+	private SharedPreferences prefs;
+	private Editor editor;
+
+	private PrefManager() {
+		prefs = Common.getMainContext().getSharedPreferences(PREF_NAME, 0);
+		editor = prefs.edit();
 	}
 
-	//putInt putString 요런것들 중복 부분 빼면될듯요!!
-	public void putInt(String key, int value) {
-		SharedPreferences pref = context.getSharedPreferences(PREF_KEY, 0);
-		SharedPreferences.Editor editor = pref.edit();
+	//3.초기화
+	public static PrefManager getInstance() {
+		if (instance == null) {
+			synchronized (PrefManager.class) {
+				if(instance == null) {
+					instance = new PrefManager();
+				}
+			}
+		}
+		return instance;
+	}
 
+	public void putInt(String key, int value) {
 		editor.putInt(key, value);
 		editor.commit();
 	}
 
 	public void putString(String key, String value) {
-		SharedPreferences pref = context.getSharedPreferences(PREF_KEY, 0);
-		SharedPreferences.Editor editor = pref.edit();
-
 		editor.putString(key, value);
 		editor.commit();
 	}
 
 	public void putBoolean(String key, boolean value) {
-		SharedPreferences pref = context.getSharedPreferences(PREF_KEY, 0);
-		SharedPreferences.Editor editor = pref.edit();
-
 		editor.putBoolean(key, value);
 		editor.commit();
 	}
 
 	public int getInt(String key, int defValue) {
-		SharedPreferences pref = context.getSharedPreferences(PREF_KEY, 0);
-
-		// 여긴 왜 try catch()??
-		try {
-			return pref.getInt(key, defValue);
-		} catch (Exception e) {
-			return defValue;
-		}
+		return prefs.getInt(key, defValue);
 	}
 
 	public String getString(String key, String defValue) {
-		SharedPreferences pref = context.getSharedPreferences(PREF_KEY, 0);
-
-		try {
-			return pref.getString(key, defValue);
-		} catch (Exception e) {
-			return defValue;
-		}
+		return prefs.getString(key, defValue);
 	}
 
 	public boolean getBoolean(String key, boolean defValue) {
-		SharedPreferences pref = context.getSharedPreferences(PREF_KEY, 0);
-
-		try {
-			return pref.getBoolean(key, defValue);
-		} catch (Exception e) {
-			return defValue;
-		}
+		return prefs.getBoolean(key, defValue);
 	}
 
 }
