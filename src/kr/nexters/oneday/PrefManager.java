@@ -1,73 +1,58 @@
 package kr.nexters.oneday;
 
-import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 public class PrefManager {
 
-	public static final String PREF_KEY = "key";  //파일이름 바꿔야 될듯...
-	public static final String PREF_VALUE = "value";
-	public static final String PREF_DEFVALUE = "defvalue";
+	public static final String PREF_NAME = "name";
 
-	static Context context;
+	private static volatile PrefManager instance;
+	private SharedPreferences prefs;
+	private Editor editor;
 
-	// single ton 방식으로
-	private static PrefManager prefManager;  //1.private static변수 1개
-
-	//2.생성자 아무데서나 안불려지게 private로 
 	private PrefManager() {
+		prefs = Common.getMainContext().getSharedPreferences(PREF_NAME, 0);
+		editor = prefs.edit();
 	}
 
 	//3.초기화
-	public static PrefManager getPrefManager() {
-		if (prefManager == null) {
-			prefManager = new PrefManager();
+	public static PrefManager getInstance() {
+		if (instance == null) {
+			synchronized (PrefManager.class) {
+				if(instance == null) {
+					instance = new PrefManager();
+				}
+			}
 		}
-		return prefManager;
+		return instance;
 	}
 
-	//putInt putString 요런것들 중복 부분 빼면될듯요!!
 	public void putInt(String key, int value) {
-		SharedPreferences pref = context.getSharedPreferences(PREF_KEY, 0);
-		SharedPreferences.Editor editor = pref.edit();
-
 		editor.putInt(key, value);
 		editor.commit();
 	}
 
 	public void putString(String key, String value) {
-		SharedPreferences pref = context.getSharedPreferences(PREF_KEY, 0);
-		SharedPreferences.Editor editor = pref.edit();
-
 		editor.putString(key, value);
 		editor.commit();
 	}
 
 	public void putBoolean(String key, boolean value) {
-		SharedPreferences pref = context.getSharedPreferences(PREF_KEY, 0);
-		SharedPreferences.Editor editor = pref.edit();
-
 		editor.putBoolean(key, value);
 		editor.commit();
 	}
 
 	public int getInt(String key, int defValue) {
-		SharedPreferences pref = context.getSharedPreferences(PREF_KEY, 0);
-
-		return pref.getInt(key, defValue);
+		return prefs.getInt(key, defValue);
 	}
 
 	public String getString(String key, String defValue) {
-		SharedPreferences pref = context.getSharedPreferences(PREF_KEY, 0);
-
-		return pref.getString(key, defValue);
+		return prefs.getString(key, defValue);
 	}
 
 	public boolean getBoolean(String key, boolean defValue) {
-		SharedPreferences pref = context.getSharedPreferences(PREF_KEY, 0);
-
-		return pref.getBoolean(key, defValue);
-
+		return prefs.getBoolean(key, defValue);
 	}
 
 }
