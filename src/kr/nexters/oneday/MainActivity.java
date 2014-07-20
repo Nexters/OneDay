@@ -26,17 +26,17 @@ public class MainActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 		setContentView(R.layout.activity_main);
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,R.layout.custom_title);
-		
+
 		titleLayout = new TitleLayout(getWindow());
 
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		drawerView = (View) findViewById(R.id.right_drawer);
+		drawerView = (View) findViewById(R.id.left_drawer);
 		frame = (FrameLayout) findViewById(R.id.content_frame);
 
 		drawerLayout.setDrawerListener(myDrawerListener);
-		
+
 		titleLayout.setButtonL(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				toggleDrawer();
@@ -63,7 +63,7 @@ public class MainActivity extends Activity {
 		@SuppressLint("NewApi")
 		@Override
 		public void onDrawerSlide(View v, float slideOffset) {
-			float moveFactor = -(drawerView.getWidth() * slideOffset)/2;
+			float moveFactor = (drawerView.getWidth() * slideOffset)/2;
 
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 				frame.setTranslationX(moveFactor);

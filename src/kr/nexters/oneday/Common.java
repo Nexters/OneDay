@@ -5,7 +5,7 @@ import android.content.Context;
 public class Common {
 
 	private static Context sContext;  
-	
+
 	public static void initialize(Context context) {
 		sContext = context;
 	}
