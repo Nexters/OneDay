@@ -1,15 +1,15 @@
 package kr.nexters.oneday;
 
 import java.util.ArrayList;
+
+import android.app.Dialog;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 
 public class LeftDrawer extends RelativeLayout {
@@ -56,7 +56,8 @@ public class LeftDrawer extends RelativeLayout {
 		View footerView =  ((LayoutInflater)this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer, null, false);
 		pDrawerList.addFooterView(footerView);
 
-		footerView.findViewById(R.id.button1).setOnClickListener(fClickListener);
+		footerView.findViewById(R.id.FriendAddButton).setOnClickListener(fClickListener);
+		footerView.findViewById(R.id.FriendDeleteButton).setOnClickListener(fClickListener);
 
 		pAdapter = new PersonListAdapter(this.getContext(), R.layout.person_item, pItem);
 		pDrawerList.setAdapter(pAdapter);
@@ -77,8 +78,16 @@ public class LeftDrawer extends RelativeLayout {
 
 		@Override
 		public void onClick(View v) {
-			//            if(v.getId() == )
 
+			switch(v.getId()){
+
+			case R.id.FriendAddButton :
+				FriendAddDialog dialog = new FriendAddDialog(getContext());
+				dialog.show();
+			case R.id.FriendDeleteButton :
+
+
+			}
 		}
 	};
 
