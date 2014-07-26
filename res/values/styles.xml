@@ -26,5 +26,10 @@
         parent="@android:style/TextAppearance.WindowTitle">
       </style>
       
+    <!-- custom Dialog Theme -->
+    <style name = "customdialogTheme"
+        parent = "@android:style/Theme.Dialog">
+        <item name = "android:background"> #FF0000</item>
+    </style>
     
 </resources>

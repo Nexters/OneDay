@@ -6,13 +6,23 @@
     android:background="#BCE55C"
     android:orientation="horizontal" >
 
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
+        android:onClick="mOnClick"
+        android:text=""
+        android:textColor="#000000"
+        android:visibility="gone" />
+
     <TextView
         android:id="@+id/header_text"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/btn"
+        android:layout_toRightOf="@+id/btn"
         android:gravity="center"
         android:singleLine="true"
         android:text="Custom Title"
@@ -20,16 +30,5 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="5dp"
-        android:onClick="mOnClick"
-        android:visibility="gone"
-        android:text="   "
-        android:textColor="#000000" />
 
 </RelativeLayout>

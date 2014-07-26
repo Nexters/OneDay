@@ -9,6 +9,7 @@ public class OneDayApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Common.initialize(this);
         DBHandler dbHandler = new DBHandler(this);
         dbHandler.loadPersonInfo();
     }
