@@ -6,22 +6,19 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.DrawerLayout.DrawerListener;
-import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
-import android.view.View.OnTouchListener;
 import android.view.animation.TranslateAnimation;
-import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.ListView;
 
 public class MainActivity extends Activity {
 
 	private DrawerLayout drawerLayout;
 	private View drawerView;
-	Button btn;  
 
 	private FrameLayout frame;
+	private TitleLayout titleLayout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,24 +26,26 @@ public class MainActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 		setContentView(R.layout.activity_main);
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,R.layout.custom_title);
+		
+		titleLayout = new TitleLayout(getWindow());
 
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		drawerView = (View) findViewById(R.id.right_drawer);
 		frame = (FrameLayout) findViewById(R.id.content_frame);
 
-		btn = (Button) findViewById(R.id.btn);
-
 		drawerLayout.setDrawerListener(myDrawerListener);
+		
+		titleLayout.setButtonL(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				toggleDrawer();
+			}
+		});
 	}
 
-	public void mOnClick(View v) {
-		switch(v.getId()) {
-		case R.id.btn:						
-			togleDrawer();
-		}
-	}
 
-	public void togleDrawer() {
+	public void toggleDrawer() {
 		if (drawerLayout.isDrawerOpen(drawerView) == false){
 			drawerLayout.openDrawer(drawerView);
 		} else {
@@ -61,6 +60,7 @@ public class MainActivity extends Activity {
 		@Override public void onDrawerOpened(View drawerView) {  }
 		@Override public void onDrawerStateChanged(int newState) {  }
 
+		@SuppressLint("NewApi")
 		@Override
 		public void onDrawerSlide(View v, float slideOffset) {
 			float moveFactor = -(drawerView.getWidth() * slideOffset)/2;

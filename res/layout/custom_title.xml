@@ -28,6 +28,7 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="5dp"
         android:onClick="mOnClick"
+        android:visibility="gone"
         android:text="   "
         android:textColor="#000000" />
 
