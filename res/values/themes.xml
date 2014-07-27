@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="MyTheme" parent="android:Theme">
-        <item name="android:windowTitleSize">60px</item>
-        <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>          
-        
-    </style>
-    
-    
-    <!-- custom view theme. -->
-       <style name="customtheme" parent="android:Theme">
-     <item name="android:windowTitleSize">45dip</item>  
-       <item name="android:windowTitleBackgroundStyle">@style/windowtitlebackground</item>
-    </style>     
-    
-       
+
+
 </resources>

@@ -1,35 +1,18 @@
 <resources>
-
-    <!--
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    -->
-    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
+    <style name="AppBaseTheme" parent="android:Theme">
+        <item name="android:windowTitleSize">48dp</item>
+        <item name="android:windowTitleBackgroundStyle">@style/windowTitleBackground</item>
     </style>
 
-    <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    <style name="AppTheme" parent="AppBaseTheme"></style>
+
+    <style name="windowTitleBackground">
+        <item name="android:background">@android:color/transparent</item>
     </style>
 
-    <style name="WindowTitleBackground" >    
-        <item name="android:background">@android:color/transparent</item>        
-    </style>
-    
-    <!-- custom view title. -->
-    <style name="windowtitlebackground"
-        parent="@android:style/TextAppearance.WindowTitle">
-      </style>
-      
     <!-- custom Dialog Theme -->
-    <style name = "customdialogTheme"
-        parent = "@android:style/Theme.Dialog">
-        <item name = "android:background"> #FF0000</item>
+    <style name="customdialogTheme" parent="@android:style/Theme.Dialog">
+        <item name="android:background"> #FF0000</item>
     </style>
-    
+
 </resources>
