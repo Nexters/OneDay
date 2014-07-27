@@ -1,6 +1,8 @@
 package kr.nexters.oneday;
 
 import kr.nexters.oneday.widget.TimeTableView;
+import kr.nexters.oneday.widget.TimeTableView.DAY;
+import kr.nexters.oneday.widget.TimeTableView.TIME;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Build;
@@ -11,7 +13,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.animation.TranslateAnimation;
-import android.widget.FrameLayout;
 
 public class MainActivity extends Activity {
 
@@ -45,6 +46,7 @@ public class MainActivity extends Activity {
 				toggleDrawer();
 			}
 		});
+		
 	}
 
 	public void toggleDrawer() {
