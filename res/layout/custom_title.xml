@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="60px"
+    android:layout_height="@dimen/title_height"
     android:layout_gravity="fill_horizontal"
     android:background="#BCE55C"
     android:orientation="horizontal" >
@@ -29,6 +29,5 @@
         android:textColor="#5D5D5D"
         android:textSize="20sp"
         android:textStyle="bold" />
-
 
 </RelativeLayout>

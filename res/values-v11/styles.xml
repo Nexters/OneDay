@@ -7,8 +7,6 @@
     <style name="AppBaseTheme" parent="android:Theme.Holo.Light">
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">false</item>
-        <item name="android:windowTitleSize">48dp</item>
-        <item name="android:windowTitleBackgroundStyle">@style/windowTitleBackground</item>
     </style>
 
 </resources>

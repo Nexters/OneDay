@@ -1,5 +1,6 @@
 package kr.nexters.oneday;
 
+import kr.nexters.oneday.widget.TimeTableView;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Build;
@@ -17,7 +18,7 @@ public class MainActivity extends Activity {
 	private DrawerLayout drawerLayout;
 	private View drawerView;
 
-	private FrameLayout frame;
+	private TimeTableView tableView;
 	private TitleLayout titleLayout;
 
 	@Override
@@ -33,7 +34,7 @@ public class MainActivity extends Activity {
 
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		drawerView = (View) findViewById(R.id.left_drawer);
-		frame = (FrameLayout) findViewById(R.id.content_frame);
+		tableView = (TimeTableView) findViewById(R.id.tableView);
 
 		drawerLayout.setDrawerListener(myDrawerListener);
 
@@ -67,12 +68,12 @@ public class MainActivity extends Activity {
 			float moveFactor = (drawerView.getWidth() * slideOffset)/2;
 
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-				frame.setTranslationX(moveFactor);
+				tableView.setTranslationX(moveFactor);
 			} else {
 				TranslateAnimation anim = new TranslateAnimation(lastTranslate, moveFactor, 0.0f, 0.0f);
 				anim.setDuration(0);
 				anim.setFillAfter(true);
-				frame.startAnimation(anim);
+				tableView.startAnimation(anim);
 
 				lastTranslate = moveFactor;
 			}
