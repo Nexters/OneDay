@@ -1,5 +1,9 @@
-package kr.nexters.oneday;
+package kr.nexters.oneday.widget;
 
+import kr.nexters.oneday.R;
+import kr.nexters.oneday.R.id;
+import kr.nexters.oneday.R.layout;
+import kr.nexters.oneday.R.string;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;

@@ -1,5 +1,6 @@
-package kr.nexters.oneday;
+package kr.nexters.oneday.manager;
 
+import kr.nexters.oneday.Common;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 

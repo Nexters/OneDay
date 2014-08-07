@@ -1,6 +1,7 @@
 package kr.nexters.oneday;
 
 import kr.nexters.oneday.widget.TimeTableView;
+import kr.nexters.oneday.widget.TitleLayout;
 import kr.nexters.oneday.widget.TimeTableView.DAY;
 import kr.nexters.oneday.widget.TimeTableView.TIME;
 import android.annotation.SuppressLint;

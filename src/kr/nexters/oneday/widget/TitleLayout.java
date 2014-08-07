@@ -1,5 +1,7 @@
-package kr.nexters.oneday;
+package kr.nexters.oneday.widget;
 
+import kr.nexters.oneday.R;
+import kr.nexters.oneday.R.id;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
