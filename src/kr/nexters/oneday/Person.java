@@ -4,7 +4,7 @@ public class Person {
 	private int Num;      
 	private String Name;
 
-	Person(int Num, String Name ) {
+	public Person(int Num, String Name ) {
 		this.Num = Num;
 		this.Name = Name;
 	}
