@@ -3,10 +3,10 @@ package kr.nexters.oneday.widget;
 import java.util.ArrayList;
 
 import kr.nexters.oneday.Person;
-import kr.nexters.oneday.PersonListAdapter;
 import kr.nexters.oneday.R;
 import kr.nexters.oneday.R.id;
 import kr.nexters.oneday.R.layout;
+import kr.nexters.oneday.adapter.PersonListAdapter;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
