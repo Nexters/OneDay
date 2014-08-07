@@ -17,6 +17,8 @@ public class TimeTableView extends LinearLayout {
 	private List<TimeSectorHolder> ref = new ArrayList<TimeTableView.TimeSectorHolder>();; 
 	private static final int MAX_CELL_CNT = 20; // 하루에 30분 단위로 쪼갤 때 셀의 갯수 
 	
+	private LinearLayout innerLayout;
+	
 	public enum DAY {
 		MON(0), TUE(1), WED(2), THU(3), FRI(4);
 		private int number;
@@ -52,14 +54,18 @@ public class TimeTableView extends LinearLayout {
 	}
 
 	private void initialize() {
-		setOrientation(LinearLayout.HORIZONTAL);
+		LayoutInflater inflater = LayoutInflater.from(getContext());
+		inflater.inflate(R.layout.timetable, this);
+		
+		innerLayout = (LinearLayout) findViewById(R.id.timetable_inner_layout);
+//		setOrientation(LinearLayout.HORIZONTAL);
 		
 		LinearLayout linear = null;
 		for (int i = 0; i < MAX_CELL_CNT * 5; i++) {
 			if(i % MAX_CELL_CNT == 0) {
 				linear = new LinearLayout(getContext());
 				linear.setOrientation(LinearLayout.VERTICAL);
-				addView(linear);
+				innerLayout.addView(linear);
 			}
 			TimeSectorHolder holder = new TimeSectorHolder(getContext(), R.layout.time_sector);
 			holder.setInfo(i);
