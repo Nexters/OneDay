@@ -89,6 +89,9 @@ public class LeftDrawer extends RelativeLayout {
 				dialog.show();
 				break;
 			case R.id.FriendDeleteButton:
+				//삭제 다이얼로그 호출
+				FriendDeleteDialog dialog2 = new FriendDeleteDialog(getContext());
+				dialog2.show();
 				break;
 				
 			case R.id.SettingButton:
