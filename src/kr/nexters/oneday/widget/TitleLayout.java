@@ -1,19 +1,21 @@
 package kr.nexters.oneday.widget;
 
 import kr.nexters.oneday.R;
-import kr.nexters.oneday.R.id;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 
 public class TitleLayout {
 
+	private TextView title;
 	private ImageButton buttonL;
 	private ImageButton buttonR;
 
 	public TitleLayout(Window window) {
+		title   = (TextView) window.findViewById(R.id.header_text);
 		buttonL = (ImageButton) window.findViewById(R.id.imageButton1);
 		buttonR = (ImageButton) window.findViewById(R.id.imageButton2);
 	}
@@ -35,6 +37,7 @@ public class TitleLayout {
 		buttonR.setBackgroundResource(R.drawable.title_bar_check_selector);
 	}
 	
-	public void setTitle() {
+	public void setTitle(String text) {
+		title.setText(text);
 	}
 }

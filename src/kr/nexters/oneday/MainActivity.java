@@ -1,9 +1,8 @@
 package kr.nexters.oneday;
 
+import kr.nexters.oneday.widget.LeftDrawer;
 import kr.nexters.oneday.widget.TimeTableView;
 import kr.nexters.oneday.widget.TitleLayout;
-import kr.nexters.oneday.widget.TimeTableView.DAY;
-import kr.nexters.oneday.widget.TimeTableView.TIME;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -11,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.DrawerLayout.DrawerListener;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -19,7 +19,7 @@ import android.view.animation.TranslateAnimation;
 public class MainActivity extends Activity {
 
 	private DrawerLayout drawerLayout;
-	private View drawerView;
+	private LeftDrawer drawerView;
 
 	private TimeTableView tableView;
 	private TitleLayout titleLayout;
@@ -34,10 +34,12 @@ public class MainActivity extends Activity {
 		titleLayout = new TitleLayout(getWindow());
 
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		drawerView = (View) findViewById(R.id.left_drawer);
+		drawerView = (LeftDrawer) findViewById(R.id.left_drawer);
 		tableView = (TimeTableView) findViewById(R.id.tableView);
-
+		tableView.setSelectedMode(false);
+		
 		drawerLayout.setDrawerListener(myDrawerListener);
+		drawerView.setDrawerLayout(drawerLayout);
 
 		titleLayout.setButtonL(new OnClickListener() {
 
@@ -61,6 +63,12 @@ public class MainActivity extends Activity {
 		});
 		
 	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		tableView.setPerson(Common.getPersonSelectedSet());
+	}
 
 	public void toggleDrawer() {
 		if (drawerLayout.isDrawerOpen(drawerView) == false){
@@ -68,6 +76,15 @@ public class MainActivity extends Activity {
 		} else {
 			drawerLayout.closeDrawer(drawerView);
 		}
+	}
+	
+	@Override
+	public boolean onKeyUp(int keyCode, android.view.KeyEvent event) {
+		if(keyCode == KeyEvent.KEYCODE_BACK && drawerLayout.isDrawerOpen(drawerView)) {
+			drawerLayout.closeDrawer(drawerView);
+			return true;
+		}
+		return super.onKeyUp(keyCode, event);
 	}
 
 	DrawerListener myDrawerListener = new DrawerListener() {

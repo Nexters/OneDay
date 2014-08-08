@@ -1,6 +1,6 @@
 package kr.nexters.oneday.widget;
 
-import kr.nexters.oneday.FriendAddActivity;
+import kr.nexters.oneday.MyInfoAddActivity;
 import kr.nexters.oneday.R;
 import android.app.AlertDialog;
 import android.app.Dialog;

@@ -3,9 +3,9 @@ package kr.nexters.oneday.adapter;
 
 import java.util.ArrayList;
 
-import kr.nexters.oneday.Person;
 import kr.nexters.oneday.R;
 import kr.nexters.oneday.R.id;
+import kr.nexters.oneday.vo.Person;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

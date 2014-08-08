@@ -2,14 +2,13 @@ package kr.nexters.oneday.widget;
 
 import java.util.ArrayList;
 
-import kr.nexters.oneday.FriendAddActivity;
-import kr.nexters.oneday.Person;
+import kr.nexters.oneday.MyInfoAddActivity;
 import kr.nexters.oneday.R;
-import kr.nexters.oneday.R.id;
-import kr.nexters.oneday.R.layout;
 import kr.nexters.oneday.adapter.PersonListAdapter;
+import kr.nexters.oneday.vo.Person;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.widget.DrawerLayout;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +26,8 @@ public class LeftDrawer extends RelativeLayout {
 	PersonListAdapter pAdapter = null;
 	private LayoutInflater inflater;
 	Person person;
+	
+	private DrawerLayout drawerLayout;
 
 	public LeftDrawer(Context context) {
 		super(context);
@@ -56,8 +57,8 @@ public class LeftDrawer extends RelativeLayout {
 
 		pItem = new ArrayList<Person>();
 
-		person = new Person(1, "박준회");
-		pItem.add(person);
+//		person = new Person(1, "박준회");
+//		pItem.add(person);
 
 		findViewById(R.id.FriendAddButton).setOnClickListener(fClickListener);
 		findViewById(R.id.FriendDeleteButton).setOnClickListener(fClickListener);
@@ -69,6 +70,10 @@ public class LeftDrawer extends RelativeLayout {
 
 		pDrawerList.setOnItemClickListener(pItemClickListener);
 
+	}
+	
+	public void setDrawerLayout(DrawerLayout layout) {
+		drawerLayout = layout;
 	}
 
 	AdapterView.OnItemClickListener pItemClickListener = 
@@ -83,6 +88,11 @@ public class LeftDrawer extends RelativeLayout {
 
 		@Override
 		public void onClick(View v) {
+
+			if(drawerLayout.isDrawerOpen(LeftDrawer.this)) {
+				drawerLayout.closeDrawers();
+			}
+			
 			switch (v.getId()) {
 			case R.id.FriendAddButton:
 				FriendAddDialog dialog = new FriendAddDialog(getContext());
@@ -95,14 +105,13 @@ public class LeftDrawer extends RelativeLayout {
 				break;
 				
 			case R.id.SettingButton:
-				Intent intent = new Intent(getContext(), FriendAddActivity.class);
+				Intent intent = new Intent(getContext(), MyInfoAddActivity.class);
 				getContext().startActivity(intent);
 				break;
 				
 			}
 		}
+		
 	};
-
-
 
 }

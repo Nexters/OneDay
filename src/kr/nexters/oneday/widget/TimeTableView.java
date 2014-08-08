@@ -3,9 +3,13 @@ package kr.nexters.oneday.widget;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import kr.nexters.oneday.R;
+import kr.nexters.oneday.vo.Person;
+import kr.nexters.oneday.vo.TimeInfo;
 import android.content.Context;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -82,18 +86,33 @@ public class TimeTableView extends LinearLayout {
 		}
 	}
 	
+	private void addCountSector(DAY day, TIME time) {
+		TimeSectorHolder holder = getHolder(day, time);
+		String currentCnt = holder.text.getText().toString();
+		
+		if(currentCnt.equals("")) {
+			setSectorColor(day, time, 1);			
+		} else {
+			setSectorColor(day, time, Integer.parseInt(currentCnt) + 1);
+		}
+	}
+	
 	/**
 	 * @param colorNumber : 겹치는 숫자를 넣으면 됨 (1~5이상)
 	 */
-	public void setSectorColor(DAY day, TIME time, int colorNumber) {
+	private void setSectorColor(DAY day, TIME time, int colorNumber) {
 		int number = colorNumber;
 		if(colorNumber > 5) {
 			number = 5;
 		}
 		
 		TimeSectorHolder holder = getHolder(day, time);
-		holder.text.setBackgroundColor(number);
-		holder.text.setText(String.valueOf(colorNumber));
+		
+		int color = (colorNumber > 0) ? getContext().getResources().getColor(TIME_SECTOR_COLOR_RES[number - 1]) : Color.TRANSPARENT;
+		String text = (colorNumber > 0) ? String.valueOf(colorNumber) : "";
+		
+		holder.text.setBackgroundColor(color);
+		holder.text.setText(String.valueOf(text));
 	}
 	
 	private TimeSectorHolder getHolder(DAY day, TIME time) {
@@ -114,6 +133,40 @@ public class TimeTableView extends LinearLayout {
 		while(it.hasNext()) {
 			TimeSectorHolder holder = it.next();
 			holder.setSelectedMode(isSelectedMode);
+		}
+	}
+	
+	public List<TimeInfo> getAllSelectedTimeInfo() {
+		List<TimeInfo> ret = new ArrayList<TimeInfo>();
+		
+		Iterator<TimeSectorHolder> it = ref.iterator();
+		
+		while(it.hasNext()) {
+			TimeSectorHolder holder = it.next();
+			if(holder.root.isSelected()) {
+				ret.add(new TimeInfo(holder.day, holder.time));
+			}
+		}
+		
+		return ret;
+	}
+	
+	public void setPerson(Set<Person> personSelectedSet) {
+		clearSector();
+		
+		Iterator<Person> it = personSelectedSet.iterator();
+		
+		while(it.hasNext()) {
+			Person person = it.next();
+			for(TimeInfo info : person.getTimeList()) {
+				addCountSector(info.getDay(), info.getTime());
+			}
+		}
+	}
+	
+	private void clearSector() {
+		for(TimeSectorHolder holder : ref) {
+			setSectorColor(holder.day, holder.time, 0);
 		}
 	}
 	
