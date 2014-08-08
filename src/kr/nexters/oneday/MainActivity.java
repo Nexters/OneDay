@@ -6,6 +6,7 @@ import kr.nexters.oneday.widget.TimeTableView.DAY;
 import kr.nexters.oneday.widget.TimeTableView.TIME;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -50,7 +51,12 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				//공유 코드 작성
+				//공유 코드 작성				
+				Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+				sharingIntent.setType("text/plain");
+				sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Text");
+				sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject");
+				startActivity(Intent.createChooser(sharingIntent, "Share using"));
 			}
 		});
 		
