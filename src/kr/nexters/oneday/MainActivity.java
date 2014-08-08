@@ -48,6 +48,14 @@ public class MainActivity extends Activity {
 			}
 		});
 		
+		titleLayout.setButtonR(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				//공유 코드 작성
+			}
+		});
+		
 	}
 
 	public void toggleDrawer() {

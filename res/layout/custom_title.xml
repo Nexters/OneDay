@@ -1,33 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="@dimen/title_height"
-    android:layout_gravity="fill_horizontal"
-    android:background="#BCE55C"
-    android:orientation="horizontal" >
-
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="5dp"
-        android:onClick="mOnClick"
-        android:text=""
-        android:textColor="#000000"
-        android:visibility="gone" />
+    android:background="@drawable/bg_bar_title" >
 
     <TextView
         android:id="@+id/header_text"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_toRightOf="@+id/btn"
-        android:gravity="center"
-        android:singleLine="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/imageButton1"
+        android:layout_alignBottom="@+id/imageButton1"
+        android:layout_centerHorizontal="true"
         android:text="Custom Title"
         android:textColor="#5D5D5D"
         android:textSize="20sp"
         android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/title_bar_export_selector" />
+
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="26dp"
+        android:background="@android:color/transparent"
+        android:onClick="mOnClick"
+        android:src="@drawable/title_bar_drawerlayer_selector" />
 
 </RelativeLayout>

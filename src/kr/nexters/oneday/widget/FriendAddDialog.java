@@ -7,6 +7,7 @@ import kr.nexters.oneday.R.string;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +23,7 @@ public class FriendAddDialog extends AlertDialog.Builder{
 	private EditText phonenumber;
 	public FriendAddDialog(Context context) {
 		super(context);
-		this.context=context;
+		this.context = context;
 			initialize();
 
 		// TODO Auto-generated constructor stub
@@ -50,11 +51,16 @@ public class FriendAddDialog extends AlertDialog.Builder{
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
 				dialog.dismiss();
-				StringBuilder str = new StringBuilder();
-				str.append("name = " +name.getText());
-				str.append("\n");
-				str.append("number = " +phonenumber.getText());
-				Toast.makeText(context,str,Toast.LENGTH_SHORT).show();
+			
+//				Intent intent = new Intent(context, FriendAddActivity.class);
+//				context.startActivity(intent);
+				
+				
+//				StringBuilder str = new StringBuilder();
+//				str.append("name = " +name.getText());
+//				str.append("\n");
+//				str.append("number = " +phonenumber.getText());
+//				Toast.makeText(context,str,Toast.LENGTH_SHORT).show();
 
 			}
 		});

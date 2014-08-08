@@ -1,13 +1,13 @@
 package kr.nexters.oneday.widget;
 
 import java.util.ArrayList;
-
 import kr.nexters.oneday.Person;
 import kr.nexters.oneday.R;
 import kr.nexters.oneday.R.id;
 import kr.nexters.oneday.R.layout;
 import kr.nexters.oneday.adapter.PersonListAdapter;
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,12 +57,11 @@ public class LeftDrawer extends RelativeLayout {
 		person = new Person(1, "박준회");
 		pItem.add(person);
 
-		View footerView =  ((LayoutInflater)this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer, null, false);
-		pDrawerList.addFooterView(footerView);
+		findViewById(R.id.FriendAddButton).setOnClickListener(fClickListener);
+		findViewById(R.id.FriendDeleteButton).setOnClickListener(fClickListener);
 
-		footerView.findViewById(R.id.FriendAddButton).setOnClickListener(fClickListener);
-		footerView.findViewById(R.id.FriendDeleteButton).setOnClickListener(fClickListener);
-
+		findViewById(R.id.SettingButton).setOnClickListener(fClickListener);
+		
 		pAdapter = new PersonListAdapter(this.getContext(), R.layout.person_item, pItem);
 		pDrawerList.setAdapter(pAdapter);
 
@@ -77,21 +76,27 @@ public class LeftDrawer extends RelativeLayout {
 
 		}
 	};
-
+		
 	private View.OnClickListener fClickListener = new View.OnClickListener() {
 
 		@Override
 		public void onClick(View v) {
-
-			int id = v.getId();
-			if (id == R.id.FriendAddButton) {
+			switch (v.getId()) {
+			case R.id.FriendAddButton:
 				FriendAddDialog dialog = new FriendAddDialog(getContext());
 				dialog.show();
-			} else if (id == R.id.FriendDeleteButton) {
+				break;
+			case R.id.FriendDeleteButton:
+				break;
+				
+			case R.id.SettingButton:
+				Intent intent = new Intent(getContext(), FriendAddActivity.class);
+				getContext().startActivity(intent);
+				break;
+				
 			}
 		}
 	};
-
 
 
 

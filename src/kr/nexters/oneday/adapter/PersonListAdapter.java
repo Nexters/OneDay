@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -61,7 +62,7 @@ public class PersonListAdapter extends BaseAdapter{
 
 			viewHolder = new PersonViewHolder();
 			viewHolder.name = (TextView) convertView.findViewById(R.id.textView1);
-			viewHolder.v_button = (Button)convertView.findViewById(R.id.button1);
+			viewHolder.v_button = (ImageButton)convertView.findViewById(R.id.imageButton3);
 			viewHolder.checkbox = (CheckBox)convertView.findViewById(R.id.checkBox1);
 
 			convertView.setTag(viewHolder);
@@ -84,6 +85,6 @@ public class PersonListAdapter extends BaseAdapter{
 
 class PersonViewHolder {
 	public TextView name = null;
-	public Button v_button = null;
+	public ImageButton v_button = null;
 	public CheckBox checkbox = null;
 }
