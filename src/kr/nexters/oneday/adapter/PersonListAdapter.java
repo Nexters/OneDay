@@ -62,7 +62,7 @@ public class PersonListAdapter extends BaseAdapter{
 
 			viewHolder = new PersonViewHolder();
 			viewHolder.name = (TextView) convertView.findViewById(R.id.textView1);
-			viewHolder.v_button = (ImageButton)convertView.findViewById(R.id.imageButton3);
+			viewHolder.v_button = (ImageButton)convertView.findViewById(R.id.SettingButton);
 			viewHolder.checkbox = (CheckBox)convertView.findViewById(R.id.checkBox1);
 
 			convertView.setTag(viewHolder);

@@ -32,8 +32,6 @@ public class MainActivity extends Activity {
 		
 		titleLayout = new TitleLayout(getWindow());
 
-		titleLayout = new TitleLayout(getWindow());
-
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		drawerView = (View) findViewById(R.id.left_drawer);
 		tableView = (TimeTableView) findViewById(R.id.tableView);

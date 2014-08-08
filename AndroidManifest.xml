@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="kr.nexters.oneday.widget.FriendAddActivity"
+            android:name="kr.nexters.oneday.FriendAddActivity"
             android:label="@string/title_activity_friend_add" >
         </activity>
     </application>

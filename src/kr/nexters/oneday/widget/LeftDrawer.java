@@ -1,6 +1,8 @@
 package kr.nexters.oneday.widget;
 
 import java.util.ArrayList;
+
+import kr.nexters.oneday.FriendAddActivity;
 import kr.nexters.oneday.Person;
 import kr.nexters.oneday.R;
 import kr.nexters.oneday.R.id;

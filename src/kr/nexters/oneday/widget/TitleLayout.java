@@ -26,6 +26,13 @@ public class TitleLayout {
 	public void setButtonR(OnClickListener listener) {
 		buttonR.setVisibility(View.VISIBLE);
 		buttonR.setOnClickListener(listener);
+		buttonR.setBackgroundResource(R.drawable.title_bar_export_selector);
+	}
+	
+	public void setButtonR2(OnClickListener listener) {
+		buttonR.setVisibility(View.VISIBLE);
+		buttonR.setOnClickListener(listener);
+		buttonR.setBackgroundResource(R.drawable.title_bar_check_selector);
 	}
 	
 	public void setTitle() {

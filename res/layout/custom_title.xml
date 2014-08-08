@@ -23,8 +23,7 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="20dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/title_bar_export_selector" />
+        android:background="@android:color/transparent" />
 
     <ImageButton
         android:id="@+id/imageButton1"
@@ -34,7 +33,6 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="26dp"
         android:background="@android:color/transparent"
-        android:onClick="mOnClick"
         android:src="@drawable/title_bar_drawerlayer_selector" />
 
 </RelativeLayout>

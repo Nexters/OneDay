@@ -1,5 +1,6 @@
 package kr.nexters.oneday.widget;
 
+import kr.nexters.oneday.FriendAddActivity;
 import kr.nexters.oneday.R;
 import kr.nexters.oneday.R.id;
 import kr.nexters.oneday.R.layout;
@@ -52,8 +53,8 @@ public class FriendAddDialog extends AlertDialog.Builder{
 				// TODO Auto-generated method stub
 				dialog.dismiss();
 			
-//				Intent intent = new Intent(context, FriendAddActivity.class);
-//				context.startActivity(intent);
+				Intent intent = new Intent(context, FriendAddActivity.class);
+				context.startActivity(intent);
 				
 				
 //				StringBuilder str = new StringBuilder();
