@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<color name="transparent">#00000000</color>
-	<color name="time_cell_pressed">#ffff00</color>
+	<color name="time_cell_pressed">#88e6e6</color>
+	
+	<color name="time_cell_1">#a5f2ea</color>
+	<color name="time_cell_2">#6adbdc</color>
+	<color name="time_cell_3">#34c6d5</color>
+	<color name="time_cell_4">#00a6c2</color>
+	<color name="time_cell_5">#007b97</color>
 </resources>

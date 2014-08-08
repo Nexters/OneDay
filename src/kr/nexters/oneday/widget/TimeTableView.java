@@ -14,6 +14,13 @@ import android.widget.TextView;
 
 public class TimeTableView extends LinearLayout {
 
+	private final static int[] TIME_SECTOR_COLOR_RES = {
+			R.color.time_cell_1,
+			R.color.time_cell_2,
+			R.color.time_cell_3,
+			R.color.time_cell_4,
+			R.color.time_cell_5};
+	
 	private List<TimeSectorHolder> ref = new ArrayList<TimeTableView.TimeSectorHolder>();; 
 	private static final int MAX_CELL_CNT = 20; // 하루에 30분 단위로 쪼갤 때 셀의 갯수 
 	
@@ -58,7 +65,6 @@ public class TimeTableView extends LinearLayout {
 		inflater.inflate(R.layout.timetable, this);
 		
 		innerLayout = (LinearLayout) findViewById(R.id.timetable_inner_layout);
-//		setOrientation(LinearLayout.HORIZONTAL);
 		
 		LinearLayout linear = null;
 		for (int i = 0; i < MAX_CELL_CNT * 5; i++) {
@@ -74,7 +80,21 @@ public class TimeTableView extends LinearLayout {
 		}
 	}
 	
-	public void setText(DAY day, TIME time, String text) {
+	/**
+	 * @param colorNumber : 겹치는 숫자를 넣으면 됨 (1~5이상)
+	 */
+	public void setSectorColor(DAY day, TIME time, int colorNumber) {
+		int number = colorNumber;
+		if(colorNumber > 5) {
+			number = 5;
+		}
+		
+		TimeSectorHolder holder = getHolder(day, time);
+		holder.text.setBackgroundColor(number);
+		holder.text.setText(String.valueOf(colorNumber));
+	}
+	
+	private TimeSectorHolder getHolder(DAY day, TIME time) {
 		TimeSectorHolder dummy = new TimeSectorHolder();
 		dummy.day = day;
 		dummy.time = time;
@@ -84,7 +104,7 @@ public class TimeTableView extends LinearLayout {
 			throw new IllegalArgumentException();
 		}
 		TimeSectorHolder holder = ref.get(location);
-		holder.text.setText(text);
+		return holder;
 	}
 	
 	public void setSelectedMode(boolean isSelectedMode) {
@@ -101,16 +121,13 @@ public class TimeTableView extends LinearLayout {
 		private DAY day;
 		private TIME time;
 		
-		private TimeSectorHolder() {
-			
-		}
+		private TimeSectorHolder() { }
 		
 		private TimeSectorHolder(Context context, int resource) {
 			root = LayoutInflater.from(context).inflate(R.layout.time_sector, null);
 			text = (TextView) root.findViewById(R.id.timesector_text);
 			
 			root.setOnClickListener(this);
-			text.setText("zzzzzd ");
 		}
 		
 		private void setSelectedMode(boolean isSelectedMode) {
@@ -125,21 +142,11 @@ public class TimeTableView extends LinearLayout {
 		private void setInfo(final int position) {
 			final int dayIndex = position / MAX_CELL_CNT;
 			switch(dayIndex) {
-			case 0:
-				day = DAY.MON;
-				break;
-			case 1:
-				day = DAY.TUE;
-				break;
-			case 2:
-				day = DAY.WED;
-				break;
-			case 3:
-				day = DAY.THU;
-				break;
-			case 4:
-				day = DAY.FRI;
-				break;
+			case 0: day = DAY.MON; break;
+			case 1: day = DAY.TUE; break;
+			case 2: day = DAY.WED; break;
+			case 3: day = DAY.THU; break;
+			case 4: day = DAY.FRI; break;
 			}
 			
 			final int timeIndex = position - (dayIndex * MAX_CELL_CNT);
