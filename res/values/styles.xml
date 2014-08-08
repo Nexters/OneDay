@@ -16,4 +16,21 @@
         <item name="android:background"> #FF0000</item>
     </style>
 
-</resources>
+    <style name="bar_time_text">
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_width">58dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">#000</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:gravity">center_horizontal|bottom</item>
+    </style>
+    
+    <style name="bar_day_text">
+        <item name="android:layout_height">26dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">#000</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:gravity">center</item>
+    </style>
+</resources>

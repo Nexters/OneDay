@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <TextView
+        style="@style/bar_day_text"
+        android:text="MON" />
+
+    <TextView
+        style="@style/bar_day_text"
+        android:text="TUE" />
+
+    <TextView
+        style="@style/bar_day_text"
+        android:text="WEN" />
+
+    <TextView
+        style="@style/bar_day_text"
+        android:text="THU" />
+
+    <TextView
+        style="@style/bar_day_text"
+        android:text="FRI" />
+
+</merge>

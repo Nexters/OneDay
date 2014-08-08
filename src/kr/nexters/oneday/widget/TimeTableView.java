@@ -72,11 +72,13 @@ public class TimeTableView extends LinearLayout {
 				linear = new LinearLayout(getContext());
 				linear.setOrientation(LinearLayout.VERTICAL);
 				innerLayout.addView(linear);
+				((LayoutParams) linear.getLayoutParams()).weight = 1;
 			}
 			TimeSectorHolder holder = new TimeSectorHolder(getContext(), R.layout.time_sector);
 			holder.setInfo(i);
 			ref.add(holder);
 			linear.addView(holder.root);
+			((LayoutParams) holder.root.getLayoutParams()).weight = 1;
 		}
 	}
 	
