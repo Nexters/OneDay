@@ -1,5 +1,8 @@
 package kr.nexters.oneday;
 
+import java.util.ArrayList;
+import kr.nexters.oneday.adapter.PersonListAdapter;
+import kr.nexters.oneday.vo.Person;
 import kr.nexters.oneday.widget.LeftDrawer;
 import kr.nexters.oneday.widget.TimeTableView;
 import kr.nexters.oneday.widget.TitleLayout;
@@ -15,14 +18,17 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.animation.TranslateAnimation;
+import android.widget.ListView;
 
 public class MainActivity extends Activity {
 
 	private DrawerLayout drawerLayout;
 	private LeftDrawer drawerView;
-
 	private TimeTableView tableView;
 	private TitleLayout titleLayout;
+	
+	private ArrayList<Person> pItem = null;
+	private PersonListAdapter pAdapter = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +67,6 @@ public class MainActivity extends Activity {
 				startActivity(Intent.createChooser(sharingIntent, "Share using"));
 			}
 		});
-		
 	}
 	
 	@Override

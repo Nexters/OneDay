@@ -8,6 +8,5 @@
     <string name="cancel">취소</string>
     <string name="title_add">친구를 추가해주세요</string>
     <string name="title_del">삭제</string>
-    <string name="title_activity_friend_add">FriendAddActivity</string>
-
+    
 </resources>

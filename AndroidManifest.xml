@@ -24,8 +24,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="kr.nexters.oneday.MyInfoAddActivity"
-            android:label="@string/title_activity_friend_add" >
+            android:name=".MyInfoAddActivity" >
+        </activity>
+        <activity
+            android:name=".FriendInfoAddActivity" >
         </activity>
     </application>
 

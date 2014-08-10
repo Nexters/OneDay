@@ -2,6 +2,7 @@ package kr.nexters.oneday.widget;
 
 import java.util.ArrayList;
 
+import kr.nexters.oneday.FriendInfoAddActivity;
 import kr.nexters.oneday.MyInfoAddActivity;
 import kr.nexters.oneday.R;
 import kr.nexters.oneday.adapter.PersonListAdapter;
@@ -95,9 +96,10 @@ public class LeftDrawer extends RelativeLayout {
 			
 			switch (v.getId()) {
 			case R.id.FriendAddButton:
-				FriendAddDialog dialog = new FriendAddDialog(getContext());
-				dialog.show();
+				Intent intent = new Intent(getContext(), FriendInfoAddActivity.class);
+				getContext().startActivity(intent);
 				break;
+				
 			case R.id.FriendDeleteButton:
 				//삭제 다이얼로그 호출
 				FriendDeleteDialog dialog2 = new FriendDeleteDialog(getContext());
@@ -105,8 +107,8 @@ public class LeftDrawer extends RelativeLayout {
 				break;
 				
 			case R.id.SettingButton:
-				Intent intent = new Intent(getContext(), MyInfoAddActivity.class);
-				getContext().startActivity(intent);
+				Intent intent2 = new Intent(getContext(), MyInfoAddActivity.class);
+				getContext().startActivity(intent2);
 				break;
 				
 			}

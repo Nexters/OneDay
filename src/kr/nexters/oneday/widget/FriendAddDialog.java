@@ -1,10 +1,13 @@
 package kr.nexters.oneday.widget;
 
-import kr.nexters.oneday.MyInfoAddActivity;
+import kr.nexters.oneday.Common;
+import kr.nexters.oneday.FriendInfoAddActivity;
 import kr.nexters.oneday.R;
 import kr.nexters.oneday.R.id;
 import kr.nexters.oneday.R.layout;
 import kr.nexters.oneday.R.string;
+import kr.nexters.oneday.vo.Person;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,10 +21,11 @@ import android.widget.Toast;
 
 public class FriendAddDialog extends AlertDialog.Builder{
 	private Context context;
-
 	private TextView dialogTitle;
 	private EditText name;
 	private EditText phonenumber;
+	public FriendInfoAddActivity friendInfo;
+	
 	public FriendAddDialog(Context context) {
 		super(context);
 		this.context = context;
@@ -42,7 +46,6 @@ public class FriendAddDialog extends AlertDialog.Builder{
 		name = (EditText) dialoglayout.findViewById(R.id.dialog_edit_name);
 		phonenumber = (EditText) dialoglayout.findViewById(R.id.dialog_edit_phonenumber);
 		this.setView(dialoglayout);
-
 	}
 	private void initControls(){
 		dialogTitle.setText(R.string.title_add);
@@ -51,18 +54,13 @@ public class FriendAddDialog extends AlertDialog.Builder{
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
-				dialog.dismiss();
+//				dialog.dismiss();
 			
-				Intent intent = new Intent(context, MyInfoAddActivity.class);
-				context.startActivity(intent);
+				//테이블 뷰 세이브 
+				friendInfo.saveFriendInfo();
+			
+				dialog.dismiss();
 				
-				
-//				StringBuilder str = new StringBuilder();
-//				str.append("name = " +name.getText());
-//				str.append("\n");
-//				str.append("number = " +phonenumber.getText());
-//				Toast.makeText(context,str,Toast.LENGTH_SHORT).show();
-
 			}
 		});
 		this.setNegativeButton(R.string.cancel, new OnClickListener() {
@@ -75,7 +73,6 @@ public class FriendAddDialog extends AlertDialog.Builder{
 			}
 		});
 	}
-
 
 
 
