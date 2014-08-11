@@ -2,7 +2,9 @@ package kr.nexters.oneday.widget;
 
 import java.util.ArrayList;
 
+import kr.nexters.oneday.Common;
 import kr.nexters.oneday.FriendInfoAddActivity;
+import kr.nexters.oneday.FriendInfoAddActivity.FriendAddDialog;
 import kr.nexters.oneday.MyInfoAddActivity;
 import kr.nexters.oneday.R;
 import kr.nexters.oneday.adapter.PersonListAdapter;
@@ -20,14 +22,10 @@ import android.widget.RelativeLayout;
 
 public class LeftDrawer extends RelativeLayout {
 
-	//	private ImageView imgView;
-	//	private TextView textView;
 	private ListView pDrawerList;
 	ArrayList<Person> pItem = null;
 	PersonListAdapter pAdapter = null;
-	private LayoutInflater inflater;
 	Person person;
-	
 	private DrawerLayout drawerLayout;
 
 	public LeftDrawer(Context context) {
@@ -58,9 +56,12 @@ public class LeftDrawer extends RelativeLayout {
 
 		pItem = new ArrayList<Person>();
 
-//		person = new Person(1, "박준회");
+//		person = new Person("박준회", 1234);
 //		pItem.add(person);
-
+		person = new Person();
+		person.setName("친구");
+		pItem.add(person);
+		
 		findViewById(R.id.FriendAddButton).setOnClickListener(fClickListener);
 		findViewById(R.id.FriendDeleteButton).setOnClickListener(fClickListener);
 
@@ -70,7 +71,7 @@ public class LeftDrawer extends RelativeLayout {
 		pDrawerList.setAdapter(pAdapter);
 
 		pDrawerList.setOnItemClickListener(pItemClickListener);
-
+		
 	}
 	
 	public void setDrawerLayout(DrawerLayout layout) {
