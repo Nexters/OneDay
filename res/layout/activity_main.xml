@@ -3,15 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <FrameLayout
-        android:id="@+id/content_frame"
+    <kr.nexters.oneday.widget.TimeTableView
+        android:id="@+id/tableView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/mercury" />
+        android:layout_height="match_parent" />
 
-    <kr.nexters.oneday.LeftDrawer
+    <kr.nexters.oneday.widget.LeftDrawer
         android:id="@+id/left_drawer"
-        android:layout_width="240dp"
+        android:layout_width="170dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@android:color/white"

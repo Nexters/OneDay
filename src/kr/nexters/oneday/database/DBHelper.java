@@ -2,7 +2,13 @@ package kr.nexters.oneday.database;
 
 import android.content.ContentValues;
 import java.util.ArrayList;
+<<<<<<< HEAD
+=======
+import java.util.HashSet;
+
+>>>>>>> 866971d2db0d28b2a129a8915b2a2de0156f1026
 import kr.nexters.oneday.Common;
+import kr.nexters.oneday.vo.Person;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
@@ -44,8 +50,16 @@ public class DBHelper extends SQLiteOpenHelper {
 	}//end onUpgrade
 
 	public void loadPersonInfo() {
+<<<<<<< HEAD
 		Common.personList = new ArrayList<Person>();
 
+=======
+		
+	}
+	
+	public void insertPerson() {
+		
+>>>>>>> 866971d2db0d28b2a129a8915b2a2de0156f1026
 	}
 	public Person select() {
 		String sql = "select * from tableName";

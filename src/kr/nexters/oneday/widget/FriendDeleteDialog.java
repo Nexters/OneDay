@@ -1,8 +1,12 @@
-package kr.nexters.oneday;
+package kr.nexters.oneday.widget;
 
+import kr.nexters.oneday.MyInfoAddActivity;
+import kr.nexters.oneday.R;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,18 +14,27 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class FriendAddDialog extends AlertDialog.Builder{
+public class FriendDeleteDialog extends AlertDialog.Builder{
+	
 	private Context context;
+<<<<<<< HEAD:src/kr/nexters/oneday/FriendAddDialog.java
 	private TextView dialogTitle;
 	private EditText name;
 	private EditText phonenumber;
 	public FriendAddDialog(Context context) {
-		super(context);
-		this.context=context;
-			initialize();
+=======
 
+	private TextView delDialogTitle;
+	private TextView delDialogMassage;
+	
+	public FriendDeleteDialog(Context context) {
+>>>>>>> 866971d2db0d28b2a129a8915b2a2de0156f1026:src/kr/nexters/oneday/widget/FriendDeleteDialog.java
+		super(context);
+		this.context = context;
+		initialize();
 		// TODO Auto-generated constructor stub
 	}
+	
 	private void initialize(){
 		this.setTitle(null);
 		initView();
@@ -29,27 +42,21 @@ public class FriendAddDialog extends AlertDialog.Builder{
 	}
 	private void initView(){
 		LayoutInflater inflater = LayoutInflater.from(context);
-		View dialoglayout = inflater.inflate(R.layout.add_dialog, null);
+		View dialoglayout = inflater.inflate(R.layout.delete_dialog, null);
 		
-		dialogTitle = (TextView) dialoglayout.findViewById(R.id.dialog_title);
-		name = (EditText) dialoglayout.findViewById(R.id.dialog_edit_name);
-		phonenumber = (EditText) dialoglayout.findViewById(R.id.dialog_edit_phonenumber);
+		delDialogTitle = (TextView) dialoglayout.findViewById(R.id.delete_dialog_title);
+		delDialogMassage = (TextView) dialoglayout.findViewById(R.id.delete_dialog_message);
 		this.setView(dialoglayout);
 
 	}
 	private void initControls(){
-		dialogTitle.setText(R.string.title_add);
+		delDialogTitle.setText(R.string.title_del);
 		this.setPositiveButton(R.string.confirm, new OnClickListener() {
 
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
-				dialog.dismiss();
-				StringBuilder str = new StringBuilder();
-				str.append("name = " +name.getText());
-				str.append("\n");
-				str.append("number = " +phonenumber.getText());
-				Toast.makeText(context,str,Toast.LENGTH_SHORT).show();
+				dialog.dismiss();		
 
 			}
 		});
@@ -59,12 +66,10 @@ public class FriendAddDialog extends AlertDialog.Builder{
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
 				dialog.dismiss();
-				Toast.makeText(context,R.string.cancel,Toast.LENGTH_SHORT).show();
+//				Toast.makeText(context,R.string.cancel,Toast.LENGTH_SHORT).show();
 			}
 		});
 	}
-
-
 
 
 }
