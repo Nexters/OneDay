@@ -3,6 +3,7 @@ package kr.nexters.oneday.database;
 import android.content.ContentValues;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.HashSet;
 import kr.nexters.oneday.Common;
 import kr.nexters.oneday.vo.Person;
 import android.content.Context;
@@ -51,7 +52,6 @@ public class DBHelper extends SQLiteOpenHelper {
 	}
 	
 	public void insertPerson() {
-		
 	}
 	public Person select() {
 		String sql = "select * from tableName";

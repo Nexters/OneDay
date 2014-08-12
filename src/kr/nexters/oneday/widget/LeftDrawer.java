@@ -90,15 +90,36 @@ public class LeftDrawer extends RelativeLayout {
 
 		@Override
 		public void onClick(View v) {
+
+
 			int id = v.getId();
 			if (id == R.id.FriendAddButton) {
 				//FriendAddDialog dialog = new FriendAddDialog(getContext());
 				//dialog.show();
 			} else if (id == R.id.FriendDeleteButton) {
-
+				if(drawerLayout.isDrawerOpen(LeftDrawer.this)) {
+					drawerLayout.closeDrawers();
+				}
+			}
+			switch (v.getId()) {
+			case R.id.FriendAddButton:
+				Intent intent = new Intent(getContext(), FriendInfoAddActivity.class);
+				getContext().startActivity(intent);
+				break;
+				
+			case R.id.FriendDeleteButton:
+				//삭제 다이얼로그 호출
+				FriendDeleteDialog dialog2 = new FriendDeleteDialog(getContext());
+				dialog2.show();
+				break;
+				
+			case R.id.SettingButton:
+				Intent intent2 = new Intent(getContext(), MyInfoAddActivity.class);
+				getContext().startActivity(intent2);
+				break;
+				
 			}
 		}
 		
 	};
-
-}
+};
