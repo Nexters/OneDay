@@ -53,7 +53,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				toggleDrawer();
 			}
-		});
+		}, TitleLayout.BUTTON_TOGGLE_RES);
 		
 		titleLayout.setButtonR(new OnClickListener() {
 
@@ -66,7 +66,7 @@ public class MainActivity extends Activity {
 				sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject");
 				startActivity(Intent.createChooser(sharingIntent, "Share using"));
 			}
-		});
+		}, TitleLayout.BUTTON_EXPORT_RES);
 	}
 	
 	@Override
