@@ -19,11 +19,13 @@
             android:layout_height="wrap_content"
             android:text="TextView" />
 
-        <Button
-            android:id="@+id/button1"
+        <ImageButton
+            android:id="@+id/SettingButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:background="@android:color/transparent"
+            android:src="@drawable/setting_selector"  />
+
     </LinearLayout>
 
 </LinearLayout>

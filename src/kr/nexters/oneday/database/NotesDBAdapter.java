@@ -1,16 +1,21 @@
 package kr.nexters.oneday.database;
 
-import android.content.ContentValues; 
-import android.content.Context; 
-import android.database.Cursor; 
-import android.database.SQLException; 
-import android.database.sqlite.SQLiteDatabase; 
-import android.database.sqlite.SQLiteOpenHelper; 
-import android.util.Log; 
+import java.util.ArrayList;
+import java.util.List;
+
+import kr.nexters.oneday.vo.Person;
+import kr.nexters.oneday.vo.TimeInfo;
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
    
 
    
-public class NotesDBAdapter { 
+public class NotesDBAdapter implements DBAdapter{ 
    
 
     public static final String KEY_TITLE = "title"; 
@@ -157,7 +162,11 @@ public class NotesDBAdapter {
 
     }
 
-   
+    private Cursor fetchAllUsers(){
+    	return mDb.query(DATABASE_TABLE, new String[] { KEY_ROWID, KEY_TITLE,
+
+                KEY_BODY }, null, null, null, null, null);
+    }
 
     public Cursor fetchNote(long rowId) throws SQLException {
 
@@ -201,4 +210,46 @@ public class NotesDBAdapter {
 
     }
 
+
+    // select * from timetable where user_id = 'UserId'
+	@Override
+	public List<TimeInfo> getUserTimeInfos(String userId) {
+		// TODO Auto-generated method stub
+		
+		return null;
+	}
+
+	@Override
+	public void addTimeInfo(String userId, TimeInfo timeInfo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void removeTimeInfo(TimeInfo time) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Person> getPeople() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addPerson(Person person) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void removePerson(Person person) {
+		// TODO Auto-generated method stub
+		
+	}
 }
