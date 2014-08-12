@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 public class FriendAddDialog extends AlertDialog.Builder{
 	private Context context;
-
 	private TextView dialogTitle;
 	private EditText name;
 	private EditText phonenumber;

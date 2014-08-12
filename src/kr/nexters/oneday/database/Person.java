@@ -2,10 +2,20 @@ package kr.nexters.oneday.database;
 
 import java.util.List;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+import android.widget.EditText;
+
 public class Person {
+
 	private String name;
 	private int phoneNumber;
-	private List<Integer> timeList;
+	private List<Integer> timeTable;
+	//private DBHandler dbhandler;
+	
+	
+	
 	public String getName() {
 		return name;
 	}
@@ -19,9 +29,16 @@ public class Person {
 		this.phoneNumber = phoneNumber;
 	}
 	public List<Integer> getTimeList() {
-		return timeList;
+		return timeTable;
 	}
-	public void setTimeList(List<Integer> timeList) {
-		this.timeList = timeList;
+	public void setTimeList(List<Integer> timeTable) {
+		this.timeTable = timeTable;
 	}
+	
+	
 }
+	
+	
+
+
+

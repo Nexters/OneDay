@@ -8,4 +8,10 @@
 	<string name="cancel">취소</string>
 	<string name="title_add">친구를 추가해주세요</string>
 	 
+	
+	   <!-- 폼 구성요소에 사용되는 라벨  -->
+    <string name="name">이</string>
+    <string name="phonenumber">전화번호</string>
+    <string name="timetable">시간</string>
+    
 </resources>

@@ -78,15 +78,11 @@ public class LeftDrawer extends RelativeLayout {
 		@Override
 		public void onClick(View v) {
 
-			switch(v.getId()){
-			
-			case R.id.FriendAddButton :
+			int id = v.getId();
+			if (id == R.id.FriendAddButton) {
 				FriendAddDialog dialog = new FriendAddDialog(getContext());
 				dialog.show();
-				break;
-			case R.id.FriendDeleteButton :
-
-				break;
+			} else if (id == R.id.FriendDeleteButton) {
 			}
 		}
 	};

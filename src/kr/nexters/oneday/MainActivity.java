@@ -35,6 +35,7 @@ public class MainActivity extends Activity {
 		drawerView = (View) findViewById(R.id.left_drawer);
 		frame = (FrameLayout) findViewById(R.id.content_frame);
 
+		
 		drawerLayout.setDrawerListener(myDrawerListener);
 
 		titleLayout.setButtonL(new OnClickListener() {
