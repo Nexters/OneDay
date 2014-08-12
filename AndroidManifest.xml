@@ -17,17 +17,19 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
+        </activity>
+        <activity android:name=".MyInfoAddActivity" >
+        </activity>
+        <activity android:name=".FriendInfoAddActivity" >
+        </activity>
+        <activity
+            android:name="SplashActivity"
+            android:theme="@style/AppThemeNoTitle" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".MyInfoAddActivity" >
-        </activity>
-        <activity
-            android:name=".FriendInfoAddActivity" >
         </activity>
     </application>
 
