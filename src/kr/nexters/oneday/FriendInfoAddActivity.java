@@ -20,6 +20,7 @@ public class FriendInfoAddActivity extends Activity {
 
 	private TitleLayout titleLayout;
 	private TimeTableView tableView;
+	FriendAddDialog dialog;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class FriendInfoAddActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				FriendAddDialog dialog = new FriendAddDialog(FriendInfoAddActivity.this);
+				dialog = new FriendAddDialog(FriendInfoAddActivity.this);
 				dialog.setCancelable(false); //밖 터치시 종료되지 않게
 				dialog.show();
 			}
@@ -46,7 +47,7 @@ public class FriendInfoAddActivity extends Activity {
 
 	public void saveFriendInfo() {
 		Person friend = new Person();
-		friend.setName("나");
+		friend.setName(dialog.textName);
 		friend.setTimeList(tableView.getAllSelectedTimeInfo());
 
 		Common.addPerson(friend);
@@ -92,7 +93,7 @@ public class FriendInfoAddActivity extends Activity {
 					Toast.makeText(mContext, "name is empty", Toast.LENGTH_SHORT).show();
 				} else {
 					textName = name.getText().toString();
-					saveFriendInfo();
+					saveFriendInfo();  
 					dismiss();
 					finish();
 				}

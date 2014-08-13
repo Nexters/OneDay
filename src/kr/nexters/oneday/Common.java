@@ -1,6 +1,7 @@
 package kr.nexters.oneday;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import kr.nexters.oneday.vo.Person;
@@ -39,5 +40,4 @@ public class Common {
 	public static Set<Person> getPersonSelectedSet() {
 		return personSelectedSet;
 	}
-	
 }

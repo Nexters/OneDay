@@ -1,6 +1,7 @@
 package kr.nexters.oneday.widget;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import kr.nexters.oneday.Common;
 import kr.nexters.oneday.FriendInfoAddActivity;
@@ -51,16 +52,11 @@ public class LeftDrawer extends RelativeLayout {
 	}
 
 	private void initView() {
-		//		imgView = (ImageView)findViewById(R.id.imageView1);
 		pDrawerList = (ListView) findViewById(R.id.listView1);
 
 		pItem = new ArrayList<Person>();
 
-//		person = new Person("박준회", 1234);
-//		pItem.add(person);
-		person = new Person();
-		person.setName("친구");
-		pItem.add(person);
+		pItem.addAll(Common.getPersonSet());
 		
 		findViewById(R.id.FriendAddButton).setOnClickListener(fClickListener);
 		findViewById(R.id.FriendDeleteButton).setOnClickListener(fClickListener);
@@ -116,5 +112,10 @@ public class LeftDrawer extends RelativeLayout {
 		}
 		
 	};
-
+	
+	public void refresh() {
+		initView();
+		pAdapter.notifyDataSetChanged();
+	}
+	
 }
