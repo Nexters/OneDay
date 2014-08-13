@@ -7,6 +7,17 @@ public class Person {
 	private int phoneNumber;
 
 	private List<TimeInfo> timeList;
+	
+	public Person() {
+		
+	}
+	
+	public Person(String name, int phoneNumber, List<TimeInfo> timeList) {
+		super();
+		this.name = name;
+		this.phoneNumber = phoneNumber;
+		this.timeList = timeList;
+	}
 
 	public String getName() {
 		return name;

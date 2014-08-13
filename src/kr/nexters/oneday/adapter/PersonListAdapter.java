@@ -20,6 +20,7 @@ public class PersonListAdapter extends BaseAdapter{
 
 	public PersonListAdapter(Context context) {
 		this.pList = new ArrayList<Person>(Common.getPersonSet()); 
+		pList.remove(new Person("나", 0, null));
 		inflater = (LayoutInflater)context.getSystemService( Context.LAYOUT_INFLATER_SERVICE);
 	}
 
@@ -73,6 +74,7 @@ public class PersonListAdapter extends BaseAdapter{
 	public void notifyDataSetChanged() {
 		pList.clear();
 		pList.addAll(Common.getPersonSet());
+		pList.remove(new Person("나", 0, null));
 		super.notifyDataSetChanged();
 	}
 
