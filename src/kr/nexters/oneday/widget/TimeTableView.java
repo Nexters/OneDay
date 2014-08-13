@@ -8,6 +8,7 @@ import java.util.Set;
 import kr.nexters.oneday.R;
 import kr.nexters.oneday.database.DBAdapter;
 import kr.nexters.oneday.database.NotesDBAdapter;
+import kr.nexters.oneday.util.ViewUtil;
 import kr.nexters.oneday.vo.Person;
 import kr.nexters.oneday.vo.TimeInfo;
 import android.content.Context;
@@ -76,7 +77,6 @@ public class TimeTableView extends LinearLayout {
 		inflater.inflate(R.layout.timetable, this);
 		
 		innerLayout = (LinearLayout) findViewById(R.id.timetable_inner_layout);
-		
 		LinearLayout linear = null;
 		for (int i = 0; i < MAX_CELL_CNT * 5; i++) {
 			if(i % MAX_CELL_CNT == 0) {
@@ -91,6 +91,8 @@ public class TimeTableView extends LinearLayout {
 			linear.addView(holder.root);
 			((LayoutParams) holder.root.getLayoutParams()).weight = 1;
 		}
+		
+		findViewById(R.id.bg_bar_time).scrollBy(0, -(int) ViewUtil.dipToPx(7));
 	}
 	
 	private void addCountSector(DAY day, TIME time) {

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android" >
-
-    <TextView
+    <TextView
         style="@style/bar_time_text"
         android:text="09:30" />
 
@@ -76,5 +75,7 @@
     <TextView
         style="@style/bar_time_text"
         android:text="18:30" />
+
+    <TextView style="@style/bar_time_text" />
 
 </merge>

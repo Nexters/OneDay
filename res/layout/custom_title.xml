@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="Custom Title"
-        android:textColor="#5D5D5D"
+        android:textColor="#fff"
         android:textSize="20sp"
         android:textStyle="bold" />
 

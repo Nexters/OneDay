@@ -1,72 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="277dp"
+    android:layout_height="250dp"
+    android:background="#fff"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/dialog_title"
+    <RelativeLayout
+        android:id="@+id/dialog_title_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-       />
+        android:layout_height="48dp"
+        android:background="#17b4c2" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="이름" />
-
-        <EditText
-            android:id="@+id/dialog_edit_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="4" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="전화번호" />
-
-        <EditText
-            android:id="@+id/dialog_edit_phonenumber"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="4" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <Button
-            android:id="@+id/btn_ok"
+        <ImageButton
+            android:id="@+id/add_dialog_exit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.68"
-            android:text="ok" />
+            android:background="@drawable/title_bar_exit_selector" />
 
-        <Button
-            android:id="@+id/btn_cancel"
+        <ImageButton
+            android:id="@+id/add_dialog_check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.79"
-            android:text="cancel" />
+            android:layout_alignParentRight="true"
+            android:background="@drawable/title_bar_check_selector" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="213dp"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/dialog_title_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/add_dialog_name"
+            style="@style/add_dialog_edittext"
+            android:drawableLeft="@drawable/icon_name"
+            android:hint="이름" />
+
+        <EditText
+            android:id="@+id/add_dialog_group"
+            style="@style/add_dialog_edittext"
+            android:layout_marginTop="8dp"
+            android:drawableLeft="@drawable/icon_group"
+            android:hint="그룹" />
+
+        <EditText
+            android:id="@+id/add_dialog_tel"
+            style="@style/add_dialog_edittext"
+            android:layout_marginTop="8dp"
+            android:drawableLeft="@drawable/icon_tel"
+            android:hint="전화번호"
+            android:numeric="integer" />
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

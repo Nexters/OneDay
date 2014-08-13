@@ -3,6 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
+    <View
+        android:layout_width="56dp"
+        android:layout_height="7dp"
+        android:layout_marginTop="31dp"
+        android:background="#263c4d" />
+
     <LinearLayout
         android:id="@+id/bg_bar_time"
         android:layout_width="wrap_content"
@@ -22,7 +28,6 @@
 
         <include layout="@layout/bar_day" />
     </LinearLayout>
-    
 
     <LinearLayout
         android:id="@+id/timetable_inner_layout"

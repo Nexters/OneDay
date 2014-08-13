@@ -6,13 +6,11 @@ import kr.nexters.oneday.widget.TitleLayout;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -37,7 +35,7 @@ public class FriendInfoAddActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				dialog = new FriendAddDialog(FriendInfoAddActivity.this);
+				dialog = new FriendAddDialog();
 				dialog.setCancelable(false); //밖 터치시 종료되지 않게
 				dialog.show();
 			}
@@ -47,7 +45,8 @@ public class FriendInfoAddActivity extends Activity {
 
 	public void saveFriendInfo() {
 		Person friend = new Person();
-		friend.setName(dialog.textName);
+		friend.setName(dialog.name.getText().toString());
+		friend.setPhoneNumber(Integer.valueOf(dialog.phoneNumber.getText().toString()));
 		friend.setTimeList(tableView.getAllSelectedTimeInfo());
 
 		Common.addPerson(friend);
@@ -55,54 +54,39 @@ public class FriendInfoAddActivity extends Activity {
 	}
 
 	public class FriendAddDialog extends Dialog implements OnClickListener {
-		EditText name;
-		EditText phone_number;
-		Button okButton;
-		Button cancelButton;
-		Context mContext;
-		public String textName, textPhone;
-
-		public FriendAddDialog(Context context) {
-			super(context);
-			mContext = context;
-			/** 'Window.FEATURE_NO_TITLE' - Used to hide the title */ 
+		private EditText name;
+		private EditText phoneNumber;
+		private EditText group;
+		
+		private FriendAddDialog() {
+			super(FriendInfoAddActivity.this);
 			requestWindowFeature(Window.FEATURE_NO_TITLE);  
 			setContentView(R.layout.add_dialog);
 
-			name = (EditText)findViewById(R.id.dialog_edit_name);
-			phone_number = (EditText)findViewById(R.id.dialog_edit_phonenumber);
-			okButton = (Button)findViewById(R.id.btn_ok);
-			cancelButton = (Button)findViewById(R.id.btn_cancel);
-
-			okButton.setOnClickListener(this);
-			cancelButton.setOnClickListener(this);
+			name = (EditText)findViewById(R.id.add_dialog_name);
+			group = (EditText)findViewById(R.id.add_dialog_group);
+			phoneNumber = (EditText)findViewById(R.id.add_dialog_tel);
+			
+			findViewById(R.id.add_dialog_check).setOnClickListener(this);
+			findViewById(R.id.add_dialog_exit).setOnClickListener(this);
 		}
 		
-		public String getTextName() {
-			return textName;
-		}
-
-		public String getTextPhone() {
-			return textPhone;
-		}
-
 		@Override
 		public void onClick(View v) {
-			if(v == okButton) {
+			switch(v.getId()) {
+			case R.id.add_dialog_check:
 				if(TextUtils.isEmpty(name.getText())) {
-					Toast.makeText(mContext, "name is empty", Toast.LENGTH_SHORT).show();
+					Toast.makeText(Common.getMainContext(), "name is empty", Toast.LENGTH_SHORT).show();
 				} else {
-					textName = name.getText().toString();
 					saveFriendInfo();  
 					dismiss();
 					finish();
 				}
-
-			} else if(v == cancelButton) {
+				break;
+			case R.id.add_dialog_exit:
 				dismiss();
+				break;
 			}
 		}
-
 	}
-
 }

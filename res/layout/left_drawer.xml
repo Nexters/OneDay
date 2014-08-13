@@ -57,10 +57,14 @@
         android:id="@+id/listView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/divider" >
+        android:layout_above="@+id/friend_manage_buttons"
+        android:layout_below="@+id/divider"
+        android:divider="@null"
+        android:dividerHeight="7dp" >
     </ListView>
 
     <LinearLayout
+        android:id="@+id/friend_manage_buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
