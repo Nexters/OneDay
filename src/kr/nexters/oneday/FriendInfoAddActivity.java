@@ -41,11 +41,11 @@ public class FriendInfoAddActivity extends Activity {
 		}, TitleLayout.BUTTON_CHECK_RES);
 
 	}
-
+	
 	public void saveFriendInfo() {
 		Person friend = new Person();
 		friend.setName(dialog.name.getText().toString());
-		friend.setPhoneNumber(Integer.valueOf(dialog.phoneNumber.getText().toString()));
+		friend.setPhoneNumber(dialog.phoneNumber.getText().toString());
 		friend.setTimeList(tableView.getAllSelectedTimeInfo());
 
 		Common.addPerson(friend);

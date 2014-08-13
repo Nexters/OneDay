@@ -160,16 +160,20 @@ public class TimeTableView extends LinearLayout {
 		return ret;
 	}
 	
+	public void setPerson(Person person) {
+		clearSector();
+		
+		for(TimeInfo info : person.getTimeList()) {
+			addCountSector(info.getDay(), info.getTime());
+		}
+	}
+	
 	public void setPerson(Set<Person> personSelectedSet) {
 		clearSector();
 		
 		Iterator<Person> it = personSelectedSet.iterator();
-		
 		while(it.hasNext()) {
-			Person person = it.next();
-			for(TimeInfo info : person.getTimeList()) {
-				addCountSector(info.getDay(), info.getTime());
-			}
+			setPerson(it.next());
 		}
 	}
 	

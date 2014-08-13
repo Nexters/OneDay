@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Person {
 	private String name;
-	private int phoneNumber;
+	private String phoneNumber;
 
 	private List<TimeInfo> timeList;
 	
@@ -12,7 +12,7 @@ public class Person {
 		
 	}
 	
-	public Person(String name, int phoneNumber, List<TimeInfo> timeList) {
+	public Person(String name, String phoneNumber, List<TimeInfo> timeList) {
 		super();
 		this.name = name;
 		this.phoneNumber = phoneNumber;
@@ -27,11 +27,11 @@ public class Person {
 		this.name = name;
 	}
 
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
