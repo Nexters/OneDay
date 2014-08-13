@@ -3,8 +3,8 @@ package kr.nexters.oneday.adapter;
 
 import java.util.ArrayList;
 
+import kr.nexters.oneday.Common;
 import kr.nexters.oneday.R;
-import kr.nexters.oneday.R.id;
 import kr.nexters.oneday.vo.Person;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,34 +15,26 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class PersonListAdapter extends BaseAdapter{
-	private Context context;
 	private LayoutInflater inflater;
 	private ArrayList<Person> pList;
-	private int layout;
 
-	public PersonListAdapter(Context context, int layout, ArrayList<Person> pList ) {
-		this.context = context;
-		this.layout = layout;
-		this.pList = pList; 
-		inflater = (LayoutInflater)context.getSystemService(
-				Context.LAYOUT_INFLATER_SERVICE);
+	public PersonListAdapter(Context context) {
+		this.pList = new ArrayList<Person>(Common.getPersonSet()); 
+		inflater = (LayoutInflater)context.getSystemService( Context.LAYOUT_INFLATER_SERVICE);
 	}
 
 	@Override
 	public int getCount() {
-		// TODO Auto-generated method stub
 		return pList.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		// TODO Auto-generated method stub
 		return pList.get(position);
 	}
 
 	@Override
 	public long getItemId(int position) {
-		// TODO Auto-generated method stub
 		return position;
 	}
 
@@ -55,7 +47,7 @@ public class PersonListAdapter extends BaseAdapter{
 		//캐시된 뷰가 없는 경우 새로 생성하고 뷰홀더 저장한다
 		if(convertView == null)
 		{
-			convertView = inflater.inflate(layout, parent, false);
+			convertView = inflater.inflate(R.layout.person_item, parent, false);
 
 			viewHolder = new PersonViewHolder();
 			viewHolder.name = (TextView) convertView.findViewById(R.id.leftdrawer_name);
