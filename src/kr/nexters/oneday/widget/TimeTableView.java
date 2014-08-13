@@ -171,8 +171,9 @@ public class TimeTableView extends LinearLayout {
 		}
 	}
 	
-	private void clearSector() {
+	public void clearSector() {
 		for(TimeSectorHolder holder : ref) {
+			holder.root.setSelected(false);
 			setSectorColor(holder.day, holder.time, 0);
 		}
 	}
