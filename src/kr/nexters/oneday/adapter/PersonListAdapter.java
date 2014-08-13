@@ -61,9 +61,8 @@ public class PersonListAdapter extends BaseAdapter{
 			convertView = inflater.inflate(layout, parent, false);
 
 			viewHolder = new PersonViewHolder();
-			viewHolder.name = (TextView) convertView.findViewById(R.id.textView1);
-			viewHolder.v_button = (ImageButton)convertView.findViewById(R.id.SettingButton);
-			viewHolder.checkbox = (CheckBox)convertView.findViewById(R.id.checkBox1);
+			viewHolder.name = (TextView) convertView.findViewById(R.id.leftdrawer_name);
+			viewHolder.v_button = (ImageButton)convertView.findViewById(R.id.leftdrawer_setting_btn);
 
 			convertView.setTag(viewHolder);
 		}
@@ -81,10 +80,10 @@ public class PersonListAdapter extends BaseAdapter{
 		return convertView;
 	}
 
+
+	class PersonViewHolder {
+		private TextView name = null;
+		private ImageButton v_button = null;
+	}
 }
 
-class PersonViewHolder {
-	public TextView name = null;
-	public ImageButton v_button = null;
-	public CheckBox checkbox = null;
-}

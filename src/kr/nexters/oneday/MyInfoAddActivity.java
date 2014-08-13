@@ -1,16 +1,13 @@
 package kr.nexters.oneday;
 
-import kr.nexters.oneday.R;
-import kr.nexters.oneday.R.id;
-import kr.nexters.oneday.R.layout;
 import kr.nexters.oneday.vo.Person;
 import kr.nexters.oneday.widget.TimeTableView;
 import kr.nexters.oneday.widget.TitleLayout;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.Window;
 
 public class MyInfoAddActivity extends Activity {
 
@@ -37,7 +34,13 @@ public class MyInfoAddActivity extends Activity {
 				finish();
 			}
 		}, TitleLayout.BUTTON_CHECK_RES);
-		
+		titleLayout.setButtonL(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		}, TitleLayout.BUTTON_EXIT_RES);
 	}
 
 	private void saveMyInfo() {

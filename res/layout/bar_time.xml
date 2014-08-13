@@ -76,9 +76,5 @@
     <TextView
         style="@style/bar_time_text"
         android:text="18:30" />
-    
-    <TextView
-        style="@style/bar_time_text"
-        android:text="17:00" />
 
 </merge>

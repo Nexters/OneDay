@@ -34,7 +34,7 @@ public class DBHandler  {
 
 	
 	  public DBHandler(Context context) {
-	        DBHandler.this.helper = new DBHelper(context, null, null, 0);
+	        DBHandler.this.helper = new DBHelper(context, null, null, 1);
 	        this.mDb = helper.getWritableDatabase();
 	    }
 
