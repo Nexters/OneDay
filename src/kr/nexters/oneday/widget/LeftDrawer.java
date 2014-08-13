@@ -66,7 +66,7 @@ public class LeftDrawer extends RelativeLayout {
 		pAdapter = new PersonListAdapter(this.getContext(), R.layout.person_item, pItem);
 		pDrawerList.setAdapter(pAdapter);
 
-		pDrawerList.setOnItemClickListener(pItemClickListener);
+//		pDrawerList.setOnItemClickListener(pItemClickListener);
 		
 	}
 	
@@ -74,29 +74,18 @@ public class LeftDrawer extends RelativeLayout {
 		drawerLayout = layout;
 	}
 
-	AdapterView.OnItemClickListener pItemClickListener = 
-			new AdapterView.OnItemClickListener() {
-		public void onItemClick(AdapterView<?> parent, View view, 
-				int position, long id) {
-
-		}
-	};
+//	AdapterView.OnItemClickListener pItemClickListener = 
+//			new AdapterView.OnItemClickListener() {
+//		public void onItemClick(AdapterView<?> parent, View view, 
+//				int position, long id) {
+//
+//		}
+//	};
 		
 	private View.OnClickListener fClickListener = new View.OnClickListener() {
 
 		@Override
 		public void onClick(View v) {
-
-
-			int id = v.getId();
-			if (id == R.id.FriendAddButton) {
-				//FriendAddDialog dialog = new FriendAddDialog(getContext());
-				//dialog.show();
-			} else if (id == R.id.FriendDeleteButton) {
-				if(drawerLayout.isDrawerOpen(LeftDrawer.this)) {
-					drawerLayout.closeDrawers();
-				}
-			}
 			switch (v.getId()) {
 			case R.id.FriendAddButton:
 				Intent intent = new Intent(getContext(), FriendInfoAddActivity.class);
