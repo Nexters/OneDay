@@ -29,14 +29,14 @@ public class MyInfoAddActivity extends Activity {
 		
 		tableView = (TimeTableView) findViewById(R.id.tableView);
 		
-		titleLayout.setButtonR2(new OnClickListener() {
+		titleLayout.setButtonR(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				saveMyInfo();
 				finish();
 			}
-		});
+		}, TitleLayout.BUTTON_CHECK_RES);
 		
 	}
 

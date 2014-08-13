@@ -2,6 +2,10 @@
 
     <style name="AppBaseTheme" parent="android:Theme"></style>
 
+    <style name="AppBaseThemeNoTitle" parent="@android:Theme.Black.NoTitleBar"></style>
+    
+    <style name="AppThemeNoTitle" parent="AppBaseThemeNoTitle"></style>
+    
     <style name="AppTheme" parent="AppBaseTheme">
         <item name="android:windowTitleSize">@dimen/title_height</item>
         <item name="android:windowTitleBackgroundStyle">@style/windowTitleBackground</item>

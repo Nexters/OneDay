@@ -17,9 +17,12 @@ import android.widget.Toast;
 public class FriendDeleteDialog extends AlertDialog.Builder{
 	
 	private Context context;
-
-	private TextView delDialogTitle;
+	private TextView dialogTitle;
 	private TextView delDialogMassage;
+	private TextView delDialogTitle;
+	private EditText name;
+	private EditText phonenumber;
+	
 	
 	public FriendDeleteDialog(Context context) {
 		super(context);

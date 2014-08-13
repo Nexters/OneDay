@@ -33,7 +33,7 @@ public class FriendInfoAddActivity extends Activity {
 
 		tableView = (TimeTableView) findViewById(R.id.tableView);
 
-		titleLayout.setButtonR2(new OnClickListener() {
+		titleLayout.setButtonR(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -41,7 +41,7 @@ public class FriendInfoAddActivity extends Activity {
 				dialog.setCancelable(false); //밖 터치시 종료되지 않게
 				dialog.show();
 			}
-		});
+		}, TitleLayout.BUTTON_CHECK_RES);
 
 	}
 

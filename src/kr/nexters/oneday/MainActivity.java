@@ -40,6 +40,7 @@ public class MainActivity extends Activity {
 		titleLayout = new TitleLayout(getWindow());
 
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
 		drawerView = (LeftDrawer) findViewById(R.id.left_drawer);
 		tableView = (TimeTableView) findViewById(R.id.tableView);
 		tableView.setSelectedMode(false);
@@ -53,7 +54,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				toggleDrawer();
 			}
-		});
+		}, TitleLayout.BUTTON_TOGGLE_RES);
 		
 		titleLayout.setButtonR(new OnClickListener() {
 
@@ -66,7 +67,7 @@ public class MainActivity extends Activity {
 				sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject");
 				startActivity(Intent.createChooser(sharingIntent, "Share using"));
 			}
-		});
+		}, TitleLayout.BUTTON_EXPORT_RES);
 	}
 	
 	@Override

@@ -87,10 +87,16 @@ public class LeftDrawer extends RelativeLayout {
 		@Override
 		public void onClick(View v) {
 
-			if(drawerLayout.isDrawerOpen(LeftDrawer.this)) {
-				drawerLayout.closeDrawers();
+
+			int id = v.getId();
+			if (id == R.id.FriendAddButton) {
+				//FriendAddDialog dialog = new FriendAddDialog(getContext());
+				//dialog.show();
+			} else if (id == R.id.FriendDeleteButton) {
+				if(drawerLayout.isDrawerOpen(LeftDrawer.this)) {
+					drawerLayout.closeDrawers();
+				}
 			}
-			
 			switch (v.getId()) {
 			case R.id.FriendAddButton:
 				Intent intent = new Intent(getContext(), FriendInfoAddActivity.class);
@@ -112,7 +118,6 @@ public class LeftDrawer extends RelativeLayout {
 		}
 		
 	};
-	
 	public void refresh() {
 		initView();
 		pAdapter.notifyDataSetChanged();
