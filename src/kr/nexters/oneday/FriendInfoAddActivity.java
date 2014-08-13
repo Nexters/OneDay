@@ -5,7 +5,6 @@ import kr.nexters.oneday.widget.TimeTableView;
 import kr.nexters.oneday.widget.TitleLayout;
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
