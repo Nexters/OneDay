@@ -69,6 +69,12 @@ public class PersonListAdapter extends BaseAdapter{
 		return convertView;
 	}
 
+	@Override
+	public void notifyDataSetChanged() {
+		pList.clear();
+		pList.addAll(Common.getPersonSet());
+		super.notifyDataSetChanged();
+	}
 
 	class PersonViewHolder {
 		private TextView name = null;
