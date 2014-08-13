@@ -74,6 +74,7 @@ public class MainActivity extends Activity {
 	protected void onResume() {
 		super.onResume();
 		tableView.setPerson(Common.getPersonSelectedSet());
+		drawerView.refresh();
 	}
 
 	public void toggleDrawer() {
