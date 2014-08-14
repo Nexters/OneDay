@@ -57,7 +57,8 @@ public class MyInfoAddActivity extends Activity {
 			while(it.hasNext()) {
 				Person p = it.next();
 				if(p.equals(me)) {
-					tableView.setPerson(p);
+					tableView.clearSector();
+					tableView.addPerson(p);
 					return;
 				}
 			}

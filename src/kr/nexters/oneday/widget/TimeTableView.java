@@ -160,9 +160,7 @@ public class TimeTableView extends LinearLayout {
 		return ret;
 	}
 	
-	public void setPerson(Person person) {
-		clearSector();
-		
+	public void addPerson(Person person) {
 		for(TimeInfo info : person.getTimeList()) {
 			addCountSector(info.getDay(), info.getTime());
 		}
@@ -173,7 +171,7 @@ public class TimeTableView extends LinearLayout {
 		
 		Iterator<Person> it = personSelectedSet.iterator();
 		while(it.hasNext()) {
-			setPerson(it.next());
+			addPerson(it.next());
 		}
 	}
 	
