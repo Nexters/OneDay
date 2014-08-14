@@ -6,13 +6,15 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/time_cell_selector"
-        android:background="@drawable/line_box" />
+        android:background="@drawable/line_box"
+        android:src="@drawable/time_cell_selector" />
 
     <TextView
+        android:id="@+id/timesector_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/timesector_text"
-        android:gravity="center" />
+        android:gravity="center"
+        android:textColor="#fff"
+        android:textSize="10dp" />
 
 </RelativeLayout>

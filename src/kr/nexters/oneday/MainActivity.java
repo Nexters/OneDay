@@ -1,8 +1,6 @@
 package kr.nexters.oneday;
 
-import java.util.ArrayList;
-import kr.nexters.oneday.adapter.PersonListAdapter;
-import kr.nexters.oneday.vo.Person;
+import kr.nexters.oneday.widget.FriendDeleteDialog;
 import kr.nexters.oneday.widget.LeftDrawer;
 import kr.nexters.oneday.widget.TimeTableView;
 import kr.nexters.oneday.widget.TitleLayout;
@@ -18,7 +16,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.animation.TranslateAnimation;
-import android.widget.ListView;
 
 public class MainActivity extends Activity {
 
@@ -27,9 +24,11 @@ public class MainActivity extends Activity {
 	private TimeTableView tableView;
 	private TitleLayout titleLayout;
 	
-	private ArrayList<Person> pItem = null;
-	private PersonListAdapter pAdapter = null;
-
+	private int futureTask = -1;
+	private static final int FUTURE_TASK_START_ACT_MY_INFO = 1;
+	private static final int FUTURE_TASK_START_ACT_FRIEND_INFO = 2;
+	private static final int FUTURE_TASK_DELETE_FRIEND_INFO = 3;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -42,11 +41,11 @@ public class MainActivity extends Activity {
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
 		drawerView = (LeftDrawer) findViewById(R.id.left_drawer);
+		drawerView.setOnClickListenerViews(clicker);
 		tableView = (TimeTableView) findViewById(R.id.tableView);
 		tableView.setSelectedMode(false);
 		
 		drawerLayout.setDrawerListener(myDrawerListener);
-		drawerView.setDrawerLayout(drawerLayout);
 
 		titleLayout.setButtonL(new OnClickListener() {
 
@@ -94,10 +93,27 @@ public class MainActivity extends Activity {
 		return super.onKeyUp(keyCode, event);
 	}
 
-	DrawerListener myDrawerListener = new DrawerListener() {
+	private DrawerListener myDrawerListener = new DrawerListener() {
 		private float lastTranslate = 0.0f;
 
-		@Override public void onDrawerClosed(View drawerView) {  }
+		@Override 
+		public void onDrawerClosed(View drawerView) { 
+			switch(futureTask) {
+			case FUTURE_TASK_START_ACT_MY_INFO:
+				Intent intent2 = new Intent(MainActivity.this, MyInfoAddActivity.class);
+				startActivity(intent2);
+				break;
+			case FUTURE_TASK_START_ACT_FRIEND_INFO:
+				Intent intent = new Intent(MainActivity.this, FriendInfoAddActivity.class);
+				startActivity(intent);
+				break;
+			case FUTURE_TASK_DELETE_FRIEND_INFO:
+				FriendDeleteDialog dialog2 = new FriendDeleteDialog(MainActivity.this);
+				dialog2.show();
+				break;
+			}
+			futureTask = -1;
+		}
 		@Override public void onDrawerOpened(View drawerView) {  }
 		@Override public void onDrawerStateChanged(int newState) {  }
 
@@ -115,6 +131,29 @@ public class MainActivity extends Activity {
 				tableView.startAnimation(anim);
 
 				lastTranslate = moveFactor;
+			}
+		}
+	};
+	
+	private OnClickListener clicker = new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			if(drawerLayout.isDrawerOpen(drawerView)) {
+				drawerLayout.closeDrawers();
+			}
+			switch (v.getId()) {
+			case R.id.FriendAddButton:
+				futureTask = FUTURE_TASK_START_ACT_FRIEND_INFO;
+				break;
+				
+			case R.id.FriendDeleteButton:
+				futureTask = FUTURE_TASK_DELETE_FRIEND_INFO;
+				break;
+				
+			case R.id.leftdrawer_setting_btn:
+				futureTask = FUTURE_TASK_START_ACT_MY_INFO;
+				break;
 			}
 		}
 	};
