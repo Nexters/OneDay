@@ -7,7 +7,7 @@ import java.util.Set;
 
 import kr.nexters.oneday.R;
 import kr.nexters.oneday.database.DBAdapter;
-import kr.nexters.oneday.database.NotesDBAdapter;
+import kr.nexters.oneday.database.PersonDBAdapter;
 import kr.nexters.oneday.vo.Person;
 import kr.nexters.oneday.vo.TimeInfo;
 import android.content.Context;
@@ -66,7 +66,7 @@ public class TimeTableView extends LinearLayout {
 		initialize();
 		
 		// 유저 정보랑 시간표정보는 이런식으로 가져온다.
-		DBAdapter dbAdapter = new NotesDBAdapter(getContext());
+		DBAdapter dbAdapter = new PersonDBAdapter(getContext());
 		List<Person> userList = dbAdapter.getPeople();
 		List<TimeInfo> timeInfoList = dbAdapter.getUserTimeInfos("1");
 	}
