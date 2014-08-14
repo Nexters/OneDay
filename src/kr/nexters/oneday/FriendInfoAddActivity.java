@@ -1,6 +1,7 @@
 package kr.nexters.oneday;
 
 import kr.nexters.oneday.vo.Person;
+import kr.nexters.oneday.widget.LeftDrawer;
 import kr.nexters.oneday.widget.TimeTableView;
 import kr.nexters.oneday.widget.TitleLayout;
 import android.app.Activity;
@@ -8,6 +9,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
@@ -20,6 +22,8 @@ public class FriendInfoAddActivity extends Activity {
 
 	private TitleLayout titleLayout;
 	private TimeTableView tableView;
+	private DrawerLayout drawerLayout;
+	private LeftDrawer drawerView;
 	FriendAddDialog dialog;
 	
 	@Override
@@ -28,10 +32,20 @@ public class FriendInfoAddActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 		setContentView(R.layout.activity_friend_add);
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,R.layout.custom_title);
-		 
+
 		titleLayout = new TitleLayout(getWindow());
 
+		titleLayout.setTitle("친구 추가");
+		
 		tableView = (TimeTableView) findViewById(R.id.tableView);
+
+		titleLayout.setButtonL(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		}, TitleLayout.BUTTON_EXIT_RES);
 
 		titleLayout.setButtonR(new OnClickListener() {
 
@@ -43,6 +57,14 @@ public class FriendInfoAddActivity extends Activity {
 			}
 		}, TitleLayout.BUTTON_CHECK_RES);
 
+	}
+	
+	public void toggleDrawer() {
+		if (drawerLayout.isDrawerOpen(drawerView) == false){
+			drawerLayout.openDrawer(drawerView);
+		} else {
+			drawerLayout.closeDrawer(drawerView);
+		}
 	}
 
 	public void saveFriendInfo() {

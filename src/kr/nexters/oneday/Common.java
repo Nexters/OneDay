@@ -40,4 +40,8 @@ public class Common {
 	public static Set<Person> getPersonSelectedSet() {
 		return personSelectedSet;
 	}
+	
+	public static void removeSelectedPerson (Person person) {
+		personSelectedSet.remove(person);
+	}
 }

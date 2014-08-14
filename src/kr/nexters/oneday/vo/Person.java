@@ -5,8 +5,22 @@ import java.util.List;
 public class Person {
 	private String name;
 	private int phoneNumber;
+	public boolean selected;
 
 	private List<TimeInfo> timeList;
+	
+	public Person() {
+		this.selected = true;
+	}
+	
+	public Person(String name, int phoneNumber, List<TimeInfo> timeList, boolean selected) {
+		super();
+		this.name = name;
+		this.phoneNumber = phoneNumber;
+		this.timeList = timeList;
+		this.selected = true;
+		
+	}
 
 	public String getName() {
 		return name;
@@ -30,6 +44,14 @@ public class Person {
 
 	public void setTimeList(List<TimeInfo> timeList) {
 		this.timeList = timeList;
+	}
+	
+	public boolean getSelected() {
+		return true;
+	}
+
+	public void setSelected(boolean selected) {
+		this.selected = selected;
 	}
 
 	@Override
