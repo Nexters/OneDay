@@ -15,14 +15,14 @@ import android.util.Log;
    
 
    
-public class NotesDBAdapter implements DBAdapter{ 
+public class PersonDBAdapter implements DBAdapter{ 
    
 
     public static final String KEY_TITLE = "title"; 
     public static final String KEY_BODY = "body"; 
     public static final String KEY_ROWID = "_id"; 
    
-    private static final String TAG = "NotesDbAdapter"; 
+    private static final String TAG = "PersonDbAdapter"; 
     private DatabaseHelper mDbHelper; 
     private SQLiteDatabase mDb;
 
@@ -36,7 +36,7 @@ public class NotesDBAdapter implements DBAdapter{
 
     private static final String DATABASE_CREATE =
 
-          "create table notes (_id integer primary key autoincrement, "
+          "create table person (_id integer primary key autoincrement, "
 
             + "title text not null, body text not null);";
 
@@ -44,7 +44,7 @@ public class NotesDBAdapter implements DBAdapter{
 
     private static final String DATABASE_NAME = "data";
 
-    private static final String DATABASE_TABLE = "notes";
+    private static final String DATABASE_TABLE = "person";
 
     private static final int DATABASE_VERSION = 2;
 
@@ -86,7 +86,7 @@ public class NotesDBAdapter implements DBAdapter{
 
                     + newVersion + ", which will destroy all old data");
 
-            db.execSQL("DROP TABLE IF EXISTS notes");
+            db.execSQL("DROP TABLE IF EXISTS person");
 
             onCreate(db);
 
@@ -96,7 +96,7 @@ public class NotesDBAdapter implements DBAdapter{
 
    
 
-    public NotesDBAdapter(Context ctx) {
+    public PersonDBAdapter(Context ctx) {
 
         this.mCtx = ctx;
 
@@ -104,7 +104,7 @@ public class NotesDBAdapter implements DBAdapter{
 
    
 
-    public NotesDBAdapter open() throws SQLException {
+    public PersonDBAdapter open() throws SQLException {
 
         mDbHelper = new DatabaseHelper(mCtx);
 
@@ -124,7 +124,7 @@ public class NotesDBAdapter implements DBAdapter{
 
    
 
-    public long createNote(String title, String body) {
+    public long createPerson(String title, String body) {
 
         ContentValues initialValues = new ContentValues();
 
@@ -140,7 +140,7 @@ public class NotesDBAdapter implements DBAdapter{
 
    
 
-    public boolean deleteNote(long rowId) {
+    public boolean deletePerson(long rowId) {
 
    
 
@@ -152,7 +152,7 @@ public class NotesDBAdapter implements DBAdapter{
 
    
 
-    public Cursor fetchAllNotes() {
+    public Cursor fetchAllPerson() {
 
    
 
@@ -168,7 +168,7 @@ public class NotesDBAdapter implements DBAdapter{
                 KEY_BODY }, null, null, null, null, null);
     }
 
-    public Cursor fetchNote(long rowId) throws SQLException {
+    public Cursor fetchPerson(long rowId) throws SQLException {
 
    
 
@@ -196,7 +196,7 @@ public class NotesDBAdapter implements DBAdapter{
 
    
 
-    public boolean updateNote(long rowId, String title, String body) {
+    public boolean updatePerson(long rowId, String title, String body) {
 
         ContentValues args = new ContentValues();
 

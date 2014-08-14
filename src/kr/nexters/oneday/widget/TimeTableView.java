@@ -1,17 +1,19 @@
 package kr.nexters.oneday.widget;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
 import kr.nexters.oneday.R;
 import kr.nexters.oneday.database.DBAdapter;
-import kr.nexters.oneday.database.NotesDBAdapter;
 import kr.nexters.oneday.vo.Person;
 import kr.nexters.oneday.vo.TimeInfo;
+//import kr.nexters.oneday.util.ViewUtil;
 import android.content.Context;
 import android.graphics.Color;
+import android.provider.Telephony;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -66,7 +68,7 @@ public class TimeTableView extends LinearLayout {
 		initialize();
 		
 		// 유저 정보랑 시간표정보는 이런식으로 가져온다.
-		DBAdapter dbAdapter = new NotesDBAdapter(getContext());
+		DBAdapter dbAdapter = new PersonDBAdapter(getContext());
 		List<Person> userList = dbAdapter.getPeople();
 		List<TimeInfo> timeInfoList = dbAdapter.getUserTimeInfos("1");
 	}
@@ -76,7 +78,6 @@ public class TimeTableView extends LinearLayout {
 		inflater.inflate(R.layout.timetable, this);
 		
 		innerLayout = (LinearLayout) findViewById(R.id.timetable_inner_layout);
-		
 		LinearLayout linear = null;
 		for (int i = 0; i < MAX_CELL_CNT * 5; i++) {
 			if(i % MAX_CELL_CNT == 0) {
@@ -91,9 +92,11 @@ public class TimeTableView extends LinearLayout {
 			linear.addView(holder.root);
 			((LayoutParams) holder.root.getLayoutParams()).weight = 1;
 		}
+		
+		findViewById(R.id.bg_bar_time).scrollBy(0, -(int) ViewUtil.dipToPx(5));
 	}
 	
-	private void addCountSector(DAY day, TIME time) {
+	private void addCountSector(Person p, DAY day, TIME time) {
 		TimeSectorHolder holder = getHolder(day, time);
 		String currentCnt = holder.text.getText().toString();
 		
@@ -102,6 +105,8 @@ public class TimeTableView extends LinearLayout {
 		} else {
 			setSectorColor(day, time, Integer.parseInt(currentCnt) + 1);
 		}
+		
+		holder.personSet.add(p);
 	}
 	
 	/**
@@ -158,31 +163,36 @@ public class TimeTableView extends LinearLayout {
 		return ret;
 	}
 	
+	public void addPerson(Person person) {
+		for(TimeInfo info : person.getTimeList()) {
+			addCountSector(person, info.getDay(), info.getTime());
+		}
+	}
+	
 	public void setPerson(Set<Person> personSelectedSet) {
 		clearSector();
 		
 		Iterator<Person> it = personSelectedSet.iterator();
-		
 		while(it.hasNext()) {
-			Person person = it.next();
-			for(TimeInfo info : person.getTimeList()) {
-				addCountSector(info.getDay(), info.getTime());
-			}
+			addPerson(it.next());
 		}
 	}
 	
 	public void clearSector() {
 		for(TimeSectorHolder holder : ref) {
 			holder.root.setSelected(false);
+			holder.personSet.clear();
 			setSectorColor(holder.day, holder.time, 0);
 		}
 	}
 	
-	private class TimeSectorHolder implements OnClickListener {
+	private class TimeSectorHolder {
 		private View root;
 		private TextView text;
 		private DAY day;
 		private TIME time;
+		
+		private Set<Person> personSet = new HashSet<Person>();
 		
 		private TimeSectorHolder() { }
 		
@@ -190,15 +200,15 @@ public class TimeTableView extends LinearLayout {
 			root = LayoutInflater.from(context).inflate(R.layout.time_sector, null);
 			text = (TextView) root.findViewById(R.id.timesector_text);
 			
-			root.setOnClickListener(this);
+			root.setOnClickListener(selectorListener);
 		}
 		
 		private void setSelectedMode(boolean isSelectedMode) {
 			root.setSelected(false);
 			if(isSelectedMode) {
-				root.setOnClickListener(this);
+				root.setOnClickListener(selectorListener);
 			} else {
-				root.setOnClickListener(null);
+				root.setOnClickListener(popupListener);
 			}
 		}
 		
@@ -249,9 +259,23 @@ public class TimeTableView extends LinearLayout {
 			return false;
 		}
 		
-		@Override
-		public void onClick(View v) {
-			root.setSelected(!root.isSelected());
-		}
+		private OnClickListener selectorListener = new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				root.setSelected(!root.isSelected());
+			}
+		};
+		
+		private OnClickListener popupListener = new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if(personSet.size() > 0) {
+					TelDialog dialog = new TelDialog(TimeTableView.this.getContext(), personSet);
+					dialog.show();
+				}
+			}
+		};
 	}
 }

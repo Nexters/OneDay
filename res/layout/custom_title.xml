@@ -17,8 +17,8 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="Custom Title"
-        android:textColor="#5D5D5D"
-        android:textSize="20sp"
+        android:textColor="#fff"
+        android:textSize="16dp"
         android:textStyle="bold" />
 
     <ImageButton

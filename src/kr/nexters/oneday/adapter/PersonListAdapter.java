@@ -32,7 +32,8 @@ public class PersonListAdapter extends BaseAdapter{
 	public PersonListAdapter(Context context) {
 		this.context = context;
 		this.pList = new ArrayList<Person>(Common.getPersonSet()); 
-		pList.remove(new Person("나", 0, null, false));
+		pList.remove(new Person("나", null, null, false));
+
 		inflater = (LayoutInflater)context.getSystemService( Context.LAYOUT_INFLATER_SERVICE);
 	}
 
@@ -115,12 +116,12 @@ public class PersonListAdapter extends BaseAdapter{
 	public void notifyDataSetChanged() {
 		pList.clear();
 		pList.addAll(Common.getPersonSet());
-		pList.remove(new Person("나", 0, null, false));
+		pList.remove(new Person("나", null, null, false));
 		super.notifyDataSetChanged();
 	}
 	
 	private void toggleTable(String name, boolean check) {
-		Person person = new Person(name, 0, null, check);	
+		Person person = new Person(name, null, null, check);	
 		if (check == true) {
 //			Common.addSelectedPerson(person);
 		} else {

@@ -19,15 +19,9 @@
 
         <TextView
             android:id="@+id/leftdrawer_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
+            style="@style/left_drawer_list_item_text"
             android:layout_toLeftOf="@+id/leftdrawer_setting_btn"
-            android:gravity="center"
-            android:text="나"
-            android:textColor="#fff"
-            android:textSize="13dp" />
+            android:text="나" />
     </RelativeLayout>
 
     <LinearLayout
@@ -57,10 +51,14 @@
         android:id="@+id/listView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/divider" >
+        android:layout_above="@+id/friend_manage_buttons"
+        android:layout_below="@+id/divider"
+        android:divider="@null"
+        android:dividerHeight="7dp" >
     </ListView>
 
     <LinearLayout
+        android:id="@+id/friend_manage_buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
