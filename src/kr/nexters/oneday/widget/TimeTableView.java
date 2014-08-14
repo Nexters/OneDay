@@ -10,6 +10,7 @@ import kr.nexters.oneday.database.DBAdapter;
 import kr.nexters.oneday.database.PersonDBAdapter;
 import kr.nexters.oneday.vo.Person;
 import kr.nexters.oneday.vo.TimeInfo;
+//import kr.nexters.oneday.util.ViewUtil;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
@@ -76,7 +77,6 @@ public class TimeTableView extends LinearLayout {
 		inflater.inflate(R.layout.timetable, this);
 		
 		innerLayout = (LinearLayout) findViewById(R.id.timetable_inner_layout);
-		
 		LinearLayout linear = null;
 		for (int i = 0; i < MAX_CELL_CNT * 5; i++) {
 			if(i % MAX_CELL_CNT == 0) {
@@ -91,6 +91,8 @@ public class TimeTableView extends LinearLayout {
 			linear.addView(holder.root);
 			((LayoutParams) holder.root.getLayoutParams()).weight = 1;
 		}
+		
+		//findViewById(R.id.bg_bar_time).scrollBy(0, -(int) ViewUtil.dipToPx(7));
 	}
 	
 	private void addCountSector(DAY day, TIME time) {
@@ -158,21 +160,24 @@ public class TimeTableView extends LinearLayout {
 		return ret;
 	}
 	
+	public void addPerson(Person person) {
+		for(TimeInfo info : person.getTimeList()) {
+			addCountSector(info.getDay(), info.getTime());
+		}
+	}
+	
 	public void setPerson(Set<Person> personSelectedSet) {
 		clearSector();
 		
 		Iterator<Person> it = personSelectedSet.iterator();
-		
 		while(it.hasNext()) {
-			Person person = it.next();
-			for(TimeInfo info : person.getTimeList()) {
-				addCountSector(info.getDay(), info.getTime());
-			}
+			addPerson(it.next());
 		}
 	}
 	
-	private void clearSector() {
+	public void clearSector() {
 		for(TimeSectorHolder holder : ref) {
+			holder.root.setSelected(false);
 			setSectorColor(holder.day, holder.time, 0);
 		}
 	}

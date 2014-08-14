@@ -13,6 +13,7 @@ public class TitleLayout {
 	public static final int BUTTON_TOGGLE_RES 	= R.drawable.title_bar_drawerlayer_selector;
 	public static final int BUTTON_CHECK_RES 	= R.drawable.title_bar_check_selector;
 	public static final int BUTTON_EXPORT_RES 	= R.drawable.title_bar_export_selector;
+	public static final int BUTTON_EXIT_RES 	= R.drawable.title_bar_exit_selector;
 	
 	private TextView title;
 	private ImageButton buttonL;

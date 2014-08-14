@@ -3,49 +3,39 @@ package kr.nexters.oneday.adapter;
 
 import java.util.ArrayList;
 
+import kr.nexters.oneday.Common;
 import kr.nexters.oneday.R;
-import kr.nexters.oneday.R.id;
 import kr.nexters.oneday.vo.Person;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class PersonListAdapter extends BaseAdapter{
-	private Context context;
 	private LayoutInflater inflater;
 	private ArrayList<Person> pList;
-	private int layout;
 
-	public PersonListAdapter(Context context, int layout, ArrayList<Person> pList ) {
-		this.context = context;
-		this.layout = layout;
-		this.pList = pList; 
-		inflater = (LayoutInflater)context.getSystemService(
-				Context.LAYOUT_INFLATER_SERVICE);
+	public PersonListAdapter(Context context) {
+		this.pList = new ArrayList<Person>(Common.getPersonSet()); 
+		pList.remove(new Person("나", null, null));
+		inflater = (LayoutInflater)context.getSystemService( Context.LAYOUT_INFLATER_SERVICE);
 	}
 
 	@Override
 	public int getCount() {
-		// TODO Auto-generated method stub
 		return pList.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		// TODO Auto-generated method stub
 		return pList.get(position);
 	}
 
 	@Override
 	public long getItemId(int position) {
-		// TODO Auto-generated method stub
 		return position;
 	}
 
@@ -58,12 +48,11 @@ public class PersonListAdapter extends BaseAdapter{
 		//캐시된 뷰가 없는 경우 새로 생성하고 뷰홀더 저장한다
 		if(convertView == null)
 		{
-			convertView = inflater.inflate(layout, parent, false);
+			convertView = inflater.inflate(R.layout.person_item, parent, false);
 
 			viewHolder = new PersonViewHolder();
-			viewHolder.name = (TextView) convertView.findViewById(R.id.textView1);
-			viewHolder.v_button = (ImageButton)convertView.findViewById(R.id.SettingButton);
-			viewHolder.checkbox = (CheckBox)convertView.findViewById(R.id.checkBox1);
+			viewHolder.name = (TextView) convertView.findViewById(R.id.leftdrawer_name);
+			viewHolder.v_button = (ImageButton)convertView.findViewById(R.id.leftdrawer_setting_btn);
 
 			convertView.setTag(viewHolder);
 		}
@@ -76,15 +65,22 @@ public class PersonListAdapter extends BaseAdapter{
 
 		viewHolder.name.setText(pList.get(position).getName());
 
-		//checkBox랑 button이벤트 리스너 등록 및 작성!!
+		// button이벤트 리스너 등록 및 작성!!
 
 		return convertView;
 	}
 
+	@Override
+	public void notifyDataSetChanged() {
+		pList.clear();
+		pList.addAll(Common.getPersonSet());
+		pList.remove(new Person("나", null, null));
+		super.notifyDataSetChanged();
+	}
+
+	class PersonViewHolder {
+		private TextView name = null;
+		private ImageButton v_button = null;
+	}
 }
 
-class PersonViewHolder {
-	public TextView name = null;
-	public ImageButton v_button = null;
-	public CheckBox checkbox = null;
-}
