@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import kr.nexters.oneday.Common;
 import kr.nexters.oneday.FriendInfoAddActivity;
+import kr.nexters.oneday.FriendStorageActivity;
 import kr.nexters.oneday.MainActivity;
 import kr.nexters.oneday.MyInfoAddActivity;
 import kr.nexters.oneday.R;
@@ -32,7 +33,7 @@ public class PersonListAdapter extends BaseAdapter{
 	public PersonListAdapter(Context context) {
 		this.context = context;
 		this.pList = new ArrayList<Person>(Common.getPersonSet()); 
-		pList.remove(new Person("나", null, null, false));
+		pList.remove(new Person("나", null, null, true));
 
 		inflater = (LayoutInflater)context.getSystemService( Context.LAYOUT_INFLATER_SERVICE);
 	}
@@ -86,13 +87,13 @@ public class PersonListAdapter extends BaseAdapter{
 			public void onClick(View v) {
 				//선택안됨
 				if (pList.get(pos).selected == true) {
-					v.setBackgroundResource(R.color.transparent);
+					v.setBackgroundResource(R.drawable.bg_list_p);
 					toggleTable(pList.get(pos).getName(), pList.get(pos).selected);
 					((MainActivity)MainActivity.context).checkTable();
 					pList.get(pos).selected = false;
 					
 				} else {
-					v.setBackgroundResource(R.drawable.bg_list_p);
+					v.setBackgroundResource(R.color.transparent);
 					toggleTable(pList.get(pos).getName(), pList.get(pos).selected);
 					((MainActivity)MainActivity.context).checkTable();
 					pList.get(pos).selected = true;
@@ -104,7 +105,8 @@ public class PersonListAdapter extends BaseAdapter{
 
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(context, FriendInfoAddActivity.class);
+				Intent intent = new Intent(context, FriendStorageActivity.class);
+				intent.putExtra("TextIn1", pList.get(pos).getName().toString());
 				context.startActivity(intent);
 			}
 		});
@@ -116,7 +118,7 @@ public class PersonListAdapter extends BaseAdapter{
 	public void notifyDataSetChanged() {
 		pList.clear();
 		pList.addAll(Common.getPersonSet());
-		pList.remove(new Person("나", null, null, false));
+		pList.remove(new Person("나", null, null, true));
 		super.notifyDataSetChanged();
 	}
 	
