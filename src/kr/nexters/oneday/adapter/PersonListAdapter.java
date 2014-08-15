@@ -85,7 +85,6 @@ public class PersonListAdapter extends BaseAdapter{
 
 			@Override
 			public void onClick(View v) {
-				//선택안됨
 				if (pList.get(pos).selected == true) {
 					v.setBackgroundResource(R.drawable.bg_list_p);
 					toggleTable(pList.get(pos).getName(), pList.get(pos).selected);
