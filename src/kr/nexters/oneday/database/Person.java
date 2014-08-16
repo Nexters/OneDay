@@ -8,14 +8,17 @@ import android.database.sqlite.SQLiteException;
 import android.widget.EditText;
 
 public class Person {
-
+	int id;
 	private String name;
 	private int phoneNumber;
-	private List<Integer> timeTable;
-	//private DBHandler dbhandler;
+	private List<Integer> timeTable;	
 	
-	
-	
+	public int getId() {
+		return this.id;
+	}
+	public void setId(int id){
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}

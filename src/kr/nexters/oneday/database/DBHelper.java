@@ -14,24 +14,42 @@ import android.hardware.SensorManager;
 
 public class DBHelper extends SQLiteOpenHelper {
 	
-
+	// column's name for "person" table
+	public static final String KEY_ROWID = "_id";
+	public static final String KEY_NAME = "name"; 
+	public static final String KEY_GROUPID = "groupid";
+	public static final String KEY_PHONENUMBER = "phonenumber";
+	 
+	// column's name for "timetable" table
+	public static final String KEY_DAYNUMBER = "day";
+	public static final String KEY_TIMENUMBER = "time";
 	
+	// DATABASE name
+	public static final String DATABASE_NAME = "data.db";
 
+	//database sql creation statement
+	public static final String DATABASE_TABLE_person = "person";
+	public static final String DATABASE_TABLE_timetable ="timetable";
+	
+	
+	public static final int DATABASE_VERSION = 3;
+	
+	private static final String DATABASE_CREATE_PERSON = "CREATE TABLE person (_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT not null,  groupid TEXT, phonenumber TEXT);";
+	private static final String DATABASE_CREATE_TIMETABLE ="CREATE TABLE timetable (_id INTEGER, day TEXT, time TEXT);";
+	
+	public DBHelper(Context context){
+		super(context,DATABASE_NAME,null, DATABASE_VERSION);
+	}
 	public DBHelper(Context context, String name, CursorFactory factory,
 			int version) {
 		super(context, name, factory, version);
-
-
 	}
 
 
 	public void onCreate(SQLiteDatabase db) {
 
-		String sql = "create table person ( " +
-				" _id integer primary key autoincrement , " +
-				" name text , " +
-				" phonenumber integer )";
-		db.execSQL(sql);
+		db.execSQL(DATABASE_CREATE_PERSON);
+		db.execSQL(DATABASE_CREATE_TIMETABLE);
 	}//end onCreate
 
 
@@ -42,24 +60,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
 		String sql = "drop table if exists person";
 		db.execSQL(sql);
-
 		onCreate(db);
 	}//end onUpgrade
-
-	public void loadPersonInfo() {
-
-		
-	}
-	
-	public void insertPerson() {
-	}
-	public Person select() {
-		String sql = "select * from tableName";
-
-		return null;
-	}
 	
 
-
-	
 }//end class

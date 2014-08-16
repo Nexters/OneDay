@@ -1,4 +1,4 @@
-package kr.nexters.oneday.database;
+/*package kr.nexters.oneday.database;
 
 import android.database.Cursor;
 import android.content.Context;
@@ -11,21 +11,24 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHandler  {
 
+	public static final String KEY_ROWID = "_id";
 	public static final String KEY_NAME = "name"; 
-	public static final String KEY_PHONENUMBER = "phonenumber"; 
-	public static final String KEY_TIMETABLE = "timetable"; 
-	public static final String KEY_GROUPID = "groupid"; 
-	public static final String KEY_ROWID = "rowid"; 
-
+	public static final String KEY_GROUPID = "groupid";
+	public static final String KEY_PHONENUMBER = "phonenumber";
+	 
+//
+	public static final String KEY_DAYNUMBER = "daynumber";
+	public static final String KEY_TIMENUMBER = "timenumber";
 	//database sql creation statement
 
 	private static final String DATABASE_NAME = "data";
 
-	private static final String DATABASE_TABLE = "person";
+	private static final String DATABASE_TABLE_person = "person";
+	private static final String DATABASE_TABLE_timetable ="timetable";
 	
 	private static final int DATABASE_VERSION = 2;
 
-
+	
 	private SQLiteDatabase mDb;
 	private DBHelper helper;
 
@@ -62,14 +65,14 @@ public class DBHandler  {
 
 
 
-		return mDb.insert(DATABASE_TABLE, null, initialValues);
+		return mDb.insert(DATABASE_TABLE_person, null, initialValues);
 
 	}
 	//delete
 	public boolean deletePerson(long rowId) {
 
 
-		return mDb.delete(DATABASE_TABLE, KEY_ROWID + "=" + rowId, null) > 0;
+		return mDb.delete(DATABASE_TABLE_person, KEY_ROWID + "=" + rowId, null) > 0;
 
 	}
 
@@ -99,4 +102,4 @@ public class DBHandler  {
 	}
 
 
-}//end class
+}//end class*/

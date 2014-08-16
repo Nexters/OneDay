@@ -3,6 +3,7 @@ package kr.nexters.oneday.vo;
 import java.util.List;
 
 public class Person {
+	long rowid;
 	private String name;
 	public boolean selected;
 	private String phoneNumber;
@@ -21,7 +22,12 @@ public class Person {
 		this.selected = true;
 		
 	}
-
+	public long getrowId(){
+		return this.rowid;
+	}
+	public void setId(long id){
+		this.rowid = id;
+	}
 	public String getName() {
 		return name;
 	}

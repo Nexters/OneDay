@@ -3,6 +3,8 @@ package kr.nexters.oneday;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import kr.nexters.oneday.adapter.PersonListAdapter;
+import kr.nexters.oneday.database.DBHelper;
+import kr.nexters.oneday.database.PersonDBAdapter;
 import kr.nexters.oneday.vo.Person;
 import kr.nexters.oneday.widget.FriendDeleteDialog;
 import kr.nexters.oneday.widget.LeftDrawer;
@@ -12,6 +14,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap.CompressFormat;
 import android.net.Uri;
 import android.os.Build;
@@ -45,6 +48,8 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//LoadCommonFromDatabase();
+		
 		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 		setContentView(R.layout.activity_main);
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,R.layout.custom_title);
@@ -184,6 +189,7 @@ public class MainActivity extends Activity {
 			}
 		}
 	};
+	
 }
 
 

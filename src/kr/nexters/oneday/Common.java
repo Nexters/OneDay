@@ -17,6 +17,7 @@ public class Common {
 		sContext = context;
 		personSet = new HashSet<Person>();
 		personSelectedSet = new HashSet<Person>();
+	
 	}
 
 	public static Context getMainContext() {
