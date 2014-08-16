@@ -12,225 +12,171 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-   
 
-   
-public class PersonDBAdapter implements DBAdapter{ 
-   
+public class PersonDBAdapter implements DBAdapter {
 
-    public static final String KEY_TITLE = "title"; 
-    public static final String KEY_BODY = "body"; 
-    public static final String KEY_ROWID = "_id"; 
-   
-    private static final String TAG = "PersonDbAdapter"; 
-    private DatabaseHelper mDbHelper; 
-    private SQLiteDatabase mDb;
+	public static final String KEY_TITLE = "title";
+	public static final String KEY_BODY = "body";
+	public static final String KEY_ROWID = "_id";
 
-   
+	private static final String TAG = "PersonDbAdapter";
+	private DatabaseHelper mDbHelper;
+	private SQLiteDatabase mDb;
 
-    /**
+	/**
+	 * 
+	 * Database creation sql statement
+	 */
 
-     * Database creation sql statement
+	private static final String DATABASE_CREATE =
 
-     */
+	"create table person (_id integer primary key autoincrement, "
 
-    private static final String DATABASE_CREATE =
+	+ "title text not null, body text not null);";
 
-          "create table person (_id integer primary key autoincrement, "
 
-            + "title text not null, body text not null);";
+	private static final String DATABASE_TABLE = "person";
 
-   
+	private static final int DATABASE_VERSION = 1;
 
-    private static final String DATABASE_NAME = "data";
+	private final Context mCtx;
 
-    private static final String DATABASE_TABLE = "person";
+	private static class DatabaseHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 2;
+		DatabaseHelper(Context context) {
+			super(context, DATABASE_NAME, null, DATABASE_VERSION);
+		}
 
-   
+		@Override
+		public void onCreate(SQLiteDatabase db) {
+			db.execSQL(DATABASE_CREATE);
+		}
 
-    private final Context mCtx;
+		@Override
+		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-   
+			Log.w(TAG, "Upgrading database from version " + oldVersion + " to "
 
-    private static class DatabaseHelper extends SQLiteOpenHelper {
+			+ newVersion + ", which will destroy all old data");
 
-   
+			db.execSQL("DROP TABLE IF EXISTS person");
 
-        DatabaseHelper(Context context) {
+			onCreate(db);
 
-            super(context, DATABASE_NAME, null, DATABASE_VERSION);
+		}
 
-        }
+	}
 
-   
+	public PersonDBAdapter(Context ctx) {
 
-        @Override
+		this.mCtx = ctx;
 
-        public void onCreate(SQLiteDatabase db) {
+	}
 
-   
+	public PersonDBAdapter open() throws SQLException {
 
-            db.execSQL(DATABASE_CREATE);
+		mDbHelper = new DatabaseHelper(mCtx);
 
-        }
+		mDb = mDbHelper.getWritableDatabase();
 
-   
+		return this;
 
-        @Override
+	}
 
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+	public void close() {
 
-            Log.w(TAG, "Upgrading database from version " + oldVersion + " to "
+		mDbHelper.close();
 
-                    + newVersion + ", which will destroy all old data");
+	}
 
-            db.execSQL("DROP TABLE IF EXISTS person");
+	public long createPerson(String title, String body) {
 
-            onCreate(db);
+		ContentValues initialValues = new ContentValues();
 
-        }
+		initialValues.put(KEY_TITLE, title);
 
-    }
+		initialValues.put(KEY_BODY, body);
 
-   
+		return mDb.insert(DATABASE_TABLE, null, initialValues);
 
-    public PersonDBAdapter(Context ctx) {
+	}
 
-        this.mCtx = ctx;
+	public boolean deletePerson(long rowId) {
 
-    }
+		Log.i("Delete called", "value__" + rowId);
 
-   
+		return mDb.delete(DATABASE_TABLE, KEY_ROWID + "=" + rowId, null) > 0;
 
-    public PersonDBAdapter open() throws SQLException {
+	}
 
-        mDbHelper = new DatabaseHelper(mCtx);
+	public Cursor fetchAllPerson() {
 
-        mDb = mDbHelper.getWritableDatabase();
+		return mDb.query(DATABASE_TABLE, new String[] { KEY_ROWID, KEY_TITLE,
 
-        return this;
+		KEY_BODY }, null, null, null, null, null);
 
-    }
+	}
 
-   
+	private Cursor fetchAllUsers() {
+		return mDb.query(DATABASE_TABLE, new String[] { KEY_ROWID, KEY_TITLE,
 
-    public void close() {
+		KEY_BODY }, null, null, null, null, null);
+	}
 
-        mDbHelper.close();
+	public Cursor fetchPerson(long rowId) throws SQLException {
 
-    }
+		Cursor mCursor =
 
-   
+		mDb.query(true, DATABASE_TABLE, new String[] { KEY_ROWID, KEY_TITLE,
 
-    public long createPerson(String title, String body) {
+		KEY_BODY }, KEY_ROWID + "=" + rowId, null, null, null, null,
 
-        ContentValues initialValues = new ContentValues();
+		null);
 
-        initialValues.put(KEY_TITLE, title);
+		if (mCursor != null) {
 
-        initialValues.put(KEY_BODY, body);
+			mCursor.moveToFirst();
 
-   
+		}
 
-        return mDb.insert(DATABASE_TABLE, null, initialValues);
+		return mCursor;
 
-    }
+	}
 
-   
+	public boolean updatePerson(long rowId, String title, String body) {
 
-    public boolean deletePerson(long rowId) {
+		ContentValues args = new ContentValues();
 
-   
+		args.put(KEY_TITLE, title);
 
-        Log.i("Delete called", "value__" + rowId);
+		args.put(KEY_BODY, body);
 
-        return mDb.delete(DATABASE_TABLE, KEY_ROWID + "=" + rowId, null) > 0;
+		return mDb.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;
 
-    }
+	}
 
-   
-
-    public Cursor fetchAllPerson() {
-
-   
-
-        return mDb.query(DATABASE_TABLE, new String[] { KEY_ROWID, KEY_TITLE,
-
-                KEY_BODY }, null, null, null, null, null);
-
-    }
-
-    private Cursor fetchAllUsers(){
-    	return mDb.query(DATABASE_TABLE, new String[] { KEY_ROWID, KEY_TITLE,
-
-                KEY_BODY }, null, null, null, null, null);
-    }
-
-    public Cursor fetchPerson(long rowId) throws SQLException {
-
-   
-
-        Cursor mCursor =
-
-   
-
-        mDb.query(true, DATABASE_TABLE, new String[] { KEY_ROWID, KEY_TITLE,
-
-                KEY_BODY }, KEY_ROWID + "=" + rowId, null, null, null, null,
-
-                null);
-
-        if (mCursor != null) {
-
-            mCursor.moveToFirst();
-
-        }
-
-        return mCursor;
-
-   
-
-    }
-
-   
-
-    public boolean updatePerson(long rowId, String title, String body) {
-
-        ContentValues args = new ContentValues();
-
-        args.put(KEY_TITLE, title);
-
-        args.put(KEY_BODY, body);
-
-   
-
-        return mDb.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;
-
-    }
-
-
-    // select * from timetable where user_id = 'UserId'
+	// select * from timetable where user_id = 'UserId'
 	@Override
 	public List<TimeInfo> getUserTimeInfos(String userId) {
 		// TODO Auto-generated method stub
-		
+
+		String sql = "select timetable, name" + "from person "
+				+ "where name = " + userId;
+
 		return null;
+
 	}
 
 	@Override
-	public void addTimeInfo(String userId, TimeInfo timeInfo) {
+	public void addTimeInfo(long userId, TimeInfo timeInfo) {
 		// TODO Auto-generated method stub
-		
+
 	}
-
-
 
 	@Override
 	public void removeTimeInfo(TimeInfo time) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -242,14 +188,12 @@ public class PersonDBAdapter implements DBAdapter{
 	@Override
 	public void addPerson(Person person) {
 		// TODO Auto-generated method stub
-		
+
 	}
-
-
 
 	@Override
 	public void removePerson(Person person) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
