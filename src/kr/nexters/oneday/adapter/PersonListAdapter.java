@@ -79,13 +79,12 @@ public class PersonListAdapter extends BaseAdapter{
 			@Override
 			public void onClick(View v) {
 				if (pList.get(pos).selected == true) {
-					v.setBackgroundResource(R.drawable.bg_list_p);
+					v.setBackgroundResource(R.color.transparent);
 					toggleTable(pList.get(pos), false);
 					((MainActivity)MainActivity.context).checkTable();
 					pList.get(pos).selected = false;
-					
 				} else {
-					v.setBackgroundResource(R.color.transparent);
+					v.setBackgroundResource(R.drawable.bg_list_p);
 					toggleTable(pList.get(pos), true);
 					((MainActivity)MainActivity.context).checkTable();
 					pList.get(pos).selected = true;
