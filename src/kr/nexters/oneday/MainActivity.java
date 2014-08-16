@@ -106,18 +106,18 @@ public class MainActivity extends Activity {
 
 		//me 토글리스너
 		textView.setOnClickListener(new OnClickListener() {
-			Person person = new Person("나", null, null, true);
 			int cnt = 0;
 			@Override
 			public void onClick(View v) {
 				if (cnt % 2 == 0) {
 					v.setBackgroundResource(R.color.transparent);
-					Common.removeSelectedPerson(person);
+					Common.removeSelectedPerson(new Person("나", null, null, false));
 					tableView.setPerson(Common.getPersonSelectedSet());
 				} else {
+					Person p = Common.getPerson("나");
 					v.setBackgroundResource(R.drawable.bg_list_p);
 //					Common.addPerson(person);
-					Common.addSelectedPerson(person);
+					Common.addSelectedPerson(p);
 					tableView.setPerson(Common.getPersonSelectedSet());
 					
 				}

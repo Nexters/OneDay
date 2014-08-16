@@ -34,20 +34,15 @@ public class PersonDBAdapter implements DBAdapter{
 
      */
 
-    private static final String DATABASE_CREATE =
-
-          "create table person (_id integer primary key autoincrement, "
-
-            + "title text not null, body text not null);";
-
-   
-
     private static final String DATABASE_NAME = "data";
 
     private static final String DATABASE_TABLE = "person";
 
     private static final int DATABASE_VERSION = 2;
 
+    private static final String DATABASE_CREATE =
+            "create table person (_id integer primary key autoincrement, "
+              + "title text not null, body text not null);";
    
 
     private final Context mCtx;

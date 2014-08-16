@@ -44,4 +44,19 @@ public class Common {
 	public static void removeSelectedPerson(Person person) {
 		personSelectedSet.remove(person);
 	}
+	
+	public static Person getPerson(String name) {
+		Person me = new Person(name, null, null, true);
+		if(personSet.contains(me)) {
+			Iterator<Person> it = Common.getPersonSet().iterator();
+			while(it.hasNext()) {
+				Person p = it.next();
+				if(p.equals(me)) {
+					return p;
+				}
+			}
+		}
+		return null;
+	}
+	
 }
