@@ -165,6 +165,9 @@ public class TimeTableView extends LinearLayout {
 	}
 	
 	public void addPerson(Person person) {
+		if(person == null || person.getTimeList() == null) {
+			return;
+		}
 		for(TimeInfo info : person.getTimeList()) {
 			addCountSector(person, info.getDay(), info.getTime());
 		}
