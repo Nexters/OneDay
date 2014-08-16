@@ -14,6 +14,7 @@
     <TextView
         android:id="@+id/leftdrawer_name"
         style="@style/left_drawer_list_item_text"
-        android:layout_toLeftOf="@+id/leftdrawer_setting_btn" />
+        android:layout_toLeftOf="@+id/leftdrawer_setting_btn"
+        android:onClick="onClick" />
 
 </RelativeLayout>

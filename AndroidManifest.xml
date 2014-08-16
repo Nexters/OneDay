@@ -7,7 +7,8 @@
     <uses-sdk
         android:minSdkVersion="7"
         android:targetSdkVersion="19" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:name=".OneDayApplication"
@@ -24,7 +25,7 @@
         <activity android:name=".FriendInfoAddActivity" >
         </activity>
         <activity
-            android:name="SplashActivity"
+            android:name=".SplashActivity"
             android:theme="@style/AppThemeNoTitle" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +33,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        </application>
+        <activity
+            android:name=".FriendStorageActivity" >
+        </activity>
+    </application>
 
 </manifest>

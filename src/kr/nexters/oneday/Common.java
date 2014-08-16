@@ -42,7 +42,7 @@ public class Common {
 		return personSelectedSet;
 	}
 	
-	public static void removeSelectedPerson (Person person) {
+	public static void removeSelectedPerson(Person person) {
 		personSelectedSet.remove(person);
 	}
 }

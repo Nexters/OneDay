@@ -15,6 +15,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.net.Uri;
 import android.os.Build;
@@ -28,6 +29,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.animation.TranslateAnimation;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -45,6 +48,8 @@ public class MainActivity extends Activity {
 	private static final int FUTURE_TASK_START_ACT_FRIEND_INFO = 2;
 	private static final int FUTURE_TASK_DELETE_FRIEND_INFO = 3;
 	
+	TextView textView;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -55,6 +60,8 @@ public class MainActivity extends Activity {
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,R.layout.custom_title);
 		
 		context = this;
+		textView = (TextView)findViewById(R.id.leftdrawer_name);
+		
 		titleLayout = new TitleLayout(getWindow());
 
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -86,15 +93,42 @@ public class MainActivity extends Activity {
 //				startActivity(Intent.createChooser(sharingIntent, "Share using"));
 
 				ByteArrayOutputStream bos = new ByteArrayOutputStream();  
-				tableView.getDrawingCache().compress(CompressFormat.PNG, 0, bos);
+//				tableView.getDrawingCache().compress(CompressFormat.PNG, 0, bos);
+				
+				Bitmap bitmap = Bitmap.createBitmap(tableView.getWidth(),tableView.getHeight(), Bitmap.Config.RGB_565);
+				bitmap.compress(CompressFormat.PNG, 50, bos);
+				
+				byte[] b = bos.toByteArray();
+
 				Intent sharingIntent = new Intent(Intent.ACTION_SEND);
 				sharingIntent.setType("*/*"); 
-				sharingIntent.putExtra(Intent.EXTRA_STREAM, bos.toByteArray());
+				sharingIntent.putExtra(Intent.EXTRA_STREAM, b);
 				startActivity(sharingIntent); 
-				
-				
+
+
 			}
 		}, TitleLayout.BUTTON_EXPORT_RES);
+
+		//me 토글리스너
+		textView.setOnClickListener(new OnClickListener() {
+			Person person = new Person("나", null, null, true);
+			int cnt = 0;
+			@Override
+			public void onClick(View v) {
+				if (cnt % 2 == 0) {
+					v.setBackgroundResource(R.color.transparent);
+					Common.removeSelectedPerson(person);
+					tableView.setPerson(Common.getPersonSelectedSet());
+				} else {
+					v.setBackgroundResource(R.drawable.bg_list_p);
+//					Common.addPerson(person);
+					Common.addSelectedPerson(person);
+					tableView.setPerson(Common.getPersonSelectedSet());
+					
+				}
+				cnt++;
+			}
+		});
 	}
 	
 	@Override
