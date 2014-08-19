@@ -31,11 +31,6 @@ public class PersonDBAdapter {
     //private DatabaseHelper mDbHelper; 
     private DBHelper mDbHelper;
     private SQLiteDatabase mDb;
-<<<<<<< HEAD
-   
-=======
-
-   
 
     /**
 
@@ -53,8 +48,6 @@ public class PersonDBAdapter {
             "create table person (_id integer primary key autoincrement, "
               + "title text not null, body text not null);";
    
-
->>>>>>> d003544a6ad851fe29fa389213b38c1206517d39
     private final Context mCtx;
 
     public PersonDBAdapter(Context ctx) {
