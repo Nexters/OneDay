@@ -1,6 +1,9 @@
 package kr.nexters.oneday;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import kr.nexters.oneday.adapter.PersonListAdapter;
 import kr.nexters.oneday.database.DBHelper;
@@ -20,6 +23,7 @@ import android.graphics.Bitmap.CompressFormat;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore.Images;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.DrawerLayout.DrawerListener;
@@ -85,26 +89,31 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				//공유 코드 작성				
-//				Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-//				sharingIntent.setType("text/plain");
-//				sharingIntent.putExtra(android.content.Intent.EXTRA_, tableView.getDrawingCache());
-//				sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "시간표 공유");
-//				startActivity(Intent.createChooser(sharingIntent, "Share using"));
+				//테이블뷰 캡쳐
+				tableView.setDrawingCacheEnabled(false);
+//				tableView.buildDrawingCache();
+				Bitmap captureView = tableView.getDrawingCache();
+				FileOutputStream fos;
+				try {
+					fos = new FileOutputStream(Environment.getExternalStorageDirectory().toString()+"/capture.PNG");
+					captureView.compress(Bitmap.CompressFormat.PNG, 100, fos);
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				}
+//				Toast.makeText(getApplicationContext(), "Captured!", Toast.LENGTH_LONG).show();
 
-				ByteArrayOutputStream bos = new ByteArrayOutputStream();  
-//				tableView.getDrawingCache().compress(CompressFormat.PNG, 0, bos);
-				
-				Bitmap bitmap = Bitmap.createBitmap(tableView.getWidth(),tableView.getHeight(), Bitmap.Config.RGB_565);
-				bitmap.compress(CompressFormat.PNG, 50, bos);
-				
-				byte[] b = bos.toByteArray();
+				//공유 인텐트 작성
+				Intent intentSend  = new Intent(Intent.ACTION_SEND);
 
-				Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-				sharingIntent.setType("*/*"); 
-				sharingIntent.putExtra(Intent.EXTRA_STREAM, b);
-				startActivity(sharingIntent); 
+				intentSend.setType("image/*");
 
+				intentSend.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(Environment.getExternalStorageDirectory().toString()+"/capture.PNG")));
+
+				startActivity(Intent.createChooser(intentSend, "공유"));
+
+				//파일삭제
+				//				 File file = new File(Environment.getExternalStorageDirectory().toString()+"/capture.jpeg");
+				//			     file.delete();
 
 			}
 		}, TitleLayout.BUTTON_EXPORT_RES);
