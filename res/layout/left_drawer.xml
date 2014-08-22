@@ -6,7 +6,7 @@
 
     <RelativeLayout
         android:id="@+id/myinfo_sector"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
         <ImageButton
@@ -14,6 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_marginRight="9dp"
             android:background="@android:color/transparent"
             android:src="@drawable/setting_selector" />
 
@@ -21,6 +22,7 @@
             android:id="@+id/leftdrawer_name"
             style="@style/left_drawer_list_item_text"
             android:layout_toLeftOf="@+id/leftdrawer_setting_btn"
+            android:layout_marginRight="9.5dp"
             android:text="나" />
     </RelativeLayout>
 
@@ -36,14 +38,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="19dp"
+            android:layout_marginLeft="16dp"
             android:text="친구목록"
+            android:textSize="11.5dp"
             android:textColor="#bbecf9" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="19dp"
+            android:layout_marginLeft="22dp"
             android:src="@drawable/icon_line_friendlist" />
     </LinearLayout>
 
@@ -54,7 +57,7 @@
         android:layout_above="@+id/friend_manage_buttons"
         android:layout_below="@+id/divider"
         android:divider="@null"
-        android:dividerHeight="7dp" >
+        android:dividerHeight="6.5dp" >
     </ListView>
 
     <LinearLayout
@@ -62,18 +65,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="7.5dip" >
+        android:layout_margin="6.5dip" >
 
         <ImageView
             android:id="@+id/FriendAddButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+             android:layout_marginRight="5dp"
+             android:layout_marginTop="0.5dp"
             android:src="@drawable/friend_add_selector" />
 
         <ImageView
             android:id="@+id/FriendDeleteButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="0.5dp"
             android:src="@drawable/friend_delete_selector" />
     </LinearLayout>
 

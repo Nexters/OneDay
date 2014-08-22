@@ -9,6 +9,9 @@
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> 
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
 
     <application
         android:name=".OneDayApplication"
@@ -33,8 +36,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".FriendStorageActivity" >
+        <activity android:name=".FriendStorageActivity" >
         </activity>
     </application>
 

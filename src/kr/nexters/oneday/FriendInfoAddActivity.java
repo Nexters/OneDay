@@ -124,7 +124,6 @@ public class FriendInfoAddActivity extends Activity {
 			setContentView(R.layout.add_dialog);
 
 			name = (EditText)findViewById(R.id.add_dialog_name);
-			group = (EditText)findViewById(R.id.add_dialog_group);
 			phoneNumber = (EditText)findViewById(R.id.add_dialog_tel);
 			
 			findViewById(R.id.add_dialog_check).setOnClickListener(this);
