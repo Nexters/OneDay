@@ -90,7 +90,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				//테이블뷰 캡쳐
-				tableView.setDrawingCacheEnabled(false);
+				tableView.setDrawingCacheEnabled(true);
 //				tableView.buildDrawingCache();
 				Bitmap captureView = tableView.getDrawingCache();
 				FileOutputStream fos;
