@@ -90,8 +90,10 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				//테이블뷰 캡쳐
-//				tableView.setDrawingCacheEnabled(false);
+				tableView.setDrawingCacheEnabled(false);
 				tableView.buildDrawingCache();
+				tableView.setDrawingCacheEnabled(true);
+
 				Bitmap captureView = tableView.getDrawingCache();
 				FileOutputStream fos;
 				try {
@@ -110,11 +112,7 @@ public class MainActivity extends Activity {
 				intentSend.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(Environment.getExternalStorageDirectory().toString()+"/capture.PNG")));
 
 				startActivity(Intent.createChooser(intentSend, "공유"));
-
-				//파일삭제
-				//				 File file = new File(Environment.getExternalStorageDirectory().toString()+"/capture.jpeg");
-				//			     file.delete();
-
+		
 			}
 		}, TitleLayout.BUTTON_EXPORT_RES);
 
@@ -145,6 +143,11 @@ public class MainActivity extends Activity {
 		super.onResume();
 		tableView.setPerson(Common.getPersonSelectedSet());
 		drawerView.refresh();
+		
+		//sd카드 파일 삭제
+		File file = new File(Environment.getExternalStorageDirectory().toString()+"/capture.PNG");
+		if(file.exists()) //파일인지 확인하고 삭제
+		file.delete();
 	}
 
 	public void checkTable() {

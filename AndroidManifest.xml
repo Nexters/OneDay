@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> 
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+
     <application
         android:name=".OneDayApplication"
         android:allowBackup="true"
@@ -35,8 +36,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".FriendStorageActivity" >
+        <activity android:name=".FriendStorageActivity" >
         </activity>
     </application>
 

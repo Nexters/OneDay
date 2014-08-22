@@ -41,16 +41,15 @@
     </style>
 
     <style name="add_dialog_edittext">
-        <item name="android:textSize">11.5dp</item>
+        <item name="android:textSize">13dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:background">@drawable/line_box</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textColor">#9ed3dc</item>
+        <item name="android:textColor">#6C6C6C</item>
     </style>
 
     <style name="left_drawer_list_item_text">
-        <item name="android:textSize">11.5dp</item>
+        <item name="android:textSize">13dp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_alignParentLeft">true</item>

@@ -8,6 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:layout_marginRight="9dp"
         android:background="@android:color/transparent"
         android:src="@drawable/setting_selector" />
 
@@ -15,6 +16,7 @@
         android:id="@+id/leftdrawer_name"
         style="@style/left_drawer_list_item_text"
         android:layout_toLeftOf="@+id/leftdrawer_setting_btn"
+        android:layout_marginRight="9.5dp"
         android:onClick="onClick" />
 
 </RelativeLayout>

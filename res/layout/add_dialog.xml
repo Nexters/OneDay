@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="277dp"
-    android:layout_height="254dp"
+    android:layout_width="277.5dp"
+    android:layout_height="231.5dp"
     android:background="#fff"
     android:orientation="vertical" >
 
@@ -26,34 +26,69 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="213dp"
         android:layout_height="match_parent"
         android:layout_below="@+id/dialog_title_layout"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginBottom="7.5dp"
+        android:layout_marginTop="30.5dp"
         android:orientation="vertical" >
 
-        <EditText
-            android:id="@+id/add_dialog_name"
-            style="@style/add_dialog_edittext"
-            android:drawableLeft="@drawable/icon_name"
-            android:hint="이름" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/add_dialog_group"
-            style="@style/add_dialog_edittext"
-            android:layout_marginTop="8dp"
-            android:drawableLeft="@drawable/icon_group"
-            android:hint="그룹" />
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="0dp"
+                android:layout_height="43dp"
+                android:layout_weight="1"
+                android:src="@drawable/icon_name" />
 
-        <EditText
-            android:id="@+id/add_dialog_tel"
-            style="@style/add_dialog_edittext"
-            android:layout_marginTop="8dp"
-            android:drawableLeft="@drawable/icon_tel"
-            android:hint="전화번호"
-            android:numeric="integer" />
+            <EditText
+                android:id="@+id/add_dialog_name"
+                style="@style/add_dialog_edittext"
+                android:layout_width="170.5dp"
+                android:layout_height="43dp"
+                android:hint="이름"
+                android:padding="10dp"
+                android:textColorHint="#bbe0e6" >
+            </EditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="0dp"
+                android:layout_height="43dp"
+                android:layout_weight="1"
+                android:layout_marginTop="7.5dp"
+                android:src="@drawable/icon_tel" />
+
+            <EditText
+                android:id="@+id/add_dialog_tel"
+                style="@style/add_dialog_edittext"
+                android:layout_width="170.5dp"
+                android:layout_height="43dp"
+                android:hint="전화번호"
+               	android:padding="10dp"
+               	android:layout_marginTop="7.5dp"
+                android:textColorHint="#bbe0e6" >
+            </EditText>
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/imageButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="7.5dp"
+            android:background="@drawable/friend_add_save" />
+
     </LinearLayout>
 
 </RelativeLayout>
