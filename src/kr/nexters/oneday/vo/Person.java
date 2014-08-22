@@ -3,22 +3,31 @@ package kr.nexters.oneday.vo;
 import java.util.List;
 
 public class Person {
+	long rowid;
 	private String name;
+	public boolean selected;
 	private String phoneNumber;
 
 	private List<TimeInfo> timeList;
 	
 	public Person() {
-		
+		this.selected = true;
 	}
 	
-	public Person(String name, String phoneNumber, List<TimeInfo> timeList) {
+	public Person(String name, String phoneNumber, List<TimeInfo> timeList, boolean selected) {
 		super();
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.timeList = timeList;
+		this.selected = true;
+		
 	}
-
+	public long getrowId(){
+		return this.rowid;
+	}
+	public void setId(long id){
+		this.rowid = id;
+	}
 	public String getName() {
 		return name;
 	}
@@ -41,6 +50,14 @@ public class Person {
 
 	public void setTimeList(List<TimeInfo> timeList) {
 		this.timeList = timeList;
+	}
+	
+	public boolean getSelected() {
+		return true;
+	}
+
+	public void setSelected(boolean selected) {
+		this.selected = selected;
 	}
 
 	@Override

@@ -13,13 +13,8 @@
 
     <TextView
         android:id="@+id/leftdrawer_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
+        style="@style/left_drawer_list_item_text"
         android:layout_toLeftOf="@+id/leftdrawer_setting_btn"
-        android:gravity="center"
-        android:textColor="#fff"
-        android:textSize="13dp" />
+        android:onClick="onClick" />
 
 </RelativeLayout>

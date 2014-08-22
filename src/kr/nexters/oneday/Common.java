@@ -17,6 +17,7 @@ public class Common {
 		sContext = context;
 		personSet = new HashSet<Person>();
 		personSelectedSet = new HashSet<Person>();
+	
 	}
 
 	public static Context getMainContext() {
@@ -40,4 +41,23 @@ public class Common {
 	public static Set<Person> getPersonSelectedSet() {
 		return personSelectedSet;
 	}
+	
+	public static void removeSelectedPerson(Person person) {
+		personSelectedSet.remove(person);
+	}
+	
+	public static Person getPerson(String name) {
+		Person me = new Person(name, null, null, true);
+		if(personSet.contains(me)) {
+			Iterator<Person> it = Common.getPersonSet().iterator();
+			while(it.hasNext()) {
+				Person p = it.next();
+				if(p.equals(me)) {
+					return p;
+				}
+			}
+		}
+		return null;
+	}
+	
 }

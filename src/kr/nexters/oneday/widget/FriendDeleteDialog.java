@@ -1,7 +1,10 @@
 package kr.nexters.oneday.widget;
 
+import java.util.ArrayList;
 import kr.nexters.oneday.MyInfoAddActivity;
 import kr.nexters.oneday.R;
+import kr.nexters.oneday.adapter.PersonListAdapter;
+import kr.nexters.oneday.vo.Person;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -11,6 +14,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +26,8 @@ public class FriendDeleteDialog extends AlertDialog.Builder{
 	private TextView delDialogTitle;
 	private EditText name;
 	private EditText phonenumber;
+	private ArrayList<Person> pItem = null;
+	private PersonListAdapter pAdapter = null;
 	
 	
 	public FriendDeleteDialog(Context context) {
@@ -52,8 +58,14 @@ public class FriendDeleteDialog extends AlertDialog.Builder{
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
-				dialog.dismiss();		
-
+				//				dialog.dismiss();		
+				//드로워레이어에서 뭐가 선택됬는지 알아온다음 삭제
+//				if (pos != ListView.INVALID_POSITION) {
+//					Person person = (Person)pItem.get(pos);		
+//					pItem.remove(pos);
+//				}
+//				pAdapter.isSeleted(0);
+				pAdapter.notifyDataSetChanged();
 			}
 		});
 		this.setNegativeButton(R.string.cancel, new OnClickListener() {
@@ -62,10 +74,9 @@ public class FriendDeleteDialog extends AlertDialog.Builder{
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
 				dialog.dismiss();
-//				Toast.makeText(context,R.string.cancel,Toast.LENGTH_SHORT).show();
+				Toast.makeText(context,R.string.cancel,Toast.LENGTH_SHORT).show();
 			}
 		});
 	}
-
 
 }
