@@ -52,31 +52,6 @@ public class LeftDrawer extends RelativeLayout {
 		findViewById(R.id.FriendDeleteButton).setOnClickListener(l);
 	}
 
-//	private View.OnClickListener fClickListener = new View.OnClickListener() {
-//		
-//		@Override
-//		public void onClick(View v) {			
-//			switch (v.getId()) {
-//			case R.id.FriendAddButton:
-//				Intent intent = new Intent(getContext(), FriendInfoAddActivity.class);
-//				getContext().startActivity(intent);
-//				break;
-//				
-//			case R.id.FriendDeleteButton:
-//				//삭제 다이얼로그 호출
-//				FriendDeleteDialog dialog2 = new FriendDeleteDialog(getContext());
-//				dialog2.show();
-//				break;
-//				
-//			case R.id.leftdrawer_setting_btn:
-//				Intent intent2 = new Intent(getContext(), MyInfoAddActivity.class);
-//				getContext().startActivity(intent2);
-//				break;
-//			}
-//		}
-//		
-//	};
-	
 	public void refresh() {
 		pAdapter.notifyDataSetChanged();
 	}

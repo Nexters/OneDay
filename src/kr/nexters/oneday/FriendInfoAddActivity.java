@@ -80,37 +80,37 @@ public class FriendInfoAddActivity extends Activity {
 		friend.setId(PersonDBAdapter.addPerson(friend));
 		//How to get id from "person" TABLE in "data.db"
 		Log.i("db"," row id :"+friend.getrowId());
-		DBAdapter.addTimeInfo(friend);
+//		DBAdapter.addTimeInfo(friend);
 		Common.addPerson(friend);
 		Common.addSelectedPerson(friend);
 		
 		
-		Cursor cur =PersonDBAdapter.fetchAllPerson();
-		while(cur.moveToNext()){
-			Log.i("fetch",
-					"id: "+cur.getInt(cur.getColumnIndex(DBHelper.KEY_ROWID)) +
-					" name : "+cur.getString(cur.getColumnIndex(DBHelper.KEY_NAME)) +
-					" PhoneNumber : " +cur.getString(cur.getColumnIndex(DBHelper.KEY_PHONENUMBER))
-					);
-		}
-		cur.close();
-		 cur = DBAdapter.fetchPerson(friend);
-		while (cur.moveToNext()){
-			Log.i("fetch",
-					"id: "+cur.getInt(cur.getColumnIndex(DBHelper.KEY_ROWID)) +
-					" name : "+cur.getString(cur.getColumnIndex(DBHelper.KEY_NAME)) +
-					" PhoneNumber : " +cur.getString(cur.getColumnIndex(DBHelper.KEY_PHONENUMBER))
-					);
-		}
-		cur.close();
-		
-		cur= DBAdapter.fetchTimeInfo(friend);
-		while(cur.moveToNext()){
-			Log.i("fetch",
-					"id : "+cur.getInt(cur.getColumnIndex(DBHelper.KEY_ROWID))+
-					" Day : " + cur.getString(cur.getColumnIndex(DBHelper.KEY_DAYNUMBER))+
-					" TIME : " +cur.getString(cur.getColumnIndex(DBHelper.KEY_TIMENUMBER)));
-		}
+//		Cursor cur =PersonDBAdapter.fetchAllPerson();
+//		while(cur.moveToNext()){
+//			Log.i("fetch",
+//					"id: "+cur.getInt(cur.getColumnIndex(DBHelper.KEY_ROWID)) +
+//					" name : "+cur.getString(cur.getColumnIndex(DBHelper.KEY_NAME)) +
+//					" PhoneNumber : " +cur.getString(cur.getColumnIndex(DBHelper.KEY_PHONENUMBER))
+//					);
+//		}
+//		cur.close();
+//		 cur = DBAdapter.fetchPerson(friend);
+//		while (cur.moveToNext()){
+//			Log.i("fetch",
+//					"id: "+cur.getInt(cur.getColumnIndex(DBHelper.KEY_ROWID)) +
+//					" name : "+cur.getString(cur.getColumnIndex(DBHelper.KEY_NAME)) +
+//					" PhoneNumber : " +cur.getString(cur.getColumnIndex(DBHelper.KEY_PHONENUMBER))
+//					);
+//		}
+//		cur.close();
+//		
+//		cur= DBAdapter.fetchTimeInfo(friend);
+//		while(cur.moveToNext()){
+//			Log.i("fetch",
+//					"id : "+cur.getInt(cur.getColumnIndex(DBHelper.KEY_ROWID))+
+//					" Day : " + cur.getString(cur.getColumnIndex(DBHelper.KEY_DAYNUMBER))+
+//					" TIME : " +cur.getString(cur.getColumnIndex(DBHelper.KEY_TIMENUMBER)));
+//		}
 	}
 
 	public class FriendAddDialog extends Dialog implements OnClickListener {
@@ -128,6 +128,7 @@ public class FriendInfoAddActivity extends Activity {
 			
 			findViewById(R.id.add_dialog_check).setOnClickListener(this);
 			findViewById(R.id.add_dialog_exit).setOnClickListener(this);
+			findViewById(R.id.saveContinue).setOnClickListener(this);
 		}
 		
 		@Override
@@ -144,6 +145,11 @@ public class FriendInfoAddActivity extends Activity {
 				break;
 			case R.id.add_dialog_exit:
 				dismiss();
+				break;
+			case R.id.saveContinue:
+				saveFriendInfo();  
+				dismiss();
+				tableView.clearAllSector();
 				break;
 			}
 		}

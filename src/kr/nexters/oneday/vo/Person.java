@@ -19,7 +19,7 @@ public class Person {
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.timeList = timeList;
-		this.selected = true;
+		this.selected = selected;
 		
 	}
 	public long getrowId(){

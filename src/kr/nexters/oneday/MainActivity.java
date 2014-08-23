@@ -5,9 +5,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+
 import kr.nexters.oneday.adapter.PersonListAdapter;
 import kr.nexters.oneday.database.DBHelper;
 import kr.nexters.oneday.database.PersonDBAdapter;
+import kr.nexters.oneday.util.ViewUtil;
 import kr.nexters.oneday.vo.Person;
 import kr.nexters.oneday.widget.FriendDeleteDialog;
 import kr.nexters.oneday.widget.LeftDrawer;
@@ -42,8 +44,6 @@ public class MainActivity extends Activity {
 	private LeftDrawer drawerView;
 	private TimeTableView tableView;
 	private TitleLayout titleLayout;
-	private ArrayList<Person> pItem = null;
-	private PersonListAdapter pAdapter = null;
 	
 	public static Context context;
 	
@@ -118,22 +118,9 @@ public class MainActivity extends Activity {
 
 		//me 토글리스너
 		textView.setOnClickListener(new OnClickListener() {
-			int cnt = 0;
 			@Override
 			public void onClick(View v) {
-				if (cnt % 2 == 0) {
-					v.setBackgroundResource(R.color.transparent);
-					Common.removeSelectedPerson(new Person("나", null, null, false));
-					tableView.setPerson(Common.getPersonSelectedSet());
-				} else {
-					Person p = Common.getPerson("나");
-					v.setBackgroundResource(R.drawable.bg_list_p);
-//					Common.addPerson(person);
-					Common.addSelectedPerson(p);
-					tableView.setPerson(Common.getPersonSelectedSet());
-					
-				}
-				cnt++;
+				ViewUtil.setClickPersonItem(textView, Common.getPerson("나"));
 			}
 		});
 	}
@@ -198,7 +185,7 @@ public class MainActivity extends Activity {
 		@SuppressLint("NewApi")
 		@Override
 		public void onDrawerSlide(View v, float slideOffset) {
-			float moveFactor = (drawerView.getWidth() * slideOffset)/2;
+			float moveFactor = (drawerView.getWidth() * slideOffset) / 2;
 
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 				tableView.setTranslationX(moveFactor);

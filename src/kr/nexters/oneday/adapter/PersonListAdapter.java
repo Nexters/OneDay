@@ -7,6 +7,7 @@ import kr.nexters.oneday.Common;
 import kr.nexters.oneday.FriendStorageActivity;
 import kr.nexters.oneday.MainActivity;
 import kr.nexters.oneday.R;
+import kr.nexters.oneday.util.ViewUtil;
 import kr.nexters.oneday.vo.Person;
 import android.content.Context;
 import android.content.Intent;
@@ -78,17 +79,7 @@ public class PersonListAdapter extends BaseAdapter{
 
 			@Override
 			public void onClick(View v) {
-				if (pList.get(pos).selected == true) {
-					v.setBackgroundResource(R.color.transparent);
-					toggleTable(pList.get(pos), false);
-					((MainActivity)MainActivity.context).checkTable();
-					pList.get(pos).selected = false;
-				} else {
-					v.setBackgroundResource(R.drawable.bg_list_p);
-					toggleTable(pList.get(pos), true);
-					((MainActivity)MainActivity.context).checkTable();
-					pList.get(pos).selected = true;
-				}
+				ViewUtil.setClickPersonItem(v, pList.get(pos));
 			}
 		});
 		
@@ -113,14 +104,6 @@ public class PersonListAdapter extends BaseAdapter{
 		super.notifyDataSetChanged();
 	}
 	
-	private void toggleTable(Person p, boolean check) {
-		if (check == true) {
-			Common.addSelectedPerson(p);
-		} else {
-			Common.removeSelectedPerson(p);
-		}
-	}
-
 	class PersonViewHolder {
 		private TextView name = null;
 		private ImageButton v_button = null;

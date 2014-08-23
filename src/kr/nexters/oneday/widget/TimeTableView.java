@@ -149,6 +149,18 @@ public class TimeTableView extends LinearLayout {
 		}
 	}
 	
+	public void setModifiedMode() {
+		Iterator<TimeSectorHolder> it = ref.iterator();
+		while(it.hasNext()) {
+			TimeSectorHolder holder = it.next();
+			Set<Person> tempSet = new HashSet<Person>(holder.personSet);
+			clearSector(holder);
+			if(tempSet.size() > 0) {
+				holder.root.setSelected(true);
+			}
+		}
+	}
+	
 	public List<TimeInfo> getAllSelectedTimeInfo() {
 		List<TimeInfo> ret = new ArrayList<TimeInfo>();
 		
@@ -174,7 +186,7 @@ public class TimeTableView extends LinearLayout {
 	}
 	
 	public void setPerson(Set<Person> personSelectedSet) {
-		clearSector();
+		clearAllSector();
 		
 		Iterator<Person> it = personSelectedSet.iterator();
 		while(it.hasNext()) {
@@ -182,12 +194,16 @@ public class TimeTableView extends LinearLayout {
 		}
 	}
 	
-	public void clearSector() {
+	public void clearAllSector() {
 		for(TimeSectorHolder holder : ref) {
-			holder.root.setSelected(false);
-			holder.personSet.clear();
-			setSectorColor(holder.day, holder.time, 0);
+			clearSector(holder);
 		}
+	}
+	
+	private void clearSector(TimeSectorHolder holder) {
+		holder.root.setSelected(false);
+		holder.personSet.clear();
+		setSectorColor(holder.day, holder.time, 0);
 	}
 	
 	private class TimeSectorHolder {
