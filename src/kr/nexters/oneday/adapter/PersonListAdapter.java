@@ -4,6 +4,7 @@ package kr.nexters.oneday.adapter;
 import java.util.ArrayList;
 
 import kr.nexters.oneday.Common;
+import kr.nexters.oneday.FriendInfoAddActivity;
 import kr.nexters.oneday.FriendStorageActivity;
 import kr.nexters.oneday.MainActivity;
 import kr.nexters.oneday.R;
@@ -87,7 +88,7 @@ public class PersonListAdapter extends BaseAdapter{
 
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(context, FriendStorageActivity.class);
+				Intent intent = new Intent(context, FriendInfoAddActivity.class);
 				intent.putExtra("TextIn1", pList.get(pos).getName().toString());
 				context.startActivity(intent);
 			}

@@ -8,6 +8,7 @@ import kr.nexters.oneday.widget.TimeTableView;
 import kr.nexters.oneday.widget.TitleLayout;
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -27,6 +28,8 @@ public class FriendInfoAddActivity extends Activity {
 	private LeftDrawer drawerView;
 	FriendAddDialog dialog;
 	PersonDBAdapter DBAdapter;
+	
+	String text;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,18 @@ public class FriendInfoAddActivity extends Activity {
 		
 
 		DBAdapter = new PersonDBAdapter();
+		
+		Intent intent = getIntent();
+		text = intent.getStringExtra("TextIn1");
+		
+		if(text != null) {
+//			titleLayout.setTitle(text);
+			titleLayout.setTitle("친구수정 (" + text + ")");
+			
+			Person p = Common.getPerson(text);
+			tableView.addPerson(p);
+			tableView.setModifiedMode();
+		}
 	}
 	
 	public void toggleDrawer() {
@@ -84,6 +99,9 @@ public class FriendInfoAddActivity extends Activity {
 		Common.addPerson(friend);
 		Common.addSelectedPerson(friend);
 		
+		if(text != null) {
+			Common.deletePerson(Common.getPerson(text));
+		}
 		
 //		Cursor cur =PersonDBAdapter.fetchAllPerson();
 //		while(cur.moveToNext()){
