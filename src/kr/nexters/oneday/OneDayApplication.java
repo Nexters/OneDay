@@ -20,7 +20,8 @@ public class OneDayApplication extends Application {
        //.loadPersonInfo();
     }
     private void LoadCommonFromDatabase(){
-		PersonDBAdapter DBAdapter = new PersonDBAdapter(this);
+
+    	PersonDBAdapter DBAdapter = new PersonDBAdapter();
 		
 		for(Person person : DBAdapter.getPeople()){
 			Common.addPerson(person);	

@@ -59,8 +59,8 @@ public class FriendInfoAddActivity extends Activity {
 			}
 		}, TitleLayout.BUTTON_CHECK_RES);
 		
-		DBAdapter = new PersonDBAdapter(this);
 
+		DBAdapter = new PersonDBAdapter();
 	}
 	
 	public void toggleDrawer() {
@@ -77,7 +77,7 @@ public class FriendInfoAddActivity extends Activity {
 		friend.setPhoneNumber(dialog.phoneNumber.getText().toString());
 		friend.setTimeList(tableView.getAllSelectedTimeInfo());
 		
-		friend.setId(DBAdapter.addPerson(friend));
+		friend.setId(PersonDBAdapter.addPerson(friend));
 		//How to get id from "person" TABLE in "data.db"
 		Log.i("db"," row id :"+friend.getrowId());
 		DBAdapter.addTimeInfo(friend);
@@ -85,7 +85,7 @@ public class FriendInfoAddActivity extends Activity {
 		Common.addSelectedPerson(friend);
 		
 		
-		Cursor cur =DBAdapter.fetchAllPerson();
+		Cursor cur =PersonDBAdapter.fetchAllPerson();
 		while(cur.moveToNext()){
 			Log.i("fetch",
 					"id: "+cur.getInt(cur.getColumnIndex(DBHelper.KEY_ROWID)) +

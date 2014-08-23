@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import kr.nexters.oneday.R;
-import kr.nexters.oneday.database.DBAdapter;
+import kr.nexters.oneday.database.PersonDBAdapter;
 import kr.nexters.oneday.util.ViewUtil;
 import kr.nexters.oneday.vo.Person;
 import kr.nexters.oneday.vo.TimeInfo;
