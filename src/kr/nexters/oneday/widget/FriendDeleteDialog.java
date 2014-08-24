@@ -1,9 +1,14 @@
 package kr.nexters.oneday.widget;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Set;
+
+import kr.nexters.oneday.Common;
 import kr.nexters.oneday.MyInfoAddActivity;
 import kr.nexters.oneday.R;
 import kr.nexters.oneday.adapter.PersonListAdapter;
+import kr.nexters.oneday.database.PersonDBAdapter;
 import kr.nexters.oneday.vo.Person;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -65,7 +70,24 @@ public class FriendDeleteDialog extends AlertDialog.Builder{
 //					pItem.remove(pos);
 //				}
 //				pAdapter.isSeleted(0);
+				
+				
+				//Delete 확인 버튼이 눌렷을경우 
+				PersonDBAdapter DBAdapter = new PersonDBAdapter(context);
+				pAdapter = new PersonListAdapter(context);
+				
+				Set<Person> PersonSelectedSet = Common.getPersonSelectedSet();
+			
+				Iterator<Person> iter = PersonSelectedSet.iterator();
+				while(iter.hasNext()){	 
+					Person  persontmp = (Person)(iter.next());
+					DBAdapter.deletePreson(persontmp);
+					Common.deletePerson(persontmp);
+				}
+				
+				
 				pAdapter.notifyDataSetChanged();
+				dialog.dismiss();
 			}
 		});
 		this.setNegativeButton(R.string.cancel, new OnClickListener() {
@@ -73,8 +95,10 @@ public class FriendDeleteDialog extends AlertDialog.Builder{
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
+				
+			
 				dialog.dismiss();
-				Toast.makeText(context,R.string.cancel,Toast.LENGTH_SHORT).show();
+			
 			}
 		});
 	}
