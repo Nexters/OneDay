@@ -63,7 +63,7 @@ public class FriendInfoAddActivity extends Activity {
 		}, TitleLayout.BUTTON_CHECK_RES);
 		
 
-		DBAdapter = new PersonDBAdapter();
+		DBAdapter = new PersonDBAdapter(this);
 		
 		Intent intent = getIntent();
 		text = intent.getStringExtra("TextIn1");
@@ -92,10 +92,9 @@ public class FriendInfoAddActivity extends Activity {
 		friend.setPhoneNumber(dialog.phoneNumber.getText().toString());
 		friend.setTimeList(tableView.getAllSelectedTimeInfo());
 		
-		friend.setId(PersonDBAdapter.addPerson(friend));
-		//How to get id from "person" TABLE in "data.db"
+		friend.setId(DBAdapter.addPersonInfo(friend));
 		Log.i("db"," row id :"+friend.getrowId());
-//		DBAdapter.addTimeInfo(friend);
+		DBAdapter.addTimeInfo(friend);
 		Common.addPerson(friend);
 		Common.addSelectedPerson(friend);
 		

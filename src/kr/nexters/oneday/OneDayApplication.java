@@ -16,20 +16,32 @@ public class OneDayApplication extends Application {
         super.onCreate();
         Common.initialize(this);
         Common.addPerson(new Person("나", "", null, true));
-//        LoadCommonFromDatabase();
+        LoadCommonFromDatabase();
        // this.deleteDatabase(DBHelper.DATABASE_NAME);
         //DBHandler dbHandler = new DBHandler(this);
        
        //.loadPersonInfo();
     }
+    @Override
+    public void onTerminate() {
+    	// TODO Auto-generated method stub
+    	super.onTerminate();
+    	
+    	//Selected를  Common --> DB에있는 PersonInfo.table 옮겨야함
+    }
     private void LoadCommonFromDatabase(){
 
-    	PersonDBAdapter DBAdapter = new PersonDBAdapter();
+    	PersonDBAdapter DBAdapter = new PersonDBAdapter(this);
 		
 		for(Person person : DBAdapter.getPeople()){
-			Common.addPerson(person);	
+			Common.addPerson(person);
+			if(person.selected){
+				Common.addSelectedPerson(person);	
+			}	
+			else{
+			
+			}
 		}
-		
 		
 	}
 }
