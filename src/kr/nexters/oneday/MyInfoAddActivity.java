@@ -50,6 +50,7 @@ public class MyInfoAddActivity extends Activity {
 		}, TitleLayout.BUTTON_EXIT_RES);
 		
 		loadMyInfo();
+		tableView.setModifiedMode();
 	}
 	
 	private void loadMyInfo() {
@@ -60,7 +61,7 @@ public class MyInfoAddActivity extends Activity {
 			while(it.hasNext()) {
 				Person p = it.next();
 				if(p.equals(me)) {
-					tableView.clearSector();
+					tableView.clearAllSector();
 					tableView.addPerson(p);
 					return;
 				}

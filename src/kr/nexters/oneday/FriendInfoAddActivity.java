@@ -8,6 +8,7 @@ import kr.nexters.oneday.widget.TimeTableView;
 import kr.nexters.oneday.widget.TitleLayout;
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -27,6 +28,8 @@ public class FriendInfoAddActivity extends Activity {
 	private LeftDrawer drawerView;
 	FriendAddDialog dialog;
 	PersonDBAdapter DBAdapter;
+	
+	String text;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +62,20 @@ public class FriendInfoAddActivity extends Activity {
 			}
 		}, TitleLayout.BUTTON_CHECK_RES);
 		
-		DBAdapter = new PersonDBAdapter(this);
 
+		DBAdapter = new PersonDBAdapter();
+		
+		Intent intent = getIntent();
+		text = intent.getStringExtra("TextIn1");
+		
+		if(text != null) {
+//			titleLayout.setTitle(text);
+			titleLayout.setTitle("친구수정 (" + text + ")");
+			
+			Person p = Common.getPerson(text);
+			tableView.addPerson(p);
+			tableView.setModifiedMode();
+		}
 	}
 	
 	public void toggleDrawer() {
@@ -77,40 +92,43 @@ public class FriendInfoAddActivity extends Activity {
 		friend.setPhoneNumber(dialog.phoneNumber.getText().toString());
 		friend.setTimeList(tableView.getAllSelectedTimeInfo());
 		
-		friend.setId(DBAdapter.addPerson(friend));
+		friend.setId(PersonDBAdapter.addPerson(friend));
 		//How to get id from "person" TABLE in "data.db"
 		Log.i("db"," row id :"+friend.getrowId());
-		DBAdapter.addTimeInfo(friend);
+//		DBAdapter.addTimeInfo(friend);
 		Common.addPerson(friend);
 		Common.addSelectedPerson(friend);
 		
+		if(text != null) {
+			Common.deletePerson(Common.getPerson(text));
+		}
 		
-		Cursor cur =DBAdapter.fetchAllPerson();
-		while(cur.moveToNext()){
-			Log.i("fetch",
-					"id: "+cur.getInt(cur.getColumnIndex(DBHelper.KEY_ROWID)) +
-					" name : "+cur.getString(cur.getColumnIndex(DBHelper.KEY_NAME)) +
-					" PhoneNumber : " +cur.getString(cur.getColumnIndex(DBHelper.KEY_PHONENUMBER))
-					);
-		}
-		cur.close();
-		 cur = DBAdapter.fetchPerson(friend);
-		while (cur.moveToNext()){
-			Log.i("fetch",
-					"id: "+cur.getInt(cur.getColumnIndex(DBHelper.KEY_ROWID)) +
-					" name : "+cur.getString(cur.getColumnIndex(DBHelper.KEY_NAME)) +
-					" PhoneNumber : " +cur.getString(cur.getColumnIndex(DBHelper.KEY_PHONENUMBER))
-					);
-		}
-		cur.close();
-		
-		cur= DBAdapter.fetchTimeInfo(friend);
-		while(cur.moveToNext()){
-			Log.i("fetch",
-					"id : "+cur.getInt(cur.getColumnIndex(DBHelper.KEY_ROWID))+
-					" Day : " + cur.getString(cur.getColumnIndex(DBHelper.KEY_DAYNUMBER))+
-					" TIME : " +cur.getString(cur.getColumnIndex(DBHelper.KEY_TIMENUMBER)));
-		}
+//		Cursor cur =PersonDBAdapter.fetchAllPerson();
+//		while(cur.moveToNext()){
+//			Log.i("fetch",
+//					"id: "+cur.getInt(cur.getColumnIndex(DBHelper.KEY_ROWID)) +
+//					" name : "+cur.getString(cur.getColumnIndex(DBHelper.KEY_NAME)) +
+//					" PhoneNumber : " +cur.getString(cur.getColumnIndex(DBHelper.KEY_PHONENUMBER))
+//					);
+//		}
+//		cur.close();
+//		 cur = DBAdapter.fetchPerson(friend);
+//		while (cur.moveToNext()){
+//			Log.i("fetch",
+//					"id: "+cur.getInt(cur.getColumnIndex(DBHelper.KEY_ROWID)) +
+//					" name : "+cur.getString(cur.getColumnIndex(DBHelper.KEY_NAME)) +
+//					" PhoneNumber : " +cur.getString(cur.getColumnIndex(DBHelper.KEY_PHONENUMBER))
+//					);
+//		}
+//		cur.close();
+//		
+//		cur= DBAdapter.fetchTimeInfo(friend);
+//		while(cur.moveToNext()){
+//			Log.i("fetch",
+//					"id : "+cur.getInt(cur.getColumnIndex(DBHelper.KEY_ROWID))+
+//					" Day : " + cur.getString(cur.getColumnIndex(DBHelper.KEY_DAYNUMBER))+
+//					" TIME : " +cur.getString(cur.getColumnIndex(DBHelper.KEY_TIMENUMBER)));
+//		}
 	}
 
 	public class FriendAddDialog extends Dialog implements OnClickListener {
@@ -128,6 +146,7 @@ public class FriendInfoAddActivity extends Activity {
 			
 			findViewById(R.id.add_dialog_check).setOnClickListener(this);
 			findViewById(R.id.add_dialog_exit).setOnClickListener(this);
+			findViewById(R.id.saveContinue).setOnClickListener(this);
 		}
 		
 		@Override
@@ -144,6 +163,11 @@ public class FriendInfoAddActivity extends Activity {
 				break;
 			case R.id.add_dialog_exit:
 				dismiss();
+				break;
+			case R.id.saveContinue:
+				saveFriendInfo();  
+				dismiss();
+				tableView.clearAllSector();
 				break;
 			}
 		}

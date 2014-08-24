@@ -21,8 +21,8 @@
         <TextView
             android:id="@+id/leftdrawer_name"
             style="@style/left_drawer_list_item_text"
-            android:layout_toLeftOf="@+id/leftdrawer_setting_btn"
             android:layout_marginRight="9.5dp"
+            android:layout_toLeftOf="@+id/leftdrawer_setting_btn"
             android:text="나" />
     </RelativeLayout>
 
@@ -31,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/myinfo_sector"
+        android:layout_marginBottom="24dp"
         android:layout_marginTop="24dp"
         android:gravity="center_vertical"
         android:orientation="horizontal" >
@@ -40,8 +41,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:text="친구목록"
-            android:textSize="11.5dp"
-            android:textColor="#bbecf9" />
+            android:textColor="#bbecf9"
+            android:textSize="11.5dp" />
 
         <ImageView
             android:layout_width="match_parent"
@@ -71,8 +72,8 @@
             android:id="@+id/FriendAddButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-             android:layout_marginRight="5dp"
-             android:layout_marginTop="0.5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="0.5dp"
             android:src="@drawable/friend_add_selector" />
 
         <ImageView
