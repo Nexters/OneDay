@@ -13,8 +13,8 @@ public class PrefManager {
 	private Editor editor;
 
 	private PrefManager() {
-		prefs = Common.getMainContext().getSharedPreferences(PREF_NAME, 0);
-		editor = prefs.edit();
+		prefs = Common.getMainContext().getSharedPreferences(PREF_NAME, 0); //파일이름 & 모드
+		editor = prefs.edit(); //파일 쓰기
 	}
 
 	//3.초기화

@@ -28,7 +28,7 @@ public class PersonListAdapter extends BaseAdapter{
 		this.pList = new ArrayList<Person>(Common.getPersonSet()); 
 		pList.remove(new Person("나", null, null, true));
 
-		inflater = (LayoutInflater)context.getSystemService( Context.LAYOUT_INFLATER_SERVICE);
+		inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
 	@Override
@@ -46,14 +46,14 @@ public class PersonListAdapter extends BaseAdapter{
 		return position;
 	}
 
-	//酉고��뜑 �쟻�슜�븯�뒗 遺�遺�
+	//뷰홀더 적용하는 부분
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		final int pos = position;
 		// TODO Auto-generated method stub
 		PersonViewHolder viewHolder;
 
-		//罹먯떆�맂 酉곌� �뾾�뒗 寃쎌슦 �깉濡� �깮�꽦�븯怨� 酉고��뜑 ���옣�븳�떎
+		//캐시된 뷰가 없는 경우 새로 생성하고 뷰홀더 저장한다
 		if(convertView == null)
 		{
 			convertView = inflater.inflate(R.layout.person_item, parent, false);
@@ -65,7 +65,7 @@ public class PersonListAdapter extends BaseAdapter{
 			convertView.setTag(viewHolder);
 		}
 
-		// 罹먯떆�맂 酉곌� �엳�쓣 寃쎌슦 ���옣�맂 酉고��뜑瑜� �궗�슜�븳�떎
+		 // 캐시된 뷰가 있을 경우 저장된 뷰홀더를 사용한다
 		else
 		{
 			viewHolder = (PersonViewHolder) convertView.getTag();

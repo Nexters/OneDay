@@ -116,6 +116,7 @@ public class MainActivity extends Activity {
 			}
 		}, TitleLayout.BUTTON_EXPORT_RES);
 
+
 		//me 토글리스너
 		textView.setOnClickListener(new OnClickListener() {
 			int cnt = 0;
@@ -128,7 +129,6 @@ public class MainActivity extends Activity {
 				} else {
 					Person p = Common.getPerson("나");
 					v.setBackgroundResource(R.drawable.bg_list_p);
-//					Common.addPerson(person);
 					Common.addSelectedPerson(p);
 					tableView.setPerson(Common.getPersonSelectedSet());
 					
@@ -142,6 +142,7 @@ public class MainActivity extends Activity {
 	protected void onResume() {
 		super.onResume();
 		tableView.setPerson(Common.getPersonSelectedSet());
+//		checkText();
 		drawerView.refresh();
 		
 		//sd카드 파일 삭제
@@ -154,6 +155,15 @@ public class MainActivity extends Activity {
 		tableView.setPerson(Common.getPersonSelectedSet());
 	}
 	
+//	public void checkText() {
+//		if (cnt == 0) {
+//			textView.setBackgroundResource(R.color.transparent);
+//		} else {
+//			textView.setBackgroundResource(R.drawable.bg_list_p);
+//		}
+//		cnt++;
+//	}
+//	
 	public void toggleDrawer() {
 		if (drawerLayout.isDrawerOpen(drawerView) == false){
 			drawerLayout.openDrawer(drawerView);
