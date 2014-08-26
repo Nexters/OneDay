@@ -84,5 +84,12 @@ public class Person {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Person [rowid=" + rowid + ", name=" + name + ", selected="
+				+ selected + ", phoneNumber=" + phoneNumber + ", timeList="
+				+ timeList + "]";
+	}
 }
 

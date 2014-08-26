@@ -78,9 +78,6 @@ public class MyInfoAddActivity extends Activity {
 		me.setName("나");
 		me.setTimeList(tableView.getAllSelectedTimeInfo());
 		
-		me.setId(DBAdapter.addPersonInfo(me));
-		Log.i("db"," row id :"+me.getrowId());
-		DBAdapter.addTimeInfo(me);
 		Common.addPerson(me);
 		Common.addSelectedPerson(me);
 	}
