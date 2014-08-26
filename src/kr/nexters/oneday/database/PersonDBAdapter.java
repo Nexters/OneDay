@@ -11,39 +11,30 @@ import kr.nexters.oneday.widget.TimeTableView.TIME;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-/* Modified by Daehyun on 2014/08/15
- * 
- * 
+
+/* 
+ * Modified by Daehyun on 2014/08/15
  */
 public class PersonDBAdapter { 
-
-
 	public static final String KEY_TITLE = "title"; 
 	public static final String KEY_BODY = "body"; 
 	public static final String KEY_ROWID = "_id"; 
 
 	private static final String TAG = "PersonDbAdapter"; 
-	//private DatabaseHelper mDbHelper; 
 	private DBHelper mDbHelper;
 	private SQLiteDatabase mDb;
-	private Context mCtx;
+	
 	public PersonDBAdapter(Context ctx){
 		this.mDbHelper = new DBHelper(ctx);
 		this.mDb = mDbHelper.getWritableDatabase();
-		
 	}
 	
-	
-	
-	//timetable 테이블에 시간표정보를 추가함.
 	public void addTimeInfo(Person person){
 		ContentValues cvalue = new ContentValues();		
 		long rowid = person.getrowId();	
-		//Person에 대한 timetable테이블에 시간표 정보 
+		
 		for(TimeInfo timeinfo : person.getTimeList()){
 			cvalue.put(DBHelper.KEY_ROWID, rowid);
 			cvalue.put(DBHelper.KEY_DAYNUMBER, timeinfo.getDay().name());
@@ -53,9 +44,8 @@ public class PersonDBAdapter {
 			cvalue.clear();
 		}
 	}
-	//person 테이블에 사람 정보를 추가함.
+	
 	public long addPersonInfo(Person person) {
-		// TODO Auto-generated method stub
         ContentValues cvalues = new ContentValues();
 
         cvalues.put(DBHelper.KEY_NAME, person.getName());
@@ -63,28 +53,22 @@ public class PersonDBAdapter {
         cvalues.put(DBHelper.KEY_PHONENUMBER, person.getPhoneNumber());
         cvalues.put(DBHelper.KEY_SELECTED, 1);
         return mDb.insert(DBHelper.DATABASE_TABLE_person, null, cvalues);
-
 	}
-	//
+	
 	public boolean deletePreson(Person person){
 		return (mDb.delete(DBHelper.DATABASE_TABLE_person, KEY_ROWID + "=" + person.getrowId(), null) > 0) &&
-				(mDb.delete(DBHelper.DATABASE_TABLE_timetable,KEY_ROWID + "="+ person.getrowId(),null)>0)
-				;
-		
+				(mDb.delete(DBHelper.DATABASE_TABLE_timetable,KEY_ROWID + "="+ person.getrowId(),null)>0);
 	}
 	
     public boolean updatePerson(Person person) {
-    	
         ContentValues cvalue = new ContentValues();
         cvalue.put(DBHelper.KEY_NAME, person.getName());
         cvalue.put(DBHelper.KEY_PHONENUMBER, person.getPhoneNumber());
         return mDb.update(DBHelper.DATABASE_TABLE_person, cvalue, 
         				  KEY_ROWID + "=" + person.getrowId(), null) > 0;
-
     }
 
 	public List<Person> getPeople() {
-		// TODO Auto-generated method stub
 		List<Person> personlist = new ArrayList<Person>();
 		Cursor mCursor = this.fetchAllPerson();
 		while(mCursor.moveToNext()){
@@ -110,10 +94,9 @@ public class PersonDBAdapter {
 		return personlist;
 	}
 	
-	public List<TimeInfo> getUserTimeInfoList(Person person){
-		long rowid = person.getrowId();
+	private List<TimeInfo> getUserTimeInfoList(Person person){
 		List<TimeInfo> ti  = new ArrayList<TimeInfo>();
-		Cursor mCursor  = fetchTimeInfo(person);
+		Cursor mCursor = fetchTimeInfo(person);
 		while(mCursor.moveToNext()){
 			DAY  day = DAY.valueOf(mCursor.getString(mCursor.getColumnIndex(DBHelper.KEY_DAYNUMBER)));
 			TIME time = TIME.valueOf(mCursor.getString(mCursor.getColumnIndex(DBHelper.KEY_TIMENUMBER)));
@@ -123,44 +106,35 @@ public class PersonDBAdapter {
 		return ti;
 	}
 	
-	
 	//person객체로 TimeInfo 를 얻어
-	public Cursor fetchTimeInfo(Person person){
-
-		/*String sql = "SELECT * From LEFT JOIN " + DBHelper.DATABASE_TABLE_timetable +" on "+
-		DBHelper.DATABASE_TABLE_person+"."+DBHelper.KEY_ROWID +" = " +
-		DBHelper.DATABASE_TABLE_timetable+"."+DBHelper.KEY_ROWID +
-		" WHERE person._id = "+rowid;*/
+	private Cursor fetchTimeInfo(Person person) {
+		/*
+		 * String sql = "SELECT * From LEFT JOIN " +
+		 * DBHelper.DATABASE_TABLE_timetable +" on "+
+		 * DBHelper.DATABASE_TABLE_person+"."+DBHelper.KEY_ROWID +" = " +
+		 * DBHelper.DATABASE_TABLE_timetable+"."+DBHelper.KEY_ROWID +
+		 * " WHERE person._id = "+rowid;
+		 */
 		long rowid = person.getrowId();
-		Cursor mCursor =
-				mDb.query(true, DBHelper.DATABASE_TABLE_timetable, new String[] { 
-						DBHelper.KEY_ROWID,
-						DBHelper.KEY_DAYNUMBER,
-						DBHelper.KEY_TIMENUMBER,
-				}, KEY_ROWID + "=" + rowid, null, null, null, null,null);
+		Cursor mCursor = mDb.query(true, DBHelper.DATABASE_TABLE_timetable,
+				new String[] { DBHelper.KEY_ROWID, DBHelper.KEY_DAYNUMBER,
+						DBHelper.KEY_TIMENUMBER, }, KEY_ROWID + "=" + rowid,
+				null, null, null, null, null);
 		if (mCursor != null) {
-
 			mCursor.moveToFirst();
-
 		}
 		return mCursor;
 	}
 	
-	
-	public  Cursor fetchAllPerson() {
-		// TODO Auto-generated method stub
+	private  Cursor fetchAllPerson() {
         return mDb.query(DBHelper.DATABASE_TABLE_person, new String[] {
         		DBHelper.KEY_ROWID,
         		DBHelper.KEY_NAME,
         		DBHelper.KEY_PHONENUMBER,
         		DBHelper.KEY_SELECTED}, null, null, null, null, null);
 	}
-	public Cursor fetchPerson(Person friend) {
-		// TODO Auto-generated method stub
+	
+	private Cursor fetchPerson(Person friend) {
 		return null;
 	}
-
-	
-
-
 }
