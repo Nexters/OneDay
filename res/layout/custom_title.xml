@@ -9,7 +9,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:background="@android:color/transparent" />
+        android:layout_marginRight="97dp"
+        android:background="@android:color/transparent" 
+        android:src="@drawable/button_navigation" />
 
     <TextView
         android:id="@+id/header_text"
@@ -26,6 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:layout_marginLeft="97dp"
         android:background="@android:color/transparent" />
 
 </RelativeLayout>

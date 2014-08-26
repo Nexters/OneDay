@@ -54,5 +54,24 @@
         android:layout_centerInParent="true"
         android:textColor="#000"
         android:textSize="20dp" />
+    
+    <ImageView
+       android:id="@+id/icon_timetable"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"       
+       android:layout_marginTop="240.5dp"
+       android:layout_marginLeft="131.5dp"
+       android:paddingBottom="23dp"
+       android:layout_centerHorizontal="true" />
 
+    <ImageView
+       android:id="@+id/icon_loading_logo"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginBottom="240.5dp"
+       android:layout_marginLeft="134.5dp"
+       android:layout_centerHorizontal="true"  />
+    
+    
+    
 </RelativeLayout>
