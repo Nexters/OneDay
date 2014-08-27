@@ -38,7 +38,7 @@ public class SplashActivity extends Activity {
 	
 	private void initialize() {
 		title = findViewById(R.id.splash_title);
-		cntText = (TextView) findViewById(R.id.splash_cnt);
+//		cntText = (TextView) findViewById(R.id.splash_cnt);
 		views[0] = findViewById(R.id.splash_1);
 		views[1] = findViewById(R.id.splash_2);
 		views[2] = findViewById(R.id.splash_3);
@@ -128,7 +128,7 @@ public class SplashActivity extends Activity {
 				@Override
 				public void run() {
 					cnt++;
-					cntText.setText(String.valueOf(cnt));
+//					cntText.setText(String.valueOf(cnt));
 				}
 			});
 		}

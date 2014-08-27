@@ -1,21 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="214dp"
+    android:layout_height="wrap_content"
+    android:background="#fff"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/delete_dialog_title"
+    <RelativeLayout
+        android:id="@+id/dialog_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#17b4c2" >
+
+        <ImageButton
+            android:id="@+id/delete_dialog_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/title_bar_exit_selector"
+            android:onClick="onClick" />
+
+        <ImageButton
+            android:id="@+id/delete_dialog_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/title_bar_check_selector"
+            android:onClick="onClick" />
+    </RelativeLayout>
+
+ <!--     
+ 	<LinearLayout
+        android:id="@+id/delete_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="TextView"
-       />
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/dialog_title_layout"
+        android:layout_marginBottom="22dp"
+        android:layout_weight="0.54"
+        android:orientation="vertical" >
+    </LinearLayout>   -->
 
-    <TextView
-        android:id="@+id/delete_dialog_message"
+    <ListView
+        android:id="@+id/delete_list"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="삭제하시겠습니까?" />
+        android:layout_height="wrap_content" 
+        android:divider="#777"
+        android:dividerHeight="0px"
+        android:layout_below="@+id/dialog_title_layout" >
+    </ListView>
 
 </LinearLayout>

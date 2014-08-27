@@ -172,4 +172,5 @@ public class FriendInfoAddActivity extends Activity {
 			}
 		}
 	}
+	
 }

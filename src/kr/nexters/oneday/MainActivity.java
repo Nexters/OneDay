@@ -116,27 +116,11 @@ public class MainActivity extends Activity {
 			}
 		}, TitleLayout.BUTTON_EXPORT_RES);
 
-
 		//me 토글리스너
 		textView.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-<<<<<<< HEAD
-				if (cnt % 2 == 0) {
-					v.setBackgroundResource(R.color.transparent);
-					Common.removeSelectedPerson(new Person("나", null, null, false));
-					tableView.setPerson(Common.getPersonSelectedSet());
-				} else {
-					Person p = Common.getPerson("나");
-					v.setBackgroundResource(R.drawable.bg_list_p);
-					Common.addSelectedPerson(p);
-					tableView.setPerson(Common.getPersonSelectedSet());
-					
-				}
-				cnt++;
-=======
 				ViewUtil.setClickPersonItem(textView, Common.getPerson("나"));
->>>>>>> a8299106e861ef6bcd4ec4b2213da1b9ab6d86c5
 			}
 		});
 	}
@@ -145,7 +129,6 @@ public class MainActivity extends Activity {
 	protected void onResume() {
 		super.onResume();
 		tableView.setPerson(Common.getPersonSelectedSet());
-//		checkText();
 		drawerView.refresh();
 		
 		//sd카드 파일 삭제
@@ -158,15 +141,6 @@ public class MainActivity extends Activity {
 		tableView.setPerson(Common.getPersonSelectedSet());
 	}
 	
-//	public void checkText() {
-//		if (cnt == 0) {
-//			textView.setBackgroundResource(R.color.transparent);
-//		} else {
-//			textView.setBackgroundResource(R.drawable.bg_list_p);
-//		}
-//		cnt++;
-//	}
-//	
 	public void toggleDrawer() {
 		if (drawerLayout.isDrawerOpen(drawerView) == false){
 			drawerLayout.openDrawer(drawerView);
@@ -199,6 +173,7 @@ public class MainActivity extends Activity {
 				startActivity(intent);
 				break;
 			case FUTURE_TASK_DELETE_FRIEND_INFO:
+				//삭제 다이얼로그 띄우는 부분
 				FriendDeleteDialog dialog2 = new FriendDeleteDialog(MainActivity.this);
 				dialog2.show();
 				break;
@@ -250,5 +225,4 @@ public class MainActivity extends Activity {
 	};
 	
 }
-
 
