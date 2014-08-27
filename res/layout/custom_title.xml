@@ -13,22 +13,19 @@
         android:background="@android:color/transparent" 
         android:src="@drawable/button_navigation" />
 
-    <TextView
-        android:id="@+id/header_text"
+    <ImageView
+        android:id="@+id/header_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Custom Title"
-        android:textColor="#fff"
-        android:textSize="16dp"
-        android:textStyle="bold" />
+        android:src="@drawable/icon_logo" />
 
     <ImageButton
         android:id="@+id/imageButtonR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_marginLeft="97dp"
-        android:background="@android:color/transparent" />
+        android:background="@android:color/transparent"
+        android:src="@drawable/button_export" />
 
 </RelativeLayout>

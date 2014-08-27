@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -15,12 +16,12 @@ public class TitleLayout {
 	public static final int BUTTON_EXPORT_RES 	= R.drawable.title_bar_export_selector;
 	public static final int BUTTON_EXIT_RES 	= R.drawable.title_bar_exit_selector;
 	
-	private TextView title;
+	private ImageView title;
 	private ImageButton buttonL;
 	private ImageButton buttonR;
 
 	public TitleLayout(Window window) {
-		title   = (TextView) window.findViewById(R.id.header_text);
+		title   = (ImageView) window.findViewById(R.id.header_icon);
 		buttonL = (ImageButton) window.findViewById(R.id.imageButtonL);
 		buttonR = (ImageButton) window.findViewById(R.id.imageButtonR);
 	}
@@ -38,6 +39,6 @@ public class TitleLayout {
 	}
 	
 	public void setTitle(String text) {
-		title.setText(text);
+		//title.setImage(title);
 	}
 }
