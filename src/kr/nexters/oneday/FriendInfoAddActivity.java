@@ -26,10 +26,9 @@ public class FriendInfoAddActivity extends Activity {
 	private TimeTableView tableView;
 	private DrawerLayout drawerLayout;
 	private LeftDrawer drawerView;
-	FriendAddDialog dialog;
-	PersonDBAdapter DBAdapter;
+	private FriendAddDialog dialog;
 	
-	String text;
+	private String text;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +61,6 @@ public class FriendInfoAddActivity extends Activity {
 			}
 		}, TitleLayout.BUTTON_CHECK_RES);
 		
-
-		DBAdapter = new PersonDBAdapter();
-		
 		Intent intent = getIntent();
 		text = intent.getStringExtra("TextIn1");
 		
@@ -92,10 +88,6 @@ public class FriendInfoAddActivity extends Activity {
 		friend.setPhoneNumber(dialog.phoneNumber.getText().toString());
 		friend.setTimeList(tableView.getAllSelectedTimeInfo());
 		
-		friend.setId(PersonDBAdapter.addPerson(friend));
-		//How to get id from "person" TABLE in "data.db"
-		Log.i("db"," row id :"+friend.getrowId());
-//		DBAdapter.addTimeInfo(friend);
 		Common.addPerson(friend);
 		Common.addSelectedPerson(friend);
 		

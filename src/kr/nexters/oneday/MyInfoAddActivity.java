@@ -5,12 +5,14 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 
+import kr.nexters.oneday.database.PersonDBAdapter;
 import kr.nexters.oneday.vo.Person;
 import kr.nexters.oneday.widget.TimeTableView;
 import kr.nexters.oneday.widget.TitleLayout;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -19,6 +21,7 @@ public class MyInfoAddActivity extends Activity {
 
 	private TitleLayout titleLayout;
 	private TimeTableView tableView;
+	private PersonDBAdapter DBAdapter;
 	public static Context context;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,7 @@ public class MyInfoAddActivity extends Activity {
 		
 		loadMyInfo();
 		tableView.setModifiedMode();
+		DBAdapter = new PersonDBAdapter(context);
 	}
 	
 	private void loadMyInfo() {

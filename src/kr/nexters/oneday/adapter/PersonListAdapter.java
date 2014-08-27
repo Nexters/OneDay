@@ -93,6 +93,12 @@ public class PersonListAdapter extends BaseAdapter{
 				context.startActivity(intent);
 			}
 		});
+		
+		if(pList.get(pos).selected) {
+			viewHolder.name.setBackgroundResource(R.drawable.bg_list_p);
+		} else {
+			viewHolder.name.setBackgroundResource(R.color.transparent);
+		}
 
 		return convertView;
 	}

@@ -17,9 +17,10 @@ public class DBHelper extends SQLiteOpenHelper {
 	// column's name for "person" table
 	public static final String KEY_ROWID = "_id";
 	public static final String KEY_NAME = "name"; 
-	public static final String KEY_GROUPID = "groupid";
+	//public static final String KEY_GROUPID = "groupid";
 	public static final String KEY_PHONENUMBER = "phonenumber";
-	 
+	public static final String KEY_SELECTED = "selected"; 
+	
 	// column's name for "timetable" table
 	public static final String KEY_DAYNUMBER = "day";
 	public static final String KEY_TIMENUMBER = "time";
@@ -34,7 +35,7 @@ public class DBHelper extends SQLiteOpenHelper {
 	
 	public static final int DATABASE_VERSION = 3;
 	
-	private static final String DATABASE_CREATE_PERSON = "CREATE TABLE person (_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT not null,  groupid TEXT, phonenumber TEXT);";
+	private static final String DATABASE_CREATE_PERSON = "CREATE TABLE person (_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT not null, phonenumber TEXT, selected INTEGER);";
 	private static final String DATABASE_CREATE_TIMETABLE ="CREATE TABLE timetable (_id INTEGER, day TEXT, time TEXT);";
 	
 	public DBHelper(Context context){

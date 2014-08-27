@@ -4,20 +4,26 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import kr.nexters.oneday.database.PersonDBAdapter;
 import kr.nexters.oneday.vo.Person;
 import android.content.Context;
+import android.util.Log;
 
 public class Common {
 	private static Set<Person> personSet;
 	private static Set<Person> personSelectedSet;
 	
 	private static Context sContext;  
+	
+	private static PersonDBAdapter dbAdapter;
 
 	public static void initialize(Context context) {
 		sContext = context;
 		personSet = new HashSet<Person>();
 		personSelectedSet = new HashSet<Person>();
-	
+		dbAdapter = new PersonDBAdapter(context);
+		
+		loadCommonFromDatabase();
 	}
 
 	public static Context getMainContext() {
@@ -25,8 +31,13 @@ public class Common {
 	}
 	
 	public static void addPerson(Person person) {
+		long id = dbAdapter.addPersonInfo(person);
+		person.setId(id);
+		dbAdapter.addTimeInfo(person);
 		personSet.remove(person);
 		personSet.add(person);
+		
+		Log.i("db", person.toString());
 	}
 	
 	public static void addSelectedPerson(Person person) {
@@ -64,6 +75,18 @@ public class Common {
 		}
 		return null;
 	}
+<<<<<<< HEAD
 	
 	
+=======
+
+	private static void loadCommonFromDatabase() {
+		for(Person person : dbAdapter.getPeople()) {
+			personSet.add(person);
+			if (person.selected) {
+				personSelectedSet.add(person);
+			}
+		}
+	}
+>>>>>>> 28210b9239e3d21910c56824918456de1f840a0e
 }
