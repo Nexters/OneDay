@@ -55,12 +55,11 @@
         android:id="@+id/splash_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
+
         android:layout_below="@+id/splash_1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="23dp"
         android:background="@drawable/icon_loading_logo" />   
-=======
         android:layout_centerInParent="true"
         android:textColor="#000"
         android:textSize="20dp" />

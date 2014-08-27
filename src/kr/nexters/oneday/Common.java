@@ -75,10 +75,6 @@ public class Common {
 		}
 		return null;
 	}
-<<<<<<< HEAD
-	
-	
-=======
 
 	private static void loadCommonFromDatabase() {
 		for(Person person : dbAdapter.getPeople()) {
@@ -88,5 +84,4 @@ public class Common {
 			}
 		}
 	}
->>>>>>> 28210b9239e3d21910c56824918456de1f840a0e
 }
