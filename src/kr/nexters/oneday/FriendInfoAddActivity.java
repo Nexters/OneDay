@@ -29,7 +29,8 @@ public class FriendInfoAddActivity extends Activity {
 	private LeftDrawer drawerView;
 	private FriendAddDialog dialog;
 	private String text;
-
+	private int resid;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
