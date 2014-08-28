@@ -56,12 +56,7 @@ public class Common {
 	public static void deletePerson(Person person) {
 		personSet.remove(person);
 		removeSelectedPerson(person);
-		for(Person p : personSet){
-			Log.e("JAEYOUNG","personSet : " + p.getName());
-		}
-		for(Person p : personSelectedSet){
-			Log.e("JAEYOUNG","personSelectedSet : " + p.getName());
-		}
+		
 		dbAdapter.deletePreson(person);
 	}
 	

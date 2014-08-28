@@ -62,7 +62,6 @@ public class FriendDeleteDialog extends Dialog implements android.view.View.OnCl
 			
 		case R.id.delete_dialog_check:
 			for(Person p : DeleteAdapter.getSelectedList()){
-				Log.e("JAEYOUNG","Click : " + p.getName());
 				Common.deletePerson(p);
 			}
 			((MainActivity)MainActivity.context).checkTable();
