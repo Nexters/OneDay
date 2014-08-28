@@ -54,7 +54,6 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_alignParentLeft">true</item>
         <item name="android:layout_centerVertical">true</item>
-        <item name="android:background">@drawable/bg_list_p</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">#fff</item>
     </style>

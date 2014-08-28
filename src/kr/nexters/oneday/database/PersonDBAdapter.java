@@ -51,7 +51,7 @@ public class PersonDBAdapter {
         cvalues.put(DBHelper.KEY_NAME, person.getName());
 		//cvalues.put(DBHelper.KEY_GROUPID, "0");
         cvalues.put(DBHelper.KEY_PHONENUMBER, person.getPhoneNumber());
-        cvalues.put(DBHelper.KEY_SELECTED, 1);
+        cvalues.put(DBHelper.KEY_SELECTED, person.getSelected()?1:0);
         return mDb.insert(DBHelper.DATABASE_TABLE_person, null, cvalues);
 	}
 	
@@ -84,7 +84,7 @@ public class PersonDBAdapter {
 			default : 
 				persontmp.setSelected(true);
 				break;
-				}
+			}
 			
 			persontmp.setTimeList(this.getUserTimeInfoList(persontmp))	;
 			personlist.add(persontmp);			

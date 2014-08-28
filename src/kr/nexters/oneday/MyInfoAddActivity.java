@@ -58,18 +58,11 @@ public class MyInfoAddActivity extends Activity {
 	}
 	
 	private void loadMyInfo() {
-		Person me = new Person("나", null, null, true);
+		Person me = Common.getPerson("나");
 		
-		if(Common.getPersonSet().contains(me)) {
-			Iterator<Person> it = Common.getPersonSet().iterator();
-			while(it.hasNext()) {
-				Person p = it.next();
-				if(p.equals(me)) {
-					tableView.clearAllSector();
-					tableView.addPerson(p);
-					return;
-				}
-			}
+		if(me != null) {
+			tableView.clearAllSector();
+			tableView.addPerson(me);
 		}
 	}
 
