@@ -64,6 +64,7 @@ public class PersonDBAdapter {
         ContentValues cvalue = new ContentValues();
         cvalue.put(DBHelper.KEY_NAME, person.getName());
         cvalue.put(DBHelper.KEY_PHONENUMBER, person.getPhoneNumber());
+        cvalue.put(DBHelper.KEY_SELECTED, person.getSelected()?1:0);
         return mDb.update(DBHelper.DATABASE_TABLE_person, cvalue, 
         				  KEY_ROWID + "=" + person.getrowId(), null) > 0;
     }

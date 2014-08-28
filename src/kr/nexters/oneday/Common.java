@@ -15,7 +15,7 @@ public class Common {
 	
 	private static Context sContext;  
 	
-	private static PersonDBAdapter dbAdapter;
+	public static PersonDBAdapter dbAdapter;
 
 	public static void initialize(Context context) {
 		sContext = context;

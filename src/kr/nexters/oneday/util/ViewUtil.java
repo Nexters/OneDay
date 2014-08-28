@@ -21,6 +21,7 @@ public class ViewUtil {
 			Common.addSelectedPerson(p);
 		}
 		p.selected = !p.selected;
+		Common.dbAdapter.updatePerson(p);
 		((MainActivity)MainActivity.context).checkTable();
 	}
 }
