@@ -11,7 +11,7 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="97dp"
         android:background="@android:color/transparent" 
-        android:src="@drawable/button_navigation" />
+        android:src="@drawable/title_bar_navi_selector" />
 
     <ImageView
         android:id="@+id/header_icon"
@@ -26,6 +26,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:background="@android:color/transparent"
-        android:src="@drawable/button_export" />
+        android:src="@drawable/title_bar_export_selector" />
 
 </RelativeLayout>

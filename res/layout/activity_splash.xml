@@ -59,10 +59,7 @@
         android:layout_below="@+id/splash_1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="23dp"
-        android:background="@drawable/icon_loading_logo" />   
-        android:layout_centerInParent="true"
-        android:textColor="#000"
-        android:textSize="20dp" />
+        android:background="@drawable/icon_loading_logo" />
     
     <ImageView
        android:id="@+id/icon_timetable"
@@ -72,7 +69,6 @@
        android:layout_marginLeft="131.5dp"
        android:paddingBottom="23dp"
        android:layout_centerHorizontal="true" />
->>>>>>> 28210b9239e3d21910c56824918456de1f840a0e
 
     <ImageView
        android:id="@+id/icon_loading_logo"

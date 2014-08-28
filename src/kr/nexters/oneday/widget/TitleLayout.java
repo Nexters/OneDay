@@ -15,6 +15,7 @@ public class TitleLayout {
 	public static final int BUTTON_CHECK_RES 	= R.drawable.title_bar_check_selector;
 	public static final int BUTTON_EXPORT_RES 	= R.drawable.title_bar_export_selector;
 	public static final int BUTTON_EXIT_RES 	= R.drawable.title_bar_exit_selector;
+	public static final int BUTTON_NAVI_RES 	= R.drawable.title_bar_navi_selector;
 	
 	private ImageView title;
 	private ImageButton buttonL;
