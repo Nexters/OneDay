@@ -2,11 +2,10 @@ package kr.nexters.oneday.adapter;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import kr.nexters.oneday.Common;
 import kr.nexters.oneday.FriendInfoAddActivity;
-import kr.nexters.oneday.FriendStorageActivity;
-import kr.nexters.oneday.MainActivity;
 import kr.nexters.oneday.R;
 import kr.nexters.oneday.util.ViewUtil;
 import kr.nexters.oneday.vo.Person;
@@ -28,6 +27,7 @@ public class PersonListAdapter extends BaseAdapter{
 	public PersonListAdapter(Context context) {
 		this.context = context;
 		this.pList = new ArrayList<Person>(Common.getPersonSet()); 
+		Collections.sort(pList);
 		pList.remove(new Person("나", null, null, true));
 
 		inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -48,7 +48,6 @@ public class PersonListAdapter extends BaseAdapter{
 		return position;
 	}
 
-	//뷰홀더 적용하는 부분
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		final int pos = position;
@@ -107,6 +106,7 @@ public class PersonListAdapter extends BaseAdapter{
 	public void notifyDataSetChanged() {
 		pList.clear();
 		pList.addAll(Common.getPersonSet());
+		Collections.sort(pList);
 		pList.remove(new Person("나", null, null, true));
 		super.notifyDataSetChanged();
 	}

@@ -3,6 +3,7 @@
     android:layout_width="214dp"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:paddingTop="8dp"
     android:paddingBottom="8dp" >
 
     <RelativeLayout
@@ -19,11 +20,11 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="60dp"
+            android:layout_marginTop="8dp"
             android:background="#fff"
             android:gravity="center"
             android:text="13dp"
-            android:textColor="#17b4c2"
-            android:textSize="13dp" />
+            android:textColor="#17b4c2" />
 
         <CheckBox
             android:id="@+id/delete_check_box"
@@ -33,7 +34,6 @@
             android:layout_alignParentTop="true"
             android:layout_marginRight="30dp"
             android:button="@drawable/custom_checkbox" />
-
     </RelativeLayout>
 
 </LinearLayout>

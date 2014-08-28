@@ -52,8 +52,6 @@ public class MainActivity extends Activity {
 	private static final int FUTURE_TASK_START_ACT_FRIEND_INFO = 2;
 	private static final int FUTURE_TASK_DELETE_FRIEND_INFO = 3;
 
-	TextView textView;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -64,7 +62,6 @@ public class MainActivity extends Activity {
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,R.layout.custom_title);
 
 		context = this;
-		textView = (TextView)findViewById(R.id.leftdrawer_name);
 
 		titleLayout = new TitleLayout(getWindow());
 
@@ -111,18 +108,10 @@ public class MainActivity extends Activity {
 
 				intentSend.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(Environment.getExternalStorageDirectory().toString()+"/capture.PNG")));
 
-				startActivity(Intent.createChooser(intentSend, "공유"));
+				startActivity(Intent.createChooser(intentSend, "BINN"));
 
 			}
 		}, TitleLayout.BUTTON_EXPORT_RES);
-
-		//me 토글리스너
-		textView.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				ViewUtil.setClickPersonItem(textView, Common.getPerson("나"));
-			}
-		});
 	}
 
 	@Override
@@ -180,6 +169,7 @@ public class MainActivity extends Activity {
 			case FUTURE_TASK_DELETE_FRIEND_INFO:
 				//삭제 다이얼로그 띄우는 부분
 				FriendDeleteDialog dialog2 = new FriendDeleteDialog(MainActivity.this);
+				dialog2.setCancelable(false); //밖 터치시 종료되지 않게
 				dialog2.show();
 				break;
 			}

@@ -21,7 +21,6 @@ public class MyInfoAddActivity extends Activity {
 
 	private TitleLayout titleLayout;
 	private TimeTableView tableView;
-	private PersonDBAdapter DBAdapter;
 	public static Context context;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,28 +53,21 @@ public class MyInfoAddActivity extends Activity {
 		
 		loadMyInfo();
 		tableView.setModifiedMode();
-		DBAdapter = new PersonDBAdapter(context);
 	}
 	
 	private void loadMyInfo() {
-		Person me = new Person("나", null, null, true);
+		Person me = Common.getPerson("나");
 		
-		if(Common.getPersonSet().contains(me)) {
-			Iterator<Person> it = Common.getPersonSet().iterator();
-			while(it.hasNext()) {
-				Person p = it.next();
-				if(p.equals(me)) {
-					tableView.clearAllSector();
-					tableView.addPerson(p);
-					return;
-				}
-			}
+		if(me != null) {
+			tableView.clearAllSector();
+			tableView.addPerson(me);
 		}
 	}
 
 	private void saveMyInfo() {
 		Person me = new Person();
 		me.setName("나");
+		me.setPhoneNumber("");
 		me.setTimeList(tableView.getAllSelectedTimeInfo());
 		
 		Common.addPerson(me);

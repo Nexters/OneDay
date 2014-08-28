@@ -22,7 +22,6 @@
         android:background="@drawable/line_contentbox_selector"
         android:duplicateParentState="true"
         android:gravity="center"
-        android:text="000-0000-0000"
         android:textColor="#17b4c2"
         android:textSize="11.5dp" />
 

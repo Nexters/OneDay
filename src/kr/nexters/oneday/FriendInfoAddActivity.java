@@ -83,6 +83,11 @@ public class FriendInfoAddActivity extends Activity {
 	}
 
 	public void saveFriendInfo() {
+		if(text != null) {
+			Person p = Common.getPerson(text);
+			Common.deletePerson(p);
+		}
+		
 		Person friend = new Person();
 		friend.setName(dialog.name.getText().toString());
 		friend.setPhoneNumber(dialog.phoneNumber.getText().toString());
@@ -90,46 +95,13 @@ public class FriendInfoAddActivity extends Activity {
 
 		Common.addPerson(friend);
 		Common.addSelectedPerson(friend);
-
-        // 왜 있는거지?? 그냥 지움
-		/*
-		if(text != null) {
-			Common.deletePerson(Common.getPerson(text));
-		}
-        */
-
-//		Cursor cur =PersonDBAdapter.fetchAllPerson();
-//		while(cur.moveToNext()){
-//			Log.i("fetch",
-//					"id: "+cur.getInt(cur.getColumnIndex(DBHelper.KEY_ROWID)) +
-//					" name : "+cur.getString(cur.getColumnIndex(DBHelper.KEY_NAME)) +
-//					" PhoneNumber : " +cur.getString(cur.getColumnIndex(DBHelper.KEY_PHONENUMBER))
-//					);
-//		}
-//		cur.close();
-//		 cur = DBAdapter.fetchPerson(friend);
-//		while (cur.moveToNext()){
-//			Log.i("fetch",
-//					"id: "+cur.getInt(cur.getColumnIndex(DBHelper.KEY_ROWID)) +
-//					" name : "+cur.getString(cur.getColumnIndex(DBHelper.KEY_NAME)) +
-//					" PhoneNumber : " +cur.getString(cur.getColumnIndex(DBHelper.KEY_PHONENUMBER))
-//					);
-//		}
-//		cur.close();
-//
-//		cur= DBAdapter.fetchTimeInfo(friend);
-//		while(cur.moveToNext()){
-//			Log.i("fetch",
-//					"id : "+cur.getInt(cur.getColumnIndex(DBHelper.KEY_ROWID))+
-//					" Day : " + cur.getString(cur.getColumnIndex(DBHelper.KEY_DAYNUMBER))+
-//					" TIME : " +cur.getString(cur.getColumnIndex(DBHelper.KEY_TIMENUMBER)));
-//		}
 	}
 
 	public class FriendAddDialog extends Dialog implements OnClickListener {
 		private EditText name;
 		private EditText phoneNumber;
 		private EditText group;
+		private View saveContinue;
 
 		private FriendAddDialog() {
 			super(FriendInfoAddActivity.this);
@@ -138,10 +110,18 @@ public class FriendInfoAddActivity extends Activity {
 
 			name = (EditText)findViewById(R.id.add_dialog_name);
 			phoneNumber = (EditText)findViewById(R.id.add_dialog_tel);
+			saveContinue = findViewById(R.id.saveContinue);
+			
+			if(text != null) {
+				Person p = Common.getPerson(text);
+				name.setText(p.getName());
+				phoneNumber.setText(p.getPhoneNumber());
+				saveContinue.setVisibility(View.GONE);
+			}
 
 			findViewById(R.id.add_dialog_check).setOnClickListener(this);
 			findViewById(R.id.add_dialog_exit).setOnClickListener(this);
-			findViewById(R.id.saveContinue).setOnClickListener(this);
+			saveContinue.setOnClickListener(this);
 		}
 
 		@Override

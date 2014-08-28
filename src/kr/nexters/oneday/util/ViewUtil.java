@@ -13,14 +13,17 @@ public class ViewUtil {
 	}
 	
 	public static void setClickPersonItem(View v, Person p) {
-		if(p.selected) {
-			v.setBackgroundResource(R.color.transparent);
-			Common.removeSelectedPerson(p);
-		} else {
-			v.setBackgroundResource(R.drawable.bg_list_p);
-			Common.addSelectedPerson(p);
+		if(p != null) {
+			if(p.selected) {
+				v.setBackgroundResource(R.color.transparent);
+				Common.removeSelectedPerson(p);
+			} else {
+				v.setBackgroundResource(R.drawable.bg_list_p);
+				Common.addSelectedPerson(p);
+			}
+			p.selected = !p.selected;
+			Common.dbAdapter.updatePerson(p);
+			((MainActivity)MainActivity.context).checkTable();
 		}
-		p.selected = !p.selected;
-		((MainActivity)MainActivity.context).checkTable();
 	}
 }
