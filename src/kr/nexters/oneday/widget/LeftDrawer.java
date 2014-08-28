@@ -1,22 +1,27 @@
 package kr.nexters.oneday.widget;
 
+import kr.nexters.oneday.Common;
 import kr.nexters.oneday.FriendInfoAddActivity;
 import kr.nexters.oneday.MyInfoAddActivity;
 import kr.nexters.oneday.R;
 import kr.nexters.oneday.adapter.PersonListAdapter;
+import kr.nexters.oneday.util.ViewUtil;
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 
 public class LeftDrawer extends RelativeLayout {
 	
 	private ListView pDrawerList;
 	private PersonListAdapter pAdapter = null;
+	private TextView me;
 	
 	public LeftDrawer(Context context) {
 		super(context);
@@ -44,6 +49,14 @@ public class LeftDrawer extends RelativeLayout {
 		
 		pAdapter = new PersonListAdapter(this.getContext());
 		pDrawerList.setAdapter(pAdapter);
+
+		me = (TextView)findViewById(R.id.leftdrawer_name);
+		me.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				ViewUtil.setClickPersonItem(me, Common.getPerson("나"));
+			}
+		});
 	}
 	
 	public void setOnClickListenerViews(OnClickListener l) {
@@ -54,5 +67,11 @@ public class LeftDrawer extends RelativeLayout {
 
 	public void refresh() {
 		pAdapter.notifyDataSetChanged();
+
+		if(Common.getPerson("나").selected) {
+			me.setBackgroundResource(R.drawable.bg_list_p);
+		} else {
+			me.setBackgroundResource(R.color.transparent);
+		}
 	}
 }

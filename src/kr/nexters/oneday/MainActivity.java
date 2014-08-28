@@ -52,8 +52,6 @@ public class MainActivity extends Activity {
 	private static final int FUTURE_TASK_START_ACT_FRIEND_INFO = 2;
 	private static final int FUTURE_TASK_DELETE_FRIEND_INFO = 3;
 
-	TextView textView;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -64,7 +62,6 @@ public class MainActivity extends Activity {
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,R.layout.custom_title);
 
 		context = this;
-		textView = (TextView)findViewById(R.id.leftdrawer_name);
 
 		titleLayout = new TitleLayout(getWindow());
 
@@ -115,14 +112,6 @@ public class MainActivity extends Activity {
 
 			}
 		}, TitleLayout.BUTTON_EXPORT_RES);
-
-		//me 토글리스너
-		textView.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				ViewUtil.setClickPersonItem(textView, Common.getPerson("나"));
-			}
-		});
 	}
 
 	@Override

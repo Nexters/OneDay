@@ -14,7 +14,9 @@ public class OneDayApplication extends Application {
         super.onCreate();
         Common.initialize(this);
         
-        List<TimeInfo> dummy = new ArrayList<TimeInfo>();
-        Common.addPerson(new Person("나", "", dummy, false));
+        if(Common.getPerson("나") == null) {
+        	List<TimeInfo> dummy = new ArrayList<TimeInfo>();
+        	Common.addPerson(new Person("나", "", dummy, false));
+        }
     }
 }

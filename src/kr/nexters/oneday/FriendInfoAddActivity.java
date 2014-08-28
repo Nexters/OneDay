@@ -90,40 +90,6 @@ public class FriendInfoAddActivity extends Activity {
 
 		Common.addPerson(friend);
 		Common.addSelectedPerson(friend);
-
-        // 왜 있는거지?? 그냥 지움
-		/*
-		if(text != null) {
-			Common.deletePerson(Common.getPerson(text));
-		}
-        */
-
-//		Cursor cur =PersonDBAdapter.fetchAllPerson();
-//		while(cur.moveToNext()){
-//			Log.i("fetch",
-//					"id: "+cur.getInt(cur.getColumnIndex(DBHelper.KEY_ROWID)) +
-//					" name : "+cur.getString(cur.getColumnIndex(DBHelper.KEY_NAME)) +
-//					" PhoneNumber : " +cur.getString(cur.getColumnIndex(DBHelper.KEY_PHONENUMBER))
-//					);
-//		}
-//		cur.close();
-//		 cur = DBAdapter.fetchPerson(friend);
-//		while (cur.moveToNext()){
-//			Log.i("fetch",
-//					"id: "+cur.getInt(cur.getColumnIndex(DBHelper.KEY_ROWID)) +
-//					" name : "+cur.getString(cur.getColumnIndex(DBHelper.KEY_NAME)) +
-//					" PhoneNumber : " +cur.getString(cur.getColumnIndex(DBHelper.KEY_PHONENUMBER))
-//					);
-//		}
-//		cur.close();
-//
-//		cur= DBAdapter.fetchTimeInfo(friend);
-//		while(cur.moveToNext()){
-//			Log.i("fetch",
-//					"id : "+cur.getInt(cur.getColumnIndex(DBHelper.KEY_ROWID))+
-//					" Day : " + cur.getString(cur.getColumnIndex(DBHelper.KEY_DAYNUMBER))+
-//					" TIME : " +cur.getString(cur.getColumnIndex(DBHelper.KEY_TIMENUMBER)));
-//		}
 	}
 
 	public class FriendAddDialog extends Dialog implements OnClickListener {
