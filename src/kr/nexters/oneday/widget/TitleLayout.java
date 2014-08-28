@@ -17,12 +17,14 @@ public class TitleLayout {
 	public static final int BUTTON_EXIT_RES 	= R.drawable.title_bar_exit_selector;
 	public static final int BUTTON_NAVI_RES 	= R.drawable.title_bar_navi_selector;
 	
-	private ImageView title;
+	private ImageView titleimage;
 	private ImageButton buttonL;
 	private ImageButton buttonR;
+	private TextView title;
 
 	public TitleLayout(Window window) {
-		title   = (ImageView) window.findViewById(R.id.header_icon);
+		title = (TextView)window.findViewById(R.id.title);
+		titleimage   = (ImageView) window.findViewById(R.id.header_icon);
 		buttonL = (ImageButton) window.findViewById(R.id.imageButtonL);
 		buttonR = (ImageButton) window.findViewById(R.id.imageButtonR);
 	}
@@ -40,6 +42,11 @@ public class TitleLayout {
 	}
 	
 	public void setTitle(String text) {
-		//title.setImage(title);
+		title.setVisibility(View.VISIBLE);
+		 title.setText("");
+	}
+	
+	public void setImageDrawable(){
+	//	titleimage.setImageDrawable(getResources().getDrawable(R.drawable.icon_logo));
 	}
 }

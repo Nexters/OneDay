@@ -10,23 +10,28 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginRight="97dp"
-        android:background="@android:color/transparent" 
-        android:src="@drawable/title_bar_navi_selector" />
+        android:background="@android:color/transparent" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text=""
+        android:textSize="14sp" />
 
     <ImageView
         android:id="@+id/header_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:src="@drawable/icon_logo" />
+        android:background="@android:color/transparent" />
 
     <ImageButton
         android:id="@+id/imageButtonR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_marginLeft="97dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/title_bar_export_selector" />
+        android:background="@android:color/transparent" />
 
 </RelativeLayout>
