@@ -83,6 +83,11 @@ public class FriendInfoAddActivity extends Activity {
 	}
 
 	public void saveFriendInfo() {
+		if(text != null) {
+			Person p = Common.getPerson(text);
+			Common.deletePerson(p);
+		}
+		
 		Person friend = new Person();
 		friend.setName(dialog.name.getText().toString());
 		friend.setPhoneNumber(dialog.phoneNumber.getText().toString());

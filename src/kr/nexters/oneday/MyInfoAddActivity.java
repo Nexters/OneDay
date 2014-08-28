@@ -21,7 +21,6 @@ public class MyInfoAddActivity extends Activity {
 
 	private TitleLayout titleLayout;
 	private TimeTableView tableView;
-	private PersonDBAdapter DBAdapter;
 	public static Context context;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +53,6 @@ public class MyInfoAddActivity extends Activity {
 		
 		loadMyInfo();
 		tableView.setModifiedMode();
-		DBAdapter = new PersonDBAdapter(context);
 	}
 	
 	private void loadMyInfo() {
@@ -69,6 +67,7 @@ public class MyInfoAddActivity extends Activity {
 	private void saveMyInfo() {
 		Person me = new Person();
 		me.setName("나");
+		me.setPhoneNumber("");
 		me.setTimeList(tableView.getAllSelectedTimeInfo());
 		
 		Common.addPerson(me);

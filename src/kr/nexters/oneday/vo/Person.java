@@ -54,7 +54,7 @@ public class Person implements Comparable<Person> {
 	}
 	
 	public boolean getSelected() {
-		return true;
+		return selected;
 	}
 
 	public void setSelected(boolean selected) {
