@@ -96,6 +96,7 @@ public class FriendInfoAddActivity extends Activity {
 		private EditText name;
 		private EditText phoneNumber;
 		private EditText group;
+		private View saveContinue;
 
 		private FriendAddDialog() {
 			super(FriendInfoAddActivity.this);
@@ -104,10 +105,18 @@ public class FriendInfoAddActivity extends Activity {
 
 			name = (EditText)findViewById(R.id.add_dialog_name);
 			phoneNumber = (EditText)findViewById(R.id.add_dialog_tel);
+			saveContinue = findViewById(R.id.saveContinue);
+			
+			if(text != null) {
+				Person p = Common.getPerson(text);
+				name.setHint(p.getName());
+				phoneNumber.setHint(p.getPhoneNumber());
+				saveContinue.setVisibility(View.GONE);
+			}
 
 			findViewById(R.id.add_dialog_check).setOnClickListener(this);
 			findViewById(R.id.add_dialog_exit).setOnClickListener(this);
-			findViewById(R.id.saveContinue).setOnClickListener(this);
+			saveContinue.setOnClickListener(this);
 		}
 
 		@Override
