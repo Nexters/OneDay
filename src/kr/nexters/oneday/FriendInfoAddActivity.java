@@ -109,8 +109,8 @@ public class FriendInfoAddActivity extends Activity {
 			
 			if(text != null) {
 				Person p = Common.getPerson(text);
-				name.setHint(p.getName());
-				phoneNumber.setHint(p.getPhoneNumber());
+				name.setText(p.getName());
+				phoneNumber.setText(p.getPhoneNumber());
 				saveContinue.setVisibility(View.GONE);
 			}
 
