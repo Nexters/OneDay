@@ -86,7 +86,7 @@ public class PersonDBAdapter {
 	
 	private List<Person> getPeopleFromCursor(Cursor cursor) {
 		List<Person> personlist = new ArrayList<Person>();
-		while(cursor.moveToNext()){
+		do {
 			Person persontmp = new Person();
 			persontmp.setId(cursor.getInt(cursor.getColumnIndex(DBHelper.KEY_ROWID)));
 			persontmp.setName(cursor.getString(cursor.getColumnIndex(DBHelper.KEY_NAME)));
@@ -103,7 +103,7 @@ public class PersonDBAdapter {
 			
 			persontmp.setTimeList(this.getUserTimeInfoList(persontmp))	;
 			personlist.add(persontmp);			
-		}
+		} while(cursor.moveToNext());
 		cursor.close();
 
 		return personlist;
@@ -112,11 +112,11 @@ public class PersonDBAdapter {
 	private List<TimeInfo> getUserTimeInfoList(Person person){
 		List<TimeInfo> ti  = new ArrayList<TimeInfo>();
 		Cursor mCursor = fetchTimeInfo(person);
-		while(mCursor.moveToNext()){
+		do {
 			DAY  day = DAY.valueOf(mCursor.getString(mCursor.getColumnIndex(DBHelper.KEY_DAYNUMBER)));
 			TIME time = TIME.valueOf(mCursor.getString(mCursor.getColumnIndex(DBHelper.KEY_TIMENUMBER)));
 			ti.add(new TimeInfo(day,time));
-		}
+		} while(mCursor.moveToNext());
 		mCursor.close();
 		return ti;
 	}
