@@ -44,28 +44,28 @@ public class MainActivity extends Activity {
 	private LeftDrawer drawerView;
 	private TimeTableView tableView;
 	private TitleLayout titleLayout;
-	
+
 	public static Context context;
-	
+
 	private int futureTask = -1;
 	private static final int FUTURE_TASK_START_ACT_MY_INFO = 1;
 	private static final int FUTURE_TASK_START_ACT_FRIEND_INFO = 2;
 	private static final int FUTURE_TASK_DELETE_FRIEND_INFO = 3;
-	
+
 	TextView textView;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		//LoadCommonFromDatabase();
-		
+
 		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 		setContentView(R.layout.activity_main);
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,R.layout.custom_title);
-		
+
 		context = this;
 		textView = (TextView)findViewById(R.id.leftdrawer_name);
-		
+
 		titleLayout = new TitleLayout(getWindow());
 
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -74,7 +74,7 @@ public class MainActivity extends Activity {
 		drawerView.setOnClickListenerViews(clicker);
 		tableView = (TimeTableView) findViewById(R.id.tableView);
 		tableView.setSelectedMode(false);
-		
+
 		drawerLayout.setDrawerListener(myDrawerListener);
 
 		titleLayout.setButtonL(new OnClickListener() {
@@ -84,7 +84,7 @@ public class MainActivity extends Activity {
 				toggleDrawer();
 			}
 		}, TitleLayout.BUTTON_TOGGLE_RES);
-		
+
 		titleLayout.setButtonR(new OnClickListener() {
 
 			@Override
@@ -112,7 +112,7 @@ public class MainActivity extends Activity {
 				intentSend.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(Environment.getExternalStorageDirectory().toString()+"/capture.PNG")));
 
 				startActivity(Intent.createChooser(intentSend, "공유"));
-		
+
 			}
 		}, TitleLayout.BUTTON_EXPORT_RES);
 
@@ -124,13 +124,13 @@ public class MainActivity extends Activity {
 			}
 		});
 	}
-	
+
 	@Override
 	protected void onResume() {
 		super.onResume();
 		tableView.setPerson(Common.getPersonSelectedSet());
-		drawerView.refresh();
-		
+		leftDrawerRefresh();
+
 		//sd카드 파일 삭제
 		File file = new File(Environment.getExternalStorageDirectory().toString()+"/capture.PNG");
 		if(file.exists()) //파일인지 확인하고 삭제
@@ -139,8 +139,13 @@ public class MainActivity extends Activity {
 
 	public void checkTable() {
 		tableView.setPerson(Common.getPersonSelectedSet());
+		
 	}
 	
+	public void leftDrawerRefresh() {
+	    drawerView.refresh();
+	}
+
 	public void toggleDrawer() {
 		if (drawerLayout.isDrawerOpen(drawerView) == false){
 			drawerLayout.openDrawer(drawerView);
@@ -148,7 +153,7 @@ public class MainActivity extends Activity {
 			drawerLayout.closeDrawer(drawerView);
 		}
 	}
-	
+
 	@Override
 	public boolean onKeyUp(int keyCode, android.view.KeyEvent event) {
 		if(keyCode == KeyEvent.KEYCODE_BACK && drawerLayout.isDrawerOpen(drawerView)) {
@@ -161,8 +166,8 @@ public class MainActivity extends Activity {
 	private DrawerListener myDrawerListener = new DrawerListener() {
 		private float lastTranslate = 0.0f;
 
-		@Override 
-		public void onDrawerClosed(View drawerView) { 
+		@Override
+		public void onDrawerClosed(View drawerView) {
 			switch(futureTask) {
 			case FUTURE_TASK_START_ACT_MY_INFO:
 				Intent intent2 = new Intent(MainActivity.this, MyInfoAddActivity.class);
@@ -200,9 +205,9 @@ public class MainActivity extends Activity {
 			}
 		}
 	};
-	
+
 	private OnClickListener clicker = new OnClickListener() {
-		
+
 		@Override
 		public void onClick(View v) {
 			if(drawerLayout.isDrawerOpen(drawerView)) {
@@ -212,17 +217,17 @@ public class MainActivity extends Activity {
 			case R.id.FriendAddButton:
 				futureTask = FUTURE_TASK_START_ACT_FRIEND_INFO;
 				break;
-				
+
 			case R.id.FriendDeleteButton:
 				futureTask = FUTURE_TASK_DELETE_FRIEND_INFO;
 				break;
-				
+
 			case R.id.leftdrawer_setting_btn:
 				futureTask = FUTURE_TASK_START_ACT_MY_INFO;
 				break;
 			}
 		}
 	};
-	
+
 }
 

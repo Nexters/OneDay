@@ -26,7 +26,7 @@
             android:textSize="13dp" />
 
         <CheckBox
-            android:id="@+id/checkBox1"
+            android:id="@+id/delete_check_box"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

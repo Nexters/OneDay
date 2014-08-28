@@ -27,7 +27,7 @@ public class FriendInfoAddActivity extends Activity {
 	private DrawerLayout drawerLayout;
 	private LeftDrawer drawerView;
 	private FriendAddDialog dialog;
-	
+
 	private String text;
 
 	@Override
@@ -40,7 +40,7 @@ public class FriendInfoAddActivity extends Activity {
 		titleLayout = new TitleLayout(getWindow());
 
 		titleLayout.setTitle("친구 추가");
-		
+
 		tableView = (TimeTableView) findViewById(R.id.tableView);
 
 		titleLayout.setButtonL(new OnClickListener() {
@@ -60,20 +60,20 @@ public class FriendInfoAddActivity extends Activity {
 				dialog.show();
 			}
 		}, TitleLayout.BUTTON_CHECK_RES);
-		
+
 		Intent intent = getIntent();
 		text = intent.getStringExtra("TextIn1");
-		
+
 		if(text != null) {
 //			titleLayout.setTitle(text);
 			titleLayout.setTitle("친구수정 (" + text + ")");
-			
+
 			Person p = Common.getPerson(text);
 			tableView.addPerson(p);
 			tableView.setModifiedMode();
 		}
 	}
-	
+
 	public void toggleDrawer() {
 		if (drawerLayout.isDrawerOpen(drawerView) == false){
 			drawerLayout.openDrawer(drawerView);
@@ -87,14 +87,17 @@ public class FriendInfoAddActivity extends Activity {
 		friend.setName(dialog.name.getText().toString());
 		friend.setPhoneNumber(dialog.phoneNumber.getText().toString());
 		friend.setTimeList(tableView.getAllSelectedTimeInfo());
-		
+
 		Common.addPerson(friend);
 		Common.addSelectedPerson(friend);
-		
+
+        // 왜 있는거지?? 그냥 지움
+		/*
 		if(text != null) {
 			Common.deletePerson(Common.getPerson(text));
 		}
-		
+        */
+
 //		Cursor cur =PersonDBAdapter.fetchAllPerson();
 //		while(cur.moveToNext()){
 //			Log.i("fetch",
@@ -113,7 +116,7 @@ public class FriendInfoAddActivity extends Activity {
 //					);
 //		}
 //		cur.close();
-//		
+//
 //		cur= DBAdapter.fetchTimeInfo(friend);
 //		while(cur.moveToNext()){
 //			Log.i("fetch",
@@ -127,20 +130,20 @@ public class FriendInfoAddActivity extends Activity {
 		private EditText name;
 		private EditText phoneNumber;
 		private EditText group;
-		
+
 		private FriendAddDialog() {
 			super(FriendInfoAddActivity.this);
-			requestWindowFeature(Window.FEATURE_NO_TITLE);  
+			requestWindowFeature(Window.FEATURE_NO_TITLE);
 			setContentView(R.layout.add_dialog);
 
 			name = (EditText)findViewById(R.id.add_dialog_name);
 			phoneNumber = (EditText)findViewById(R.id.add_dialog_tel);
-			
+
 			findViewById(R.id.add_dialog_check).setOnClickListener(this);
 			findViewById(R.id.add_dialog_exit).setOnClickListener(this);
 			findViewById(R.id.saveContinue).setOnClickListener(this);
 		}
-		
+
 		@Override
 		public void onClick(View v) {
 			switch(v.getId()) {
@@ -148,7 +151,7 @@ public class FriendInfoAddActivity extends Activity {
 				if(TextUtils.isEmpty(name.getText())) {
 					Toast.makeText(Common.getMainContext(), "name is empty", Toast.LENGTH_SHORT).show();
 				} else {
-					saveFriendInfo();  
+					saveFriendInfo();
 					dismiss();
 					finish();
 				}
@@ -157,12 +160,12 @@ public class FriendInfoAddActivity extends Activity {
 				dismiss();
 				break;
 			case R.id.saveContinue:
-				saveFriendInfo();  
+				saveFriendInfo();
 				dismiss();
 				tableView.clearAllSector();
 				break;
 			}
 		}
 	}
-	
+
 }
