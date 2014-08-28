@@ -1,8 +1,9 @@
 package kr.nexters.oneday.vo;
 
+import java.util.Comparator;
 import java.util.List;
 
-public class Person {
+public class Person implements Comparable<Person> {
 	long rowid;
 	private String name;
 	public boolean selected;
@@ -92,5 +93,11 @@ public class Person {
 				+ selected + ", phoneNumber=" + phoneNumber + ", timeList="
 				+ timeList + "]";
 	}
+
+	@Override
+	public int compareTo(Person another) {
+		return name.compareTo(another.name);
+	}
+	
 }
 
