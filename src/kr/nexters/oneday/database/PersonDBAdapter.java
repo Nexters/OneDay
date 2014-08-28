@@ -86,24 +86,26 @@ public class PersonDBAdapter {
 	
 	private List<Person> getPeopleFromCursor(Cursor cursor) {
 		List<Person> personlist = new ArrayList<Person>();
-		do {
-			Person persontmp = new Person();
-			persontmp.setId(cursor.getInt(cursor.getColumnIndex(DBHelper.KEY_ROWID)));
-			persontmp.setName(cursor.getString(cursor.getColumnIndex(DBHelper.KEY_NAME)));
-			persontmp.setPhoneNumber(cursor.getString(cursor.getColumnIndex(DBHelper.KEY_PHONENUMBER)));
-			
-			switch((cursor.getInt(cursor.getColumnIndex(DBHelper.KEY_SELECTED )))){
-			case 0 :
-				persontmp.setSelected(false);
-				break;
-			default : 
-				persontmp.setSelected(true);
-				break;
-			}
-			
-			persontmp.setTimeList(this.getUserTimeInfoList(persontmp))	;
-			personlist.add(persontmp);			
-		} while(cursor.moveToNext());
+		if(cursor.moveToFirst()) {
+			do {
+				Person persontmp = new Person();
+				persontmp.setId(cursor.getInt(cursor.getColumnIndex(DBHelper.KEY_ROWID)));
+				persontmp.setName(cursor.getString(cursor.getColumnIndex(DBHelper.KEY_NAME)));
+				persontmp.setPhoneNumber(cursor.getString(cursor.getColumnIndex(DBHelper.KEY_PHONENUMBER)));
+				
+				switch((cursor.getInt(cursor.getColumnIndex(DBHelper.KEY_SELECTED )))){
+				case 0 :
+					persontmp.setSelected(false);
+					break;
+				default : 
+					persontmp.setSelected(true);
+					break;
+				}
+				
+				persontmp.setTimeList(this.getUserTimeInfoList(persontmp))	;
+				personlist.add(persontmp);			
+			} while(cursor.moveToNext());
+		}
 		cursor.close();
 
 		return personlist;
