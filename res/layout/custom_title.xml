@@ -10,8 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginRight="97dp"
-        android:background="@android:color/transparent" 
-        android:src="@drawable/title_bar_navi_selector" />
+        android:background="@android:color/transparent" />
 
     <ImageView
         android:id="@+id/header_icon"
@@ -25,7 +24,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:background="@android:color/transparent"
-        android:src="@drawable/title_bar_export_selector" />
+        android:background="@android:color/transparent" />
 
 </RelativeLayout>
