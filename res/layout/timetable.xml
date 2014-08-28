@@ -15,8 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_below="@+id/bg_bar_day"
-        android:orientation="vertical" 
-        android:padding="10.5dp">
+        android:orientation="vertical">
 
         <include layout="@layout/bar_time" />
     </LinearLayout>
@@ -26,8 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/bg_bar_time"
-        android:orientation="horizontal" 
-        android:padding ="10dp">
+        android:orientation="horizontal">
 
         <include layout="@layout/bar_day" />
     </LinearLayout>
