@@ -114,11 +114,13 @@ public class PersonDBAdapter {
 	private List<TimeInfo> getUserTimeInfoList(Person person){
 		List<TimeInfo> ti  = new ArrayList<TimeInfo>();
 		Cursor mCursor = fetchTimeInfo(person);
-		do {
-			DAY  day = DAY.valueOf(mCursor.getString(mCursor.getColumnIndex(DBHelper.KEY_DAYNUMBER)));
-			TIME time = TIME.valueOf(mCursor.getString(mCursor.getColumnIndex(DBHelper.KEY_TIMENUMBER)));
-			ti.add(new TimeInfo(day,time));
-		} while(mCursor.moveToNext());
+		if(mCursor.moveToFirst()) {
+			do {
+				DAY  day = DAY.valueOf(mCursor.getString(mCursor.getColumnIndex(DBHelper.KEY_DAYNUMBER)));
+				TIME time = TIME.valueOf(mCursor.getString(mCursor.getColumnIndex(DBHelper.KEY_TIMENUMBER)));
+				ti.add(new TimeInfo(day,time));
+			} while(mCursor.moveToNext());
+		}
 		mCursor.close();
 		return ti;
 	}
