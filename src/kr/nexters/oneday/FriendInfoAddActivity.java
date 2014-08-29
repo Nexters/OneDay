@@ -129,9 +129,14 @@ public class FriendInfoAddActivity extends Activity {
 		public void onClick(View v) {
 			switch(v.getId()) {
 			case R.id.add_dialog_check:
-				if(TextUtils.isEmpty(name.getText())) {
-					Toast.makeText(Common.getMainContext(), "name is empty", Toast.LENGTH_SHORT).show();
+				if(TextUtils.isEmpty(name.getText().toString().trim())) {
+					Toast.makeText(Common.getMainContext(), "이름을 입력해주세요", Toast.LENGTH_SHORT).show();
 				} else {
+					Person p = Common.getPerson(name.getText().toString());
+					if(p != null) {
+						Toast.makeText(Common.getMainContext(), "같은 이름을 가진 사람이 존재합니다.", Toast.LENGTH_SHORT).show();
+						break;
+					}
 					saveFriendInfo();
 					dismiss();
 					finish();
@@ -141,6 +146,15 @@ public class FriendInfoAddActivity extends Activity {
 				dismiss();
 				break;
 			case R.id.saveContinue:
+				if(TextUtils.isEmpty(name.getText().toString().trim())) {
+					Toast.makeText(Common.getMainContext(), "이름을 입력해주세요", Toast.LENGTH_SHORT).show();
+					break;
+				}
+				Person p = Common.getPerson(name.getText().toString());
+				if(p != null) {
+					Toast.makeText(Common.getMainContext(), "같은 이름을 가진 사람이 존재합니다.", Toast.LENGTH_SHORT).show();
+					break;
+				}
 				saveFriendInfo();
 				dismiss();
 				tableView.clearAllSector();

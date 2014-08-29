@@ -37,7 +37,7 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content" >
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -65,8 +65,8 @@
                 android:id="@+id/imageView3"
                 android:layout_width="0dp"
                 android:layout_height="43dp"
-                android:layout_weight="1"
                 android:layout_marginTop="7.5dp"
+                android:layout_weight="1"
                 android:src="@drawable/icon_tel" />
 
             <EditText
@@ -74,9 +74,10 @@
                 style="@style/add_dialog_edittext"
                 android:layout_width="170.5dp"
                 android:layout_height="43dp"
+                android:layout_marginTop="7.5dp"
                 android:hint="전화번호"
-               	android:padding="10dp"
-               	android:layout_marginTop="7.5dp"
+                android:numeric="integer"
+                android:padding="10dp"
                 android:textColorHint="#bbe0e6" >
             </EditText>
         </LinearLayout>
@@ -88,7 +89,6 @@
             android:layout_marginLeft="40dp"
             android:layout_marginTop="7.5dp"
             android:background="@drawable/friend_add_save" />
-
     </LinearLayout>
 
 </RelativeLayout>
