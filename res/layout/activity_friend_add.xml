@@ -4,9 +4,14 @@
     android:layout_height="match_parent"
     tools:context="kr.nexters.oneday.MyInfoAddActivity" >
 
-   <kr.nexters.oneday.widget.TimeTableView
+
+    <kr.nexters.oneday.widget.TimeTableView
         android:id="@+id/tableView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+        
+        
+    
 
 </RelativeLayout>

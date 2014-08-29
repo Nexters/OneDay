@@ -9,15 +9,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginRight="97dp"
+        android:layout_marginRight="96dp"
         android:background="@android:color/transparent" />
 
-    <ImageView
-        android:id="@+id/header_icon"
+    <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:src="@drawable/icon_logo" />
+        android:drawableLeft="@drawable/icon_logo"
+        android:textSize="1sp"
+        android:background="@android:color/transparent"/>
+
 
     <ImageButton
         android:id="@+id/imageButtonR"

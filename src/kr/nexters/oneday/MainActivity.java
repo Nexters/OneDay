@@ -108,7 +108,7 @@ public class MainActivity extends Activity {
 
 				intentSend.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(Environment.getExternalStorageDirectory().toString()+"/capture.PNG")));
 
-				startActivity(Intent.createChooser(intentSend, "공유"));
+				startActivity(Intent.createChooser(intentSend, "BINN"));
 
 			}
 		}, TitleLayout.BUTTON_EXPORT_RES);
@@ -169,6 +169,7 @@ public class MainActivity extends Activity {
 			case FUTURE_TASK_DELETE_FRIEND_INFO:
 				//삭제 다이얼로그 띄우는 부분
 				FriendDeleteDialog dialog2 = new FriendDeleteDialog(MainActivity.this);
+				dialog2.setCancelable(false); //밖 터치시 종료되지 않게
 				dialog2.show();
 				break;
 			}

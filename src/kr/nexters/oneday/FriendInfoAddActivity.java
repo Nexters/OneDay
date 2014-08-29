@@ -19,6 +19,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.TextView;
 
 public class FriendInfoAddActivity extends Activity {
 
@@ -27,9 +28,9 @@ public class FriendInfoAddActivity extends Activity {
 	private DrawerLayout drawerLayout;
 	private LeftDrawer drawerView;
 	private FriendAddDialog dialog;
-
 	private String text;
-
+	private int resid;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -65,7 +66,7 @@ public class FriendInfoAddActivity extends Activity {
 		text = intent.getStringExtra("TextIn1");
 
 		if(text != null) {
-//			titleLayout.setTitle(text);
+			titleLayout.setTitle(text);
 			titleLayout.setTitle("친구수정 (" + text + ")");
 
 			Person p = Common.getPerson(text);
