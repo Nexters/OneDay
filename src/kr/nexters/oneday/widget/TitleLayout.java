@@ -31,7 +31,6 @@ public class TitleLayout {
 
 	public TitleLayout(Window window) {
 		title = (TextView)window.findViewById(R.id.title);
-//		titleimage  = (ImageView) window.findViewById(R.id.header_icon);
 		buttonL = (ImageButton) window.findViewById(R.id.imageButtonL);
 		buttonR = (ImageButton) window.findViewById(R.id.imageButtonR);
 	}
@@ -51,7 +50,7 @@ public class TitleLayout {
 	public void setTitle(String text) {
 		 Drawable transparent = new ColorDrawable(Color.TRANSPARENT);
 		 title.setText(text);
-		 title.setBackgroundDrawable(transparent);
+		 title.setBackground(transparent);
 		 //title.setVisibility(View.VISIBLE);
 		 /*
 		 if(text != null ){
@@ -62,10 +61,9 @@ public class TitleLayout {
 	
 	public void setImageDrawable(Context context){
 		this.drawable = drawable;
-		titleimage.setImageDrawable(context.getResources().getDrawable(R.drawable.icon_logo));
 		Drawable titleLogo =  context.getResources().getDrawable( R.drawable.icon_logo );
 		title.setText("");
-		title.setBackgroundDrawable(titleLogo);
+		title.setBackground(titleLogo);
 	}
 
 
