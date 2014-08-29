@@ -17,9 +17,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:drawableLeft="@drawable/icon_logo"
-        android:textSize="1sp"
-        android:background="@android:color/transparent"/>
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:background="@drawable/icon_logo"/>
 
 
     <ImageButton

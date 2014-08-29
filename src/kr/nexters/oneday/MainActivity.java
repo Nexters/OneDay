@@ -64,7 +64,7 @@ public class MainActivity extends Activity {
 		context = this;
 
 		titleLayout = new TitleLayout(getWindow());
-
+		
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
 		drawerView = (LeftDrawer) findViewById(R.id.left_drawer);
@@ -119,7 +119,8 @@ public class MainActivity extends Activity {
 		super.onResume();
 		tableView.setPerson(Common.getPersonSelectedSet());
 		leftDrawerRefresh();
-
+		if(titleLayout != null)
+			titleLayout.setImageDrawable(this);
 		//sd카드 파일 삭제
 		File file = new File(Environment.getExternalStorageDirectory().toString()+"/capture.PNG");
 		if(file.exists()) //파일인지 확인하고 삭제
