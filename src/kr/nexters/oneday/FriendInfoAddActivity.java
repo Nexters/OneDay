@@ -40,7 +40,7 @@ public class FriendInfoAddActivity extends Activity {
 
 		titleLayout = new TitleLayout(getWindow());
 
-		titleLayout.setTitle("친구 추가");
+		titleLayout.setTitle("시간표 추가");
 
 		tableView = (TimeTableView) findViewById(R.id.tableView);
 
@@ -67,7 +67,7 @@ public class FriendInfoAddActivity extends Activity {
 
 		if(text != null) {
 			titleLayout.setTitle(text);
-			titleLayout.setTitle("친구수정 (" + text + ")");
+			titleLayout.setTitle("시간표 수정 (" + text + ")");
 
 			Person p = Common.getPerson(text);
 			tableView.addPerson(p);
@@ -133,9 +133,20 @@ public class FriendInfoAddActivity extends Activity {
 					Toast.makeText(Common.getMainContext(), "이름을 입력해주세요", Toast.LENGTH_SHORT).show();
 				} else {
 					Person p = Common.getPerson(name.getText().toString());
-					if(text == null && p != null) {
-						Toast.makeText(Common.getMainContext(), "같은 이름을 가진 사람이 존재합니다.", Toast.LENGTH_SHORT).show();
-						break;
+					
+					if( text != null ) {
+						// 친구 수정 화면 일경우
+						if( p != null && p.getName() != text ){
+							// 같은 이름의 사람은 있는데 그게 친구의 얼레이름은 아닐경우
+							Toast.makeText(Common.getMainContext(), "같은 이름을 가진 사람이 존재합니다.", Toast.LENGTH_SHORT).show();
+							return ;
+						}
+					}else{
+						// 친구 추가 화면 일경우
+						if ( p != null){
+							Toast.makeText(Common.getMainContext(), "같은 이름을 가진 사람이 존재합니다.", Toast.LENGTH_SHORT).show();
+							return ;
+						}
 					}
 					saveFriendInfo();
 					dismiss();
@@ -148,16 +159,27 @@ public class FriendInfoAddActivity extends Activity {
 			case R.id.saveContinue:
 				if(TextUtils.isEmpty(name.getText().toString().trim())) {
 					Toast.makeText(Common.getMainContext(), "이름을 입력해주세요", Toast.LENGTH_SHORT).show();
-					break;
+				} else {
+					Person p = Common.getPerson(name.getText().toString());
+					
+					if( text != null ) {
+						// 친구 수정 화면 일경우
+						if( p != null && p.getName() != text ){
+							// 같은 이름의 사람은 있는데 그게 친구의 얼레이름은 아닐경우
+							Toast.makeText(Common.getMainContext(), "같은 이름을 가진 사람이 존재합니다.", Toast.LENGTH_SHORT).show();
+							return ;
+						}
+					}else{
+						// 친구 추가 화면 일경우
+						if ( p != null){
+							Toast.makeText(Common.getMainContext(), "같은 이름을 가진 사람이 존재합니다.", Toast.LENGTH_SHORT).show();
+							return ;
+						}
+					}
+					saveFriendInfo();
+					dismiss();
+					tableView.clearAllSector();
 				}
-				Person p = Common.getPerson(name.getText().toString());
-				if(p != null) {
-					Toast.makeText(Common.getMainContext(), "같은 이름을 가진 사람이 존재합니다.", Toast.LENGTH_SHORT).show();
-					break;
-				}
-				saveFriendInfo();
-				dismiss();
-				tableView.clearAllSector();
 				break;
 			}
 		}

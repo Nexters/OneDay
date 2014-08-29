@@ -50,7 +50,7 @@ public class TitleLayout {
 	public void setTitle(String text) {
 		 Drawable transparent = new ColorDrawable(Color.TRANSPARENT);
 		 title.setText(text);
-		 title.setBackground(transparent);
+		 title.setBackgroundDrawable(transparent);
 		 //title.setVisibility(View.VISIBLE);
 		 /*
 		 if(text != null ){
@@ -60,10 +60,10 @@ public class TitleLayout {
 	}
 	
 	public void setImageDrawable(Context context){
-		this.drawable = drawable;
+		//this.drawable = drawable;
 		Drawable titleLogo =  context.getResources().getDrawable( R.drawable.icon_logo );
 		title.setText("");
-		title.setBackground(titleLogo);
+		title.setBackgroundDrawable(titleLogo);;
 	}
 
 
