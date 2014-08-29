@@ -61,8 +61,8 @@ public class TitleLayout {
 	}
 	
 	public void setImageDrawable(Context context){
-		this.drawable = drawable;
-		titleimage.setImageDrawable(context.getResources().getDrawable(R.drawable.icon_logo));
+		//this.drawable = drawable;
+		//titleimage.setImageDrawable(context.getResources().getDrawable(R.drawable.icon_logo));
 		Drawable titleLogo =  context.getResources().getDrawable( R.drawable.icon_logo );
 		title.setText("");
 		title.setBackgroundDrawable(titleLogo);
