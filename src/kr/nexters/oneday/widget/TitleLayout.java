@@ -2,6 +2,8 @@ package kr.nexters.oneday.widget;
 
 import kr.nexters.oneday.R;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -47,16 +49,23 @@ public class TitleLayout {
 	}
 	
 	public void setTitle(String text) {
-		 title.setText("");
+		 Drawable transparent = new ColorDrawable(Color.TRANSPARENT);
+		 title.setText(text);
+		 title.setBackgroundDrawable(transparent);
 		 //title.setVisibility(View.VISIBLE);
+		 /*
 		 if(text != null ){
 			 title.setVisibility(View.INVISIBLE);
 		 }
+		 */
 	}
 	
 	public void setImageDrawable(Context context){
 		this.drawable = drawable;
 		titleimage.setImageDrawable(context.getResources().getDrawable(R.drawable.icon_logo));
+		Drawable titleLogo =  context.getResources().getDrawable( R.drawable.icon_logo );
+		title.setText("");
+		title.setBackgroundDrawable(titleLogo);
 	}
 
 
