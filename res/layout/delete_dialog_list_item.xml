@@ -9,7 +9,7 @@
     <RelativeLayout
         android:id="@+id/RelativeLayout1"
         android:layout_width="214dp"
-        android:layout_height="match_parent" >
+        android:layout_height="26dp" >
 
         <TextView
             android:id="@+id/delete_name"
@@ -20,7 +20,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="5dp"
             android:layout_toLeftOf="@+id/delete_check_box"
             android:background="#fff"
             android:ellipsize="end"
