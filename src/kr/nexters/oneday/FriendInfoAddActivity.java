@@ -133,7 +133,7 @@ public class FriendInfoAddActivity extends Activity {
 					Toast.makeText(Common.getMainContext(), "이름을 입력해주세요", Toast.LENGTH_SHORT).show();
 				} else {
 					Person p = Common.getPerson(name.getText().toString());
-					if(p != null) {
+					if(text == null && p != null) {
 						Toast.makeText(Common.getMainContext(), "같은 이름을 가진 사람이 존재합니다.", Toast.LENGTH_SHORT).show();
 						break;
 					}

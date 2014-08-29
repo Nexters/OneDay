@@ -17,11 +17,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:background="@drawable/icon_logo"
+        android:ellipsize="end"
+        android:maxWidth="200dp"
+        android:singleLine="true"
         android:textColor="@android:color/white"
-        android:background="@drawable/icon_logo"/>
-
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <ImageButton
         android:id="@+id/imageButtonR"
