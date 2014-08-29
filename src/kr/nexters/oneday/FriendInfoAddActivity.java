@@ -136,8 +136,10 @@ public class FriendInfoAddActivity extends Activity {
 					
 					if( text != null ) {
 						// 친구 수정 화면 일경우
-						if( p != null && p.getName() != text ){
+						if( p != null && !p.getName().equals(text) ){
 							// 같은 이름의 사람은 있는데 그게 친구의 얼레이름은 아닐경우
+							Log.e("JAEYOUNG","p.Getname() : " + p.getName());
+							Log.e("JAEYOUNG","text : " + text);
 							Toast.makeText(Common.getMainContext(), "같은 이름을 가진 사람이 존재합니다.", Toast.LENGTH_SHORT).show();
 							return ;
 						}
@@ -164,8 +166,9 @@ public class FriendInfoAddActivity extends Activity {
 					
 					if( text != null ) {
 						// 친구 수정 화면 일경우
-						if( p != null && p.getName() != text ){
+						if( p != null && !p.getName().equals(text) ){
 							// 같은 이름의 사람은 있는데 그게 친구의 얼레이름은 아닐경우
+							
 							Toast.makeText(Common.getMainContext(), "같은 이름을 가진 사람이 존재합니다.", Toast.LENGTH_SHORT).show();
 							return ;
 						}
