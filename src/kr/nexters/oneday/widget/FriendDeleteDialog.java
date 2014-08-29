@@ -2,6 +2,7 @@ package kr.nexters.oneday.widget;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import kr.nexters.oneday.Common;
 import kr.nexters.oneday.MainActivity;
@@ -86,6 +87,7 @@ class DeleteListAdapter extends BaseAdapter {
 		inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		
 		this.pList = new ArrayList<Person>(Common.getPersonSet()); 
+		Collections.sort(pList);
 		this.pList.remove(new Person("나", null, null, true));
 		this.selectList = new ArrayList<Person>();
 	}
